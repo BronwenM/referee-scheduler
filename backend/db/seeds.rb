@@ -437,6 +437,123 @@ game1 = Game.create!(
   status: 'scheduled',
   game_type: ''
 )
+
+game2 = Game.create!(
+  association: association1,
+  title: 'Week 1',
+  home_team: 'Base Hitters',
+  away_team: 'Pitch Perfect',
+  date_time: Time.now + 1.day,
+  location: '8903 Birchwood Parkway',
+  field: 'Thunderstrike Field',
+  officials_assigned: true,
+  status: 'scheduled',
+  game_type: ''
+)
+
+game3 = Game.create!(
+  association: association1,
+  title: 'Week 1',
+  home_team: 'The Swinging Squirrels',
+  away_team: 'Fastballs & Fireballs',
+  date_time: Time.now + 2.day,
+  location: '5432 Maple Street',
+  field: 'Victory Park',
+  officials_assigned: true,
+  status: 'scheduled',
+  game_type: ''
+)
+
+game4 = Game.create!(
+  association: association1,
+  title: 'Week 1',
+  home_team: 'The Diamond Dusters',
+  away_team: 'Ballpark Bandits',
+  date_time: Time.now + 2.day,
+  location: '2114 Oak Ridge Ave',
+  field: 'Sunset Diamond',
+  officials_assigned: true,
+  status: 'scheduled',
+  game_type: ''
+)
+
+game5 = Game.create!(
+  association: association1,
+  title: 'Week 1',
+  home_team: 'Grand Slam Gurus',
+  away_team: 'The Dugout Divas',
+  date_time: Time.now + 3.day,
+  location: '3421 Pine Hill Road',
+  field: 'Golden Glove Stadium',
+  officials_assigned: true,
+  status: 'scheduled',
+  game_type: ''
+)
+
+game6 = Game.create!(
+  association: association1,
+  title: 'Week 1',
+  home_team: 'Bunt Force Trauma',
+  away_team: 'The Triple Threats',
+  date_time: Time.now + 3.day,
+  location: '4567 Birchwood Avenue',
+  field: 'Main Field',
+  officials_assigned: true,
+  status: 'scheduled',
+  game_type: ''
+)
+
+game7 = Game.create!(
+  association: association1,
+  title: 'Week 1',
+  home_team: 'Hit and Run Heroes',
+  away_team: 'The Stolen Bases',
+  date_time: Time.now + 4.day,
+  location: '8903 Birchwood Parkway',
+  field: 'Thunderstrike Field',
+  officials_assigned: true,
+  status: 'scheduled',
+  game_type: ''
+)
+
+game8 = Game.create!(
+  association: association1,
+  title: 'Week 1',
+  home_team: 'Slide into Home',
+  away_team: 'The Fast & The Furious',
+  date_time: Time.now + 4.day,
+  location: '5432 Maple Street',
+  field: 'Victory Park',
+  officials_assigned: true,
+  status: 'scheduled',
+  game_type: ''
+)
+
+game9 = Game.create!(
+  association: association1,
+  title: 'Week 1',
+  home_team: 'Catch Me If You Can',
+  away_team: 'The Batting Angels',
+  date_time: Time.now + 5.day,
+  location: '2114 Oak Ridge Ave',
+  field: 'Sunset Diamond',
+  officials_assigned: true,
+  status: 'scheduled',
+  game_type: ''
+)
+
+game10 = Game.create!(
+  association: association1,
+  title: 'Week 1',
+  home_team: 'Home Run Hustlers',
+  away_team: 'The Softball Sharks',
+  date_time: Time.now + 5.day,
+  location: '3421 Pine Hill Road',
+  field: 'Golden Glove Stadium',
+  officials_assigned: true,
+  status: 'scheduled',
+  game_type: ''
+)
 puts 'Games created'
 
 # Create Assignments
