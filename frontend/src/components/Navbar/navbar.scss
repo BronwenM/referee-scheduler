@@ -1,19 +1,12 @@
-* {
-  background-color: #28c3b4;
-}
-
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
 .navbar {
+  background-color: cadetblue;
+  top: 0;
+  position: sticky;
+  position: -webkit-sticky;
   display: flex;
   color: red;
   align-items: center;
-  padding: 10px 20px;
+  padding: 8px 32px;
 }
 .navbar-links {
   list-style: none;
