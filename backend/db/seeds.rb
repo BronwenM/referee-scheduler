@@ -434,8 +434,8 @@ game1 = Game.create!(
   location: '4567 Birchwood Avenue',
   field: 'Main Field',
   officials_assigned: true,
-  status: 'scheduled',
-  game_type: ''
+  status: 'upcoming',
+  game_type: 'regular season'
 )
 
 game2 = Game.create!(
@@ -447,8 +447,8 @@ game2 = Game.create!(
   location: '8903 Birchwood Parkway',
   field: 'Thunderstrike Field',
   officials_assigned: true,
-  status: 'scheduled',
-  game_type: ''
+  status: 'upcoming',
+  game_type: 'regular season'
 )
 
 game3 = Game.create!(
@@ -460,8 +460,8 @@ game3 = Game.create!(
   location: '5432 Maple Street',
   field: 'Victory Park',
   officials_assigned: true,
-  status: 'scheduled',
-  game_type: ''
+  status: 'upcoming',
+  game_type: 'regular season'
 )
 
 game4 = Game.create!(
@@ -473,8 +473,8 @@ game4 = Game.create!(
   location: '2114 Oak Ridge Ave',
   field: 'Sunset Diamond',
   officials_assigned: true,
-  status: 'scheduled',
-  game_type: ''
+  status: 'upcoming',
+  game_type: 'regular season'
 )
 
 game5 = Game.create!(
@@ -486,8 +486,8 @@ game5 = Game.create!(
   location: '3421 Pine Hill Road',
   field: 'Golden Glove Stadium',
   officials_assigned: true,
-  status: 'scheduled',
-  game_type: ''
+  status: 'upcoming',
+  game_type: 'regular season'
 )
 
 game6 = Game.create!(
@@ -499,8 +499,8 @@ game6 = Game.create!(
   location: '4567 Birchwood Avenue',
   field: 'Main Field',
   officials_assigned: true,
-  status: 'scheduled',
-  game_type: ''
+  status: 'upcoming',
+  game_type: 'regular season'
 )
 
 game7 = Game.create!(
@@ -512,8 +512,8 @@ game7 = Game.create!(
   location: '8903 Birchwood Parkway',
   field: 'Thunderstrike Field',
   officials_assigned: true,
-  status: 'scheduled',
-  game_type: ''
+  status: 'upcoming',
+  game_type: 'regular season'
 )
 
 game8 = Game.create!(
@@ -525,8 +525,8 @@ game8 = Game.create!(
   location: '5432 Maple Street',
   field: 'Victory Park',
   officials_assigned: true,
-  status: 'scheduled',
-  game_type: ''
+  status: 'upcoming',
+  game_type: 'regular season'
 )
 
 game9 = Game.create!(
@@ -538,8 +538,8 @@ game9 = Game.create!(
   location: '2114 Oak Ridge Ave',
   field: 'Sunset Diamond',
   officials_assigned: true,
-  status: 'scheduled',
-  game_type: ''
+  status: 'upcoming',
+  game_type: 'regular season'
 )
 
 game10 = Game.create!(
@@ -547,19 +547,158 @@ game10 = Game.create!(
   title: 'Week 1',
   home_team: 'Home Run Hustlers',
   away_team: 'The Softball Sharks',
-  date_time: Time.now + 5.day,
+  date_time: Time.now + 6.day,
   location: '3421 Pine Hill Road',
   field: 'Golden Glove Stadium',
-  officials_assigned: true,
-  status: 'scheduled',
-  game_type: ''
+  officials_assigned: false,
+  status: 'delayed',
+  game_type: 'regular season'
 )
 puts 'Games created'
 
 # Create Assignments
 puts 'Creating Assignments'
 assignment1 = Assignment.create!(
-  game_id: game1
-  official_id: 
-  )
-  puts 'Assignments Created'
+  game: game1,
+  official: official1,
+  assigner: assigner1,
+  position: 'plate',
+  game_pay: game_pay1
+)
+
+assignment2 = Assignment.create!(
+  game: game1,
+  official: official2,
+  assigner: assigner1,
+  position: 'base',
+  game_pay: game_pay1
+)
+
+assignment3 = Assignment.create!(
+  game: game2,
+  official: official3,
+  assigner: assigner2,
+  position: 'plate',
+  game_pay: game_pay1
+)
+
+assignment4 = Assignment.create!(
+  game: game2,
+  official: official4,
+  assigner: assigner2,
+  position: 'base',
+  game_pay: game_pay1
+)
+
+assignment5 = Assignment.create!(
+  game: game3,
+  official: official5,
+  assigner: assigner3,
+  position: 'plate',
+  game_pay: game_pay1
+)
+
+assignment6 = Assignment.create!(
+  game: game3,
+  official: official6,
+  assigner: assigner3,
+  position: 'base',
+  game_pay: game_pay1
+)
+
+assignment7 = Assignment.create!(
+  game: game4,
+  official: official7,
+  assigner: assigner4,
+  position: 'plate',
+  game_pay: game_pay1
+)
+
+assignment8 = Assignment.create!(
+  game: game4,
+  official: official8,
+  assigner: assigner4,
+  position: 'base',
+  game_pay: game_pay1
+)
+
+assignment9 = Assignment.create!(
+  game: game5,
+  official: official9,
+  assigner: assigner5,
+  position: 'plate',
+  game_pay: game_pay1
+)
+
+assignment10 = Assignment.create!(
+  game: game5,
+  official: official10,
+  assigner: assigner5,
+  position: 'base',
+  game_pay: game_pay1
+)
+
+assignment11 = Assignment.create!(
+  game: game6,
+  official: official11,
+  assigner: assigner1,
+  position: 'plate',
+  game_pay: game_pay1
+)
+
+assignment12 = Assignment.create!(
+  game: game6,
+  official: official12,
+  assigner: assigner1,
+  position: 'base',
+  game_pay: game_pay1
+)
+
+assignment13 = Assignment.create!(
+  game: game7,
+  official: official13,
+  assigner: assigner2,
+  position: 'plate',
+  game_pay: game_pay1
+)
+
+assignment14 = Assignment.create!(
+  game: game7,
+  official: official14,
+  assigner: assigner2,
+  position: 'base',
+  game_pay: game_pay1
+)
+
+assignment15 = Assignment.create!(
+  game: game8,
+  official: official15,
+  assigner: assigner3,
+  position: 'plate',
+  game_pay: game_pay1
+)
+
+assignment16 = Assignment.create!(
+  game: game8,
+  official: official16,
+  assigner: assigner3,
+  position: 'base',
+  game_pay: game_pay1
+)
+
+assignment17 = Assignment.create!(
+  game: game9,
+  official: official17,
+  assigner: assigner4,
+  position: 'plate',
+  game_pay: game_pay1
+)
+puts 'Assignments Created'
+
+# Create Game Pay Rates
+puts 'Creating Pay Rates'
+rate1 = GamePayments.create!(
+  game_type: 'regular season',
+  pay_rate: 1
+)
+puts 'Pay Rates created'
