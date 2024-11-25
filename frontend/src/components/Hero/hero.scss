@@ -3,4 +3,9 @@
   background-color: bisque;
   height: 50dvh;
   padding: 32px;
+  margin: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

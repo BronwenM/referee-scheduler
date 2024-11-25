@@ -22,10 +22,10 @@ function App() {
   return (
     <>
       <Router>
-        <Hero />
+        <Hero connectionTest={message}/>
         <NavBar />
         <main className="app__content">
-          <h1>{message}</h1>
+          <h1></h1>
           <Dashboard />
         </main>
       </Router>
