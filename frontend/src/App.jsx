@@ -22,10 +22,8 @@ function App() {
   return (
     <>
       <Router>
-        <header className="app__header">
-          <Hero />
-          <NavBar />
-        </header>
+        <Hero />
+        <NavBar />
         <main className="app__content">
           <h1>{message}</h1>
           <Dashboard />
