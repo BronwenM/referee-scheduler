@@ -426,7 +426,7 @@ puts 'Permissions created'
 # Create Games
 puts 'Creating Games'
 game1 = Game.create!(
-  association: association1,
+  user_association: association1,
   title: 'Week 1',
   home_team: 'The Diamond Sluggers',
   away_team: 'The Batting Bandits',
@@ -439,7 +439,7 @@ game1 = Game.create!(
 )
 
 game2 = Game.create!(
-  association: association1,
+  user_association: association1,
   title: 'Week 1',
   home_team: 'Base Hitters',
   away_team: 'Pitch Perfect',
@@ -452,7 +452,7 @@ game2 = Game.create!(
 )
 
 game3 = Game.create!(
-  association: association1,
+  user_association: association1,
   title: 'Week 1',
   home_team: 'The Swinging Squirrels',
   away_team: 'Fastballs & Fireballs',
@@ -465,7 +465,7 @@ game3 = Game.create!(
 )
 
 game4 = Game.create!(
-  association: association1,
+  user_association: association1,
   title: 'Week 1',
   home_team: 'The Diamond Dusters',
   away_team: 'Ballpark Bandits',
@@ -478,7 +478,7 @@ game4 = Game.create!(
 )
 
 game5 = Game.create!(
-  association: association1,
+  user_association: association1,
   title: 'Week 1',
   home_team: 'Grand Slam Gurus',
   away_team: 'The Dugout Divas',
@@ -491,7 +491,7 @@ game5 = Game.create!(
 )
 
 game6 = Game.create!(
-  association: association1,
+  user_association: association1,
   title: 'Week 1',
   home_team: 'Bunt Force Trauma',
   away_team: 'The Triple Threats',
@@ -504,7 +504,7 @@ game6 = Game.create!(
 )
 
 game7 = Game.create!(
-  association: association1,
+  user_association: association1,
   title: 'Week 1',
   home_team: 'Hit and Run Heroes',
   away_team: 'The Stolen Bases',
@@ -517,7 +517,7 @@ game7 = Game.create!(
 )
 
 game8 = Game.create!(
-  association: association1,
+  user_association: association1,
   title: 'Week 1',
   home_team: 'Slide into Home',
   away_team: 'The Fast & The Furious',
@@ -530,7 +530,7 @@ game8 = Game.create!(
 )
 
 game9 = Game.create!(
-  association: association1,
+  user_association: association1,
   title: 'Week 1',
   home_team: 'Catch Me If You Can',
   away_team: 'The Batting Angels',
@@ -543,7 +543,7 @@ game9 = Game.create!(
 )
 
 game10 = Game.create!(
-  association: association1,
+  user_association: association1,
   title: 'Week 1',
   home_team: 'Home Run Hustlers',
   away_team: 'The Softball Sharks',
@@ -556,149 +556,149 @@ game10 = Game.create!(
 )
 puts 'Games created'
 
-# Create Assignments
-puts 'Creating Assignments'
-assignment1 = Assignment.create!(
-  game: game1,
-  official: official1,
-  assigner: assigner1,
-  position: 'plate',
-  game_pay: game_pay1
-)
-
-assignment2 = Assignment.create!(
-  game: game1,
-  official: official2,
-  assigner: assigner1,
-  position: 'base',
-  game_pay: game_pay1
-)
-
-assignment3 = Assignment.create!(
-  game: game2,
-  official: official3,
-  assigner: assigner2,
-  position: 'plate',
-  game_pay: game_pay1
-)
-
-assignment4 = Assignment.create!(
-  game: game2,
-  official: official4,
-  assigner: assigner2,
-  position: 'base',
-  game_pay: game_pay1
-)
-
-assignment5 = Assignment.create!(
-  game: game3,
-  official: official5,
-  assigner: assigner3,
-  position: 'plate',
-  game_pay: game_pay1
-)
-
-assignment6 = Assignment.create!(
-  game: game3,
-  official: official6,
-  assigner: assigner3,
-  position: 'base',
-  game_pay: game_pay1
-)
-
-assignment7 = Assignment.create!(
-  game: game4,
-  official: official7,
-  assigner: assigner4,
-  position: 'plate',
-  game_pay: game_pay1
-)
-
-assignment8 = Assignment.create!(
-  game: game4,
-  official: official8,
-  assigner: assigner4,
-  position: 'base',
-  game_pay: game_pay1
-)
-
-assignment9 = Assignment.create!(
-  game: game5,
-  official: official9,
-  assigner: assigner5,
-  position: 'plate',
-  game_pay: game_pay1
-)
-
-assignment10 = Assignment.create!(
-  game: game5,
-  official: official10,
-  assigner: assigner5,
-  position: 'base',
-  game_pay: game_pay1
-)
-
-assignment11 = Assignment.create!(
-  game: game6,
-  official: official11,
-  assigner: assigner1,
-  position: 'plate',
-  game_pay: game_pay1
-)
-
-assignment12 = Assignment.create!(
-  game: game6,
-  official: official12,
-  assigner: assigner1,
-  position: 'base',
-  game_pay: game_pay1
-)
-
-assignment13 = Assignment.create!(
-  game: game7,
-  official: official13,
-  assigner: assigner2,
-  position: 'plate',
-  game_pay: game_pay1
-)
-
-assignment14 = Assignment.create!(
-  game: game7,
-  official: official14,
-  assigner: assigner2,
-  position: 'base',
-  game_pay: game_pay1
-)
-
-assignment15 = Assignment.create!(
-  game: game8,
-  official: official15,
-  assigner: assigner3,
-  position: 'plate',
-  game_pay: game_pay1
-)
-
-assignment16 = Assignment.create!(
-  game: game8,
-  official: official16,
-  assigner: assigner3,
-  position: 'base',
-  game_pay: game_pay1
-)
-
-assignment17 = Assignment.create!(
-  game: game9,
-  official: official17,
-  assigner: assigner4,
-  position: 'plate',
-  game_pay: game_pay1
-)
-puts 'Assignments Created'
-
 # Create Game Pay Rates
 puts 'Creating Pay Rates'
-rate1 = GamePayments.create!(
+rate1 = GamePayment.create!(
   game_type: 'regular season',
   pay_rate: 1
 )
 puts 'Pay Rates created'
+
+# Create Assignments
+puts 'Creating Assignments'
+assignment1 = Assignment.create!(
+  game: game1,
+  official: user9,
+  assigner: user4,
+  position: 'plate',
+  game_pay: rate1
+)
+
+assignment2 = Assignment.create!(
+  game: game1,
+  official: user10,
+  assigner: user4,
+  position: 'base',
+  game_pay: rate1
+)
+
+assignment3 = Assignment.create!(
+  game: game2,
+  official: user11,
+  assigner: user5,
+  position: 'plate',
+  game_pay: rate1
+)
+
+assignment4 = Assignment.create!(
+  game: game2,
+  official: user12,
+  assigner: user5,
+  position: 'base',
+  game_pay: rate1
+)
+
+assignment5 = Assignment.create!(
+  game: game3,
+  official: user13,
+  assigner: user6,
+  position: 'plate',
+  game_pay: rate1
+)
+
+assignment6 = Assignment.create!(
+  game: game3,
+  official: user14,
+  assigner: user6,
+  position: 'base',
+  game_pay: rate1
+)
+
+assignment7 = Assignment.create!(
+  game: game4,
+  official: user15,
+  assigner: user7,
+  position: 'plate',
+  game_pay: rate1
+)
+
+assignment8 = Assignment.create!(
+  game: game4,
+  official: user16,
+  assigner: user7,
+  position: 'base',
+  game_pay: rate1
+)
+
+assignment9 = Assignment.create!(
+  game: game5,
+  official: user17,
+  assigner: user8,
+  position: 'plate',
+  game_pay: rate1
+)
+
+assignment10 = Assignment.create!(
+  game: game5,
+  official: user18,
+  assigner: user8,
+  position: 'base',
+  game_pay: rate1
+)
+
+assignment11 = Assignment.create!(
+  game: game6,
+  official: user19,
+  assigner: user4,
+  position: 'plate',
+  game_pay: rate1
+)
+
+assignment12 = Assignment.create!(
+  game: game6,
+  official: user20,
+  assigner: user4,
+  position: 'base',
+  game_pay: rate1
+)
+
+assignment13 = Assignment.create!(
+  game: game7,
+  official: user21,
+  assigner: user5,
+  position: 'plate',
+  game_pay: rate1
+)
+
+assignment14 = Assignment.create!(
+  game: game7,
+  official: user22,
+  assigner: user5,
+  position: 'base',
+  game_pay: rate1
+)
+
+assignment15 = Assignment.create!(
+  game: game8,
+  official: user23,
+  assigner: user6,
+  position: 'plate',
+  game_pay: rate1
+)
+
+assignment16 = Assignment.create!(
+  game: game8,
+  official: user24,
+  assigner: user6,
+  position: 'base',
+  game_pay: rate1
+)
+
+assignment17 = Assignment.create!(
+  game: game9,
+  official: user25,
+  assigner: user7,
+  position: 'plate',
+  game_pay: rate1
+)
+puts 'Assignments Created'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_25_151428) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_25_153255) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,12 +38,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_25_151428) do
     t.index ["root_user_id"], name: "index_associations_on_root_user_id"
   end
 
-  create_table "game_pays", force: :cascade do |t|
+  create_table "game_payments", force: :cascade do |t|
     t.string "game_type", null: false
     t.integer "pay_rate", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["game_type"], name: "index_game_pays_on_game_type", unique: true
+    t.index ["game_type"], name: "index_game_payments_on_game_type"
   end
 
   create_table "games", force: :cascade do |t|
@@ -102,7 +102,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_25_151428) do
     t.index ["user_association_id"], name: "index_users_on_user_association_id"
   end
 
-  add_foreign_key "assignments", "game_pays"
+  add_foreign_key "assignments", "game_payments", column: "game_pay_id"
   add_foreign_key "assignments", "games"
   add_foreign_key "assignments", "users", column: "assigner_id"
   add_foreign_key "assignments", "users", column: "official_id"
