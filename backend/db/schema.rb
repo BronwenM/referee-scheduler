@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_25_154402) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_25_201642) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -78,6 +78,19 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_25_154402) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "unavailabilities", force: :cascade do |t|
+    t.bigint "official_id", null: false
+    t.integer "week_day"
+    t.boolean "all_day", default: false, null: false
+    t.time "time_from"
+    t.time "time_to"
+    t.date "available_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["official_id"], name: "index_unavailabilities_on_official_id"
+    t.check_constraint "all_day = true AND time_from IS NULL AND time_to IS NULL OR all_day = false AND time_from IS NOT NULL AND time_to IS NOT NULL", name: "check_all_day_time_constraints"
+  end
+
   create_table "user_roles", force: :cascade do |t|
     t.bigint "role_id", null: false
     t.bigint "user_id", null: false
@@ -109,6 +122,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_25_154402) do
   add_foreign_key "associations", "users", column: "root_user_id"
   add_foreign_key "games", "associations", column: "user_association_id"
   add_foreign_key "permissions", "roles"
+  add_foreign_key "unavailabilities", "users", column: "official_id"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
   add_foreign_key "users", "associations", column: "user_association_id"
