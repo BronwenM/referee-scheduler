@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_25_150712) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_25_151428) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,7 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_25_150712) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.bigint "association_id", null: false
+    t.bigint "user_association_id", null: false
     t.string "title", null: false
     t.string "home_team", null: false
     t.string "away_team", null: false
@@ -59,7 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_25_150712) do
     t.string "game_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["association_id"], name: "index_games_on_association_id"
+    t.index ["user_association_id"], name: "index_games_on_user_association_id"
   end
 
   create_table "permissions", force: :cascade do |t|
@@ -107,7 +107,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_25_150712) do
   add_foreign_key "assignments", "users", column: "assigner_id"
   add_foreign_key "assignments", "users", column: "official_id"
   add_foreign_key "associations", "users", column: "root_user_id"
-  add_foreign_key "games", "associations"
+  add_foreign_key "games", "associations", column: "user_association_id"
   add_foreign_key "permissions", "roles"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"

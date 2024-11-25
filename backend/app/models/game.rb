@@ -1,3 +1,3 @@
 class Game < ApplicationRecord
-  belongs_to :association
+  belongs_to :user_association, class_name: 'Association'
 end
