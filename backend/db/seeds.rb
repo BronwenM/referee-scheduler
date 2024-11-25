@@ -571,7 +571,7 @@ assignment1 = Assignment.create!(
   official: user9,
   assigner: user4,
   position: 'plate',
-  game_pay: rate1
+  game_payment: rate1
 )
 
 assignment2 = Assignment.create!(
@@ -579,7 +579,7 @@ assignment2 = Assignment.create!(
   official: user10,
   assigner: user4,
   position: 'base',
-  game_pay: rate1
+  game_payment: rate1
 )
 
 assignment3 = Assignment.create!(
@@ -587,7 +587,7 @@ assignment3 = Assignment.create!(
   official: user11,
   assigner: user5,
   position: 'plate',
-  game_pay: rate1
+  game_payment: rate1
 )
 
 assignment4 = Assignment.create!(
@@ -595,7 +595,7 @@ assignment4 = Assignment.create!(
   official: user12,
   assigner: user5,
   position: 'base',
-  game_pay: rate1
+  game_payment: rate1
 )
 
 assignment5 = Assignment.create!(
@@ -603,7 +603,7 @@ assignment5 = Assignment.create!(
   official: user13,
   assigner: user6,
   position: 'plate',
-  game_pay: rate1
+  game_payment: rate1
 )
 
 assignment6 = Assignment.create!(
@@ -611,7 +611,7 @@ assignment6 = Assignment.create!(
   official: user14,
   assigner: user6,
   position: 'base',
-  game_pay: rate1
+  game_payment: rate1
 )
 
 assignment7 = Assignment.create!(
@@ -619,7 +619,7 @@ assignment7 = Assignment.create!(
   official: user15,
   assigner: user7,
   position: 'plate',
-  game_pay: rate1
+  game_payment: rate1
 )
 
 assignment8 = Assignment.create!(
@@ -627,7 +627,7 @@ assignment8 = Assignment.create!(
   official: user16,
   assigner: user7,
   position: 'base',
-  game_pay: rate1
+  game_payment: rate1
 )
 
 assignment9 = Assignment.create!(
@@ -635,7 +635,7 @@ assignment9 = Assignment.create!(
   official: user17,
   assigner: user8,
   position: 'plate',
-  game_pay: rate1
+  game_payment: rate1
 )
 
 assignment10 = Assignment.create!(
@@ -643,7 +643,7 @@ assignment10 = Assignment.create!(
   official: user18,
   assigner: user8,
   position: 'base',
-  game_pay: rate1
+  game_payment: rate1
 )
 
 assignment11 = Assignment.create!(
@@ -651,7 +651,7 @@ assignment11 = Assignment.create!(
   official: user19,
   assigner: user4,
   position: 'plate',
-  game_pay: rate1
+  game_payment: rate1
 )
 
 assignment12 = Assignment.create!(
@@ -659,7 +659,7 @@ assignment12 = Assignment.create!(
   official: user20,
   assigner: user4,
   position: 'base',
-  game_pay: rate1
+  game_payment: rate1
 )
 
 assignment13 = Assignment.create!(
@@ -667,7 +667,7 @@ assignment13 = Assignment.create!(
   official: user21,
   assigner: user5,
   position: 'plate',
-  game_pay: rate1
+  game_payment: rate1
 )
 
 assignment14 = Assignment.create!(
@@ -675,7 +675,7 @@ assignment14 = Assignment.create!(
   official: user22,
   assigner: user5,
   position: 'base',
-  game_pay: rate1
+  game_payment: rate1
 )
 
 assignment15 = Assignment.create!(
@@ -683,7 +683,7 @@ assignment15 = Assignment.create!(
   official: user23,
   assigner: user6,
   position: 'plate',
-  game_pay: rate1
+  game_payment: rate1
 )
 
 assignment16 = Assignment.create!(
@@ -691,7 +691,7 @@ assignment16 = Assignment.create!(
   official: user24,
   assigner: user6,
   position: 'base',
-  game_pay: rate1
+  game_payment: rate1
 )
 
 assignment17 = Assignment.create!(
@@ -699,6 +699,6 @@ assignment17 = Assignment.create!(
   official: user25,
   assigner: user7,
   position: 'plate',
-  game_pay: rate1
+  game_payment: rate1
 )
 puts 'Assignments Created'

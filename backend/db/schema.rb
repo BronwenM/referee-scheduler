@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_25_153255) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_25_154402) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,13 +19,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_25_153255) do
     t.bigint "official_id", null: false
     t.bigint "assigner_id", null: false
     t.string "position"
-    t.bigint "game_pay_id"
+    t.bigint "game_payment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["assigner_id"], name: "index_assignments_on_assigner_id"
     t.index ["game_id", "official_id"], name: "index_assignments_on_game_id_and_official_id", unique: true
     t.index ["game_id"], name: "index_assignments_on_game_id"
-    t.index ["game_pay_id"], name: "index_assignments_on_game_pay_id"
+    t.index ["game_payment_id"], name: "index_assignments_on_game_payment_id"
     t.index ["official_id"], name: "index_assignments_on_official_id"
   end
 
@@ -102,7 +102,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_25_153255) do
     t.index ["user_association_id"], name: "index_users_on_user_association_id"
   end
 
-  add_foreign_key "assignments", "game_payments", column: "game_pay_id"
+  add_foreign_key "assignments", "game_payments"
   add_foreign_key "assignments", "games"
   add_foreign_key "assignments", "users", column: "assigner_id"
   add_foreign_key "assignments", "users", column: "official_id"
