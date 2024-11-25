@@ -352,6 +352,881 @@ user30 = User.create!(
 
 puts 'Users created'
 
+# Create Unavailabilities
+puts 'Creating Unavailabilities'
+user9_monday = Unavailability.create!(
+  official: user9,
+  week_day: 1,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user9_tuesday = Unavailability.create!(
+  official: user9,
+  week_day: 2,
+  all_day: false,
+  time_from: '09:00:00',
+  time_to: '17:00:00',
+  available_date: nil
+)
+
+user9_wednesday = Unavailability.create!(
+  official: user9,
+  week_day: 3,
+  all_day: false,
+  time_from: '09:00:00',
+  time_to: '17:00:00',
+  available_date: nil
+)
+
+user9_thursday = Unavailability.create!(
+  official: user9,
+  week_day: 4,
+  all_day: false,
+  time_from: '12:00:00',
+  time_to: '20:00:00',
+  available_date: nil
+)
+
+user9_friday = Unavailability.create!(
+  official: user9,
+  week_day: 5,
+  all_day: false,
+  time_from: '12:00:00',
+  time_to: '20:00:00',
+  available_date: nil
+)
+
+user9_saturday = Unavailability.create!(
+  official: user9,
+  week_day: 6,
+  all_day: false,
+  time_from: '07:00:00',
+  time_to: '09:00:00',
+  available_date: nil
+)
+
+user9_sunday = Unavailability.create!(
+  official: user9,
+  week_day: 7,
+  all_day: false,
+  time_from: '07:00:00',
+  time_to: '09:00:00',
+  available_date: nil
+)
+
+user10_monday = Unavailability.create!(
+  official: user10,
+  week_day: 1,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user10_tuesday = Unavailability.create!(
+  official: user10,
+  week_day: 2,
+  all_day: false,
+  time_from: '08:00:00',
+  time_to: '12:00:00',
+  available_date: nil
+)
+
+user10_wednesday = Unavailability.create!(
+  official: user10,
+  week_day: 3,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user10_thursday = Unavailability.create!(
+  official: user10,
+  week_day: 4,
+  all_day: false,
+  time_from: '14:00:00',
+  time_to: '22:00:00',
+  available_date: nil
+)
+
+user10_friday = Unavailability.create!(
+  official: user10,
+  week_day: 5,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user10_saturday = Unavailability.create!(
+  official: user10,
+  week_day: 6,
+  all_day: false,
+  time_from: '10:00:00',
+  time_to: '18:00:00',
+  available_date: nil
+)
+
+user10_sunday = Unavailability.create!(
+  official: user10,
+  week_day: 7,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user11_monday = Unavailability.create!(
+  official: user11,
+  week_day: 1,
+  all_day: false,
+  time_from: '09:00:00',
+  time_to: '12:00:00',
+  available_date: nil
+)
+
+user11_tuesday = Unavailability.create!(
+  official: user11,
+  week_day: 2,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user11_wednesday = Unavailability.create!(
+  official: user11,
+  week_day: 3,
+  all_day: false,
+  time_from: '10:00:00',
+  time_to: '15:00:00',
+  available_date: nil
+)
+
+user11_thursday = Unavailability.create!(
+  official: user11,
+  week_day: 4,
+  all_day: false,
+  time_from: '08:00:00',
+  time_to: '12:00:00',
+  available_date: nil
+)
+
+user11_friday = Unavailability.create!(
+  official: user11,
+  week_day: 5,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user11_saturday = Unavailability.create!(
+  official: user11,
+  week_day: 6,
+  all_day: false,
+  time_from: '18:00:00',
+  time_to: '22:00:00',
+  available_date: nil
+)
+
+user11_sunday = Unavailability.create!(
+  official: user11,
+  week_day: 7,
+  all_day: false,
+  time_from: '14:00:00',
+  time_to: '17:00:00',
+  available_date: nil
+)
+
+user12_monday = Unavailability.create!(
+  official: user12,
+  week_day: 1,
+  all_day: false,
+  time_from: '13:00:00',
+  time_to: '17:00:00',
+  available_date: nil
+)
+
+user12_tuesday = Unavailability.create!(
+  official: user12,
+  week_day: 2,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user12_wednesday = Unavailability.create!(
+  official: user12,
+  week_day: 3,
+  all_day: false,
+  time_from: '07:00:00',
+  time_to: '10:00:00',
+  available_date: nil
+)
+
+user12_thursday = Unavailability.create!(
+  official: user12,
+  week_day: 4,
+  all_day: false,
+  time_from: '16:00:00',
+  time_to: '20:00:00',
+  available_date: nil
+)
+
+user12_friday = Unavailability.create!(
+  official: user12,
+  week_day: 5,
+  all_day: false,
+  time_from: '11:00:00',
+  time_to: '14:00:00',
+  available_date: nil
+)
+
+user12_saturday = Unavailability.create!(
+  official: user12,
+  week_day: 6,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user12_sunday = Unavailability.create!(
+  official: user12,
+  week_day: 7,
+  all_day: false,
+  time_from: '09:00:00',
+  time_to: '12:00:00',
+  available_date: nil
+)
+
+user13_monday = Unavailability.create!(
+  official: user13,
+  week_day: 1,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user13_tuesday = Unavailability.create!(
+  official: user13,
+  week_day: 2,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user13_wednesday = Unavailability.create!(
+  official: user13,
+  week_day: 3,
+  all_day: false,
+  time_from: '12:00:00',
+  time_to: '16:00:00',
+  available_date: nil
+)
+
+user13_thursday = Unavailability.create!(
+  official: user13,
+  week_day: 4,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user13_friday = Unavailability.create!(
+  official: user13,
+  week_day: 5,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user13_saturday = Unavailability.create!(
+  official: user13,
+  week_day: 6,
+  all_day: false,
+  time_from: '18:00:00',
+  time_to: '22:00:00',
+  available_date: nil
+)
+
+user13_sunday = Unavailability.create!(
+  official: user13,
+  week_day: 7,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user14_monday = Unavailability.create!(
+  official: user14,
+  week_day: 1,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user14_tuesday = Unavailability.create!(
+  official: user14,
+  week_day: 2,
+  all_day: false,
+  time_from: '06:00:00',
+  time_to: '08:00:00',
+  available_date: nil
+)
+
+user14_wednesday = Unavailability.create!(
+  official: user14,
+  week_day: 3,
+  all_day: false,
+  time_from: '05:00:00',
+  time_to: '07:00:00',
+  available_date: nil
+)
+
+user14_thursday = Unavailability.create!(
+  official: user14,
+  week_day: 4,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user14_friday = Unavailability.create!(
+  official: user14,
+  week_day: 5,
+  all_day: false,
+  time_from: '07:00:00',
+  time_to: '09:00:00',
+  available_date: nil
+)
+
+user14_saturday = Unavailability.create!(
+  official: user14,
+  week_day: 6,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user14_sunday = Unavailability.create!(
+  official: user14,
+  week_day: 7,
+  all_day: false,
+  time_from: '12:00:00',
+  time_to: '15:00:00',
+  available_date: nil
+)
+
+user15_monday = Unavailability.create!(
+  official: user15,
+  week_day: 1,
+  all_day: false,
+  time_from: '18:00:00',
+  time_to: '22:00:00',
+  available_date: nil
+)
+
+user15_tuesday = Unavailability.create!(
+  official: user15,
+  week_day: 2,
+  all_day: false,
+  time_from: '15:00:00',
+  time_to: '20:00:00',
+  available_date: nil
+)
+
+user15_wednesday = Unavailability.create!(
+  official: user15,
+  week_day: 3,
+  all_day: false,
+  time_from: '09:00:00',
+  time_to: '12:00:00',
+  available_date: nil
+)
+
+user15_thursday = Unavailability.create!(
+  official: user15,
+  week_day: 4,
+  all_day: false,
+  time_from: '10:00:00',
+  time_to: '14:00:00',
+  available_date: nil
+)
+
+user15_friday = Unavailability.create!(
+  official: user15,
+  week_day: 5,
+  all_day: false,
+  time_from: '16:00:00',
+  time_to: '20:00:00',
+  available_date: nil
+)
+
+user15_saturday = Unavailability.create!(
+  official: user15,
+  week_day: 6,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user15_sunday = Unavailability.create!(
+  official: user15,
+  week_day: 7,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user16_monday = Unavailability.create!(
+  official: user16,
+  week_day: 1,
+  all_day: false,
+  time_from: '16:00:00',
+  time_to: '20:00:00',
+  available_date: nil
+)
+
+user16_tuesday = Unavailability.create!(
+  official: user16,
+  week_day: 2,
+  all_day: false,
+  time_from: '16:00:00',
+  time_to: '20:00:00',
+  available_date: nil
+)
+
+user16_wednesday = Unavailability.create!(
+  official: user16,
+  week_day: 3,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user16_thursday = Unavailability.create!(
+  official: user16,
+  week_day: 4,
+  all_day: false,
+  time_from: '10:00:00',
+  time_to: '14:00:00',
+  available_date: nil
+)
+
+user16_friday = Unavailability.create!(
+  official: user16,
+  week_day: 5,
+  all_day: false,
+  time_from: '15:00:00',
+  time_to: '20:00:00',
+  available_date: nil
+)
+
+user16_saturday = Unavailability.create!(
+  official: user16,
+  week_day: 6,
+  all_day: false,
+  time_from: '12:00:00',
+  time_to: '18:00:00',
+  available_date: nil
+)
+
+user16_sunday = Unavailability.create!(
+  official: user16,
+  week_day: 7,
+  all_day: false,
+  time_from: '09:00:00',
+  time_to: '13:00:00',
+  available_date: nil
+)
+
+user17_monday = Unavailability.create!(
+  official: user17,
+  week_day: 1,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user17_tuesday = Unavailability.create!(
+  official: user17,
+  week_day: 2,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user17_wednesday = Unavailability.create!(
+  official: user17,
+  week_day: 3,
+  all_day: false,
+  time_from: '13:00:00',
+  time_to: '15:00:00',
+  available_date: nil
+)
+
+user17_thursday = Unavailability.create!(
+  official: user17,
+  week_day: 4,
+  all_day: false,
+  time_from: '10:00:00',
+  time_to: '12:00:00',
+  available_date: nil
+)
+
+user17_friday = Unavailability.create!(
+  official: user17,
+  week_day: 5,
+  all_day: false,
+  time_from: '14:00:00',
+  time_to: '18:00:00',
+  available_date: nil
+)
+
+user17_saturday = Unavailability.create!(
+  official: user17,
+  week_day: 6,
+  all_day: false,
+  time_from: '18:00:00',
+  time_to: '22:00:00',
+  available_date: nil
+)
+
+user17_sunday = Unavailability.create!(
+  official: user17,
+  week_day: 7,
+  all_day: false,
+  time_from: '18:00:00',
+  time_to: '22:00:00',
+  available_date: nil
+)
+
+user17_wednesday = Unavailability.create!(
+  official: user17,
+  week_day: 3,
+  all_day: false,
+  time_from: '13:00:00',
+  time_to: '15:00:00',
+  available_date: nil
+)
+
+user17_thursday = Unavailability.create!(
+  official: user17,
+  week_day: 4,
+  all_day: false,
+  time_from: '10:00:00',
+  time_to: '12:00:00',
+  available_date: nil
+)
+
+user17_friday = Unavailability.create!(
+  official: user17,
+  week_day: 5,
+  all_day: false,
+  time_from: '14:00:00',
+  time_to: '18:00:00',
+  available_date: nil
+)
+
+user19_monday = Unavailability.create!(
+  official: user19,
+  week_day: 1,
+  all_day: false,
+  time_from: '09:00:00',
+  time_to: '12:00:00',
+  available_date: nil
+)
+
+user19_tuesday = Unavailability.create!(
+  official: user19,
+  week_day: 2,
+  all_day: false,
+  time_from: '14:00:00',
+  time_to: '18:00:00',
+  available_date: nil
+)
+
+user19_wednesday = Unavailability.create!(
+  official: user19,
+  week_day: 3,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user19_thursday = Unavailability.create!(
+  official: user19,
+  week_day: 4,
+  all_day: false,
+  time_from: '10:00:00',
+  time_to: '14:00:00',
+  available_date: nil
+)
+
+user19_friday = Unavailability.create!(
+  official: user19,
+  week_day: 5,
+  all_day: false,
+  time_from: '16:00:00',
+  time_to: '20:00:00',
+  available_date: nil
+)
+
+user19_saturday = Unavailability.create!(
+  official: user19,
+  week_day: 6,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user19_sunday = Unavailability.create!(
+  official: user19,
+  week_day: 7,
+  all_day: false,
+  time_from: '08:00:00',
+  time_to: '11:00:00',
+  available_date: nil
+)
+
+user20_unavailabilities = []
+
+(1..7).each do |day|
+  user20_unavailabilities << Unavailability.create!(
+    official: user20,  # Use the User object here
+    week_day: day,
+    all_day: false,
+    time_from: '08:00:00',
+    time_to: '17:00:00',
+    available_date: nil
+  )
+end
+
+user21_monday = Unavailability.create!(
+  official: user21,
+  week_day: 1,
+  all_day: false,
+  time_from: '13:00:00',
+  time_to: '17:00:00',
+  available_date: nil
+)
+
+user21_tuesday = Unavailability.create!(
+  official: user21,
+  week_day: 2,
+  all_day: false,
+  time_from: '12:00:00',
+  time_to: '16:00:00',
+  available_date: nil
+)
+
+user21_wednesday = Unavailability.create!(
+  official: user21,
+  week_day: 3,
+  all_day: false,
+  time_from: '14:00:00',
+  time_to: '18:00:00',
+  available_date: nil
+)
+
+user21_thursday = Unavailability.create!(
+  official: user21,
+  week_day: 4,
+  all_day: false,
+  time_from: '13:00:00',
+  time_to: '17:00:00',
+  available_date: nil
+)
+
+user21_friday = Unavailability.create!(
+  official: user21,
+  week_day: 5,
+  all_day: false,
+  time_from: '14:00:00',
+  time_to: '18:00:00',
+  available_date: nil
+)
+
+user21_saturday = Unavailability.create!(
+  official: user21,
+  week_day: 6,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user21_sunday = Unavailability.create!(
+  official: user21,
+  week_day: 7,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user22_monday = Unavailability.create!(
+  official: user22,
+  week_day: 1,
+  all_day: false,
+  time_from: '08:00:00',
+  time_to: '12:00:00',
+  available_date: nil
+)
+
+user22_tuesday = Unavailability.create!(
+  official: user22,
+  week_day: 2,
+  all_day: false,
+  time_from: '07:00:00',
+  time_to: '11:00:00',
+  available_date: nil
+)
+
+user22_wednesday = Unavailability.create!(
+  official: user22,
+  week_day: 3,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user22_thursday = Unavailability.create!(
+  official: user22,
+  week_day: 4,
+  all_day: false,
+  time_from: '08:00:00',
+  time_to: '12:00:00',
+  available_date: nil
+)
+
+user22_friday = Unavailability.create!(
+  official: user22,
+  week_day: 5,
+  all_day: false,
+  time_from: '09:00:00',
+  time_to: '13:00:00',
+  available_date: nil
+)
+
+user22_saturday = Unavailability.create!(
+  official: user22,
+  week_day: 6,
+  all_day: false,
+  time_from: '10:00:00',
+  time_to: '14:00:00',
+  available_date: nil
+)
+
+user22_sunday = Unavailability.create!(
+  official: user22,
+  week_day: 7,
+  all_day: false,
+  time_from: '09:00:00',
+  time_to: '11:00:00',
+  available_date: nil
+)
+
+user23_monday = Unavailability.create!(
+  official: user23,
+  week_day: 1,
+  all_day: false,
+  time_from: '17:00:00',
+  time_to: '21:00:00',
+  available_date: nil
+)
+
+user23_tuesday = Unavailability.create!(
+  official: user23,
+  week_day: 2,
+  all_day: false,
+  time_from: '16:00:00',
+  time_to: '20:00:00',
+  available_date: nil
+)
+
+user23_wednesday = Unavailability.create!(
+  official: user23,
+  week_day: 3,
+  all_day: true,
+  time_from: nil,
+  time_to: nil,
+  available_date: nil
+)
+
+user23_thursday = Unavailability.create!(
+  official: user23,
+  week_day: 4,
+  all_day: false,
+  time_from: '18:00:00',
+  time_to: '22:00:00',
+  available_date: nil
+)
+
+user23_friday = Unavailability.create!(
+  official: user23,
+  week_day: 5,
+  all_day: false,
+  time_from: '19:00:00',
+  time_to: '23:00:00',
+  available_date: nil
+)
+
+user23_saturday = Unavailability.create!(
+  official: user23,
+  week_day: 6,
+  all_day: false,
+  time_from: '12:00:00',
+  time_to: '15:00:00',
+  available_date: nil
+)
+
+user23_sunday = Unavailability.create!(
+  official: user23,
+  week_day: 7,
+  all_day: false,
+  time_from: '14:00:00',
+  time_to: '18:00:00',
+  available_date: nil
+)
+
+(24..30).each do |user_id|
+  (1..7).each do |week_day|
+    Unavailability.create!(
+      official: User.find_by(id: user_id),
+      week_day: week_day,
+      all_day: week_day.odd?,
+      time_from: week_day.even? ? '09:00:00' : nil,
+      time_to: week_day.even? ? '13:00:00' : nil,
+      available_date: nil
+    )
+  end
+end
+puts 'Unavailabilities created'
+
 # Assign Roles to Users
 puts 'Creating User_Roles'
 UserRole.create!(user: user1, role: admin)
