@@ -1,6 +1,8 @@
 html {
   box-sizing: border-box;
+  min-height: 100%;
 }
+
 *, *:before, *:after {
   box-sizing: inherit;
 }
@@ -9,9 +11,4 @@ body {
   background-color: #28c3b4;
 }
 
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+

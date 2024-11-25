@@ -6,7 +6,7 @@ const Dashboard = (props) => {
   
   return (
     <section className='dashboard'>
-      <div>
+      <div className='dashboard__content'>
         Section
       </div>
     </section>
