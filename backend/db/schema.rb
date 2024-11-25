@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_25_150249) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_25_150712) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -89,7 +89,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_25_150249) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.bigint "association_id"
+    t.bigint "user_association_id"
     t.string "name", null: false
     t.string "username", null: false
     t.string "email", null: false
@@ -99,7 +99,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_25_150249) do
     t.text "payment_info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["association_id"], name: "index_users_on_association_id"
+    t.index ["user_association_id"], name: "index_users_on_user_association_id"
   end
 
   add_foreign_key "assignments", "game_pays"
@@ -111,5 +111,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_25_150249) do
   add_foreign_key "permissions", "roles"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
-  add_foreign_key "users", "associations"
+  add_foreign_key "users", "associations", column: "user_association_id"
 end
