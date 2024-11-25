@@ -21,7 +21,7 @@ puts 'Roles created'
 # Create Users
 puts 'Creating users'
 user1 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Jordan Matthews',
   username: 'jormat',
   email: 'jordan@matthews.com',
@@ -32,7 +32,7 @@ user1 = User.create!(
 )
 
 user2 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Emily Johnson',
   username: 'emjohnson92',
   email: 'emily.johnson92@example.com',
@@ -43,7 +43,7 @@ user2 = User.create!(
 )
 
 user3 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Michael Thompson',
   username: 'mike_t23',
   email: 'michael.thompson23@example.com',
@@ -54,7 +54,7 @@ user3 = User.create!(
 )
 
 user4 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Olivia Davis',
   username: 'olivdavis78',
   email: 'olivia.davis78@example.com',
@@ -65,7 +65,7 @@ user4 = User.create!(
 )
 
 user5 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Ethan Wilson',
   username: 'ethanwilson21',
   email: 'ethan.wilson21@example.com',
@@ -76,7 +76,7 @@ user5 = User.create!(
 )
 
 user6 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Sophia Garcia',
   username: 'sophiag22',
   email: 'sophia.garcia22@example.com',
@@ -87,7 +87,7 @@ user6 = User.create!(
 )
 
 user7 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Liam Miller',
   username: 'liam_miller18',
   email: 'liam.miller18@example.com',
@@ -98,7 +98,7 @@ user7 = User.create!(
 )
 
 user8 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Ava Martinez',
   username: 'avamartinez95',
   email: 'ava.martinez95@example.com',
@@ -109,7 +109,7 @@ user8 = User.create!(
 )
 
 user9 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'James Anderson',
   username: 'jamesanderson22',
   email: 'james.anderson22@example.com',
@@ -120,7 +120,7 @@ user9 = User.create!(
 )
 
 user10 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Isabella Harris',
   username: 'isaharris34',
   email: 'isabella.harris34@example.com',
@@ -131,7 +131,7 @@ user10 = User.create!(
 )
 
 user11 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Lucas Clark',
   username: 'lucasclark56',
   email: 'lucas.clark56@example.com',
@@ -142,7 +142,7 @@ user11 = User.create!(
 )
 
 user12 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Mia Lee',
   username: 'mialee87',
   email: 'mia.lee87@example.com',
@@ -153,7 +153,7 @@ user12 = User.create!(
 )
 
 user13 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Jack Taylor',
   username: 'jacktaylor99',
   email: 'jack.taylor99@example.com',
@@ -164,7 +164,7 @@ user13 = User.create!(
 )
 
 user14 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Amelia Young',
   username: 'amelia_young42',
   email: 'amelia.young42@example.com',
@@ -175,7 +175,7 @@ user14 = User.create!(
 )
 
 user15 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Benjamin Walker',
   username: 'benjaminwalker23',
   email: 'benjamin.walker23@example.com',
@@ -186,7 +186,7 @@ user15 = User.create!(
 )
 
 user16 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Charlotte Moore',
   username: 'charlottemoore78',
   email: 'charlotte.moore78@example.com',
@@ -197,7 +197,7 @@ user16 = User.create!(
 )
 
 user17 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'William King',
   username: 'williamking51',
   email: 'william.king51@example.com',
@@ -208,7 +208,7 @@ user17 = User.create!(
 )
 
 user18 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Zoe Rodriguez',
   username: 'zoerodriguez44',
   email: 'zoe.rodriguez44@example.com',
@@ -219,7 +219,7 @@ user18 = User.create!(
 )
 
 user19 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Daniel Evans',
   username: 'daniel_evans22',
   email: 'daniel.evans22@example.com',
@@ -230,7 +230,7 @@ user19 = User.create!(
 )
 
 user20 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Grace Wright',
   username: 'gracewright65',
   email: 'grace.wright65@example.com',
@@ -241,7 +241,7 @@ user20 = User.create!(
 )
 
 user21 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Alexander Scott',
   username: 'alexanderscott17',
   email: 'alexander.scott17@example.com',
@@ -252,7 +252,7 @@ user21 = User.create!(
 )
 
 user22 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Ella Green',
   username: 'ellagreen55',
   email: 'ella.green55@example.com',
@@ -263,7 +263,7 @@ user22 = User.create!(
 )
 
 user23 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Noah Adams',
   username: 'noahadams66',
   email: 'noah.adams66@example.com',
@@ -274,7 +274,7 @@ user23 = User.create!(
 )
 
 user24 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Avery Perez',
   username: 'averyperez99',
   email: 'avery.perez99@example.com',
@@ -285,7 +285,7 @@ user24 = User.create!(
 )
 
 user25 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Matthew Nelson',
   username: 'matthew_nelson23',
   email: 'matthew.nelson23@example.com',
@@ -296,7 +296,7 @@ user25 = User.create!(
 )
 
 user26 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Megan Carter',
   username: 'megancarter88',
   email: 'megan.carter88@example.com',
@@ -307,7 +307,7 @@ user26 = User.create!(
 )
 
 user27 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Ryan Mitchell',
   username: 'ryanmitchell45',
   email: 'ryan.mitchell45@example.com',
@@ -318,7 +318,7 @@ user27 = User.create!(
 )
 
 user28 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Scarlett Perez',
   username: 'scarlettperez77',
   email: 'scarlett.perez77@example.com',
@@ -329,7 +329,7 @@ user28 = User.create!(
 )
 
 user29 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'David Robinson',
   username: 'davidrobinson30',
   email: 'david.robinson30@example.com',
@@ -340,7 +340,7 @@ user29 = User.create!(
 )
 
 user30 = User.create!(
-  association: association1,
+  user_association: association1,
   name: 'Lily Harris',
   username: 'lilyharris56',
   email: 'lily.harris56@example.com',

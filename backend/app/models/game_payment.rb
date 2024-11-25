@@ -1,0 +1,2 @@
+class GamePayment < ApplicationRecord
+end
