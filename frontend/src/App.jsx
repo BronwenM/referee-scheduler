@@ -18,36 +18,12 @@ function App() {
       });
   }, []);
 
-  const handleClick = () => {
-    console.log('Button clicked');
-  };
-  
-  const dlClick = () => {
-    console.log('DBL Button clicked');
-  };
-
   return (
     <>
       <Router>
         <NavBar />
         <h1>{message}</h1>
-        <div>
-          <Button 
-            handle={handleClick} 
-            name="Click Me" 
-            className="primary" 
-            eventType="onClick" 
-          />
-        </div>
-        <div>
-          <Button 
-            handle={dlClick} 
-            name="Submit" 
-            className="primary2" 
-            eventType="onDoubleClick" 
-          />
-        </div>
-      </Router>
+        </Router>
     </>
   );
 }

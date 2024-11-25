@@ -1,10 +1,10 @@
 import React from 'react';
 import './Button.scss';
 
-const Button = ({ handle, name, className, eventType }) => {
-  const eventHandler = { [eventType]: handle };
+const Button = (props) => {
+  const{ handle, name, className } = props;
   return (
-    <button className={`button ${className}`} {...eventHandler}>
+    <button className={`button ${className}`} onClick={handle}>
       {name}
     </button>
   );
