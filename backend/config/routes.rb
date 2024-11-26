@@ -8,7 +8,11 @@ Rails.application.routes.draw do
     resources :associations, only: [:index, :show]
     resources :roles, only: [:index, :show]
     resources :permissions, only: [:index, :show]
-    resources :games, only: [:index, :show]
+    resources :games, only: [:index, :show] do
+      collection do
+        get :find_unassigned
+      end
+    end
     resources :assignments, only: [:index, :show]
     resources :unavailabilities, only: [:index, :show]
     resources :user_roles, only: [:index, :show]
