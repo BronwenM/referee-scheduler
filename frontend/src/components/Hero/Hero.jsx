@@ -3,7 +3,7 @@ import './hero.scss'
 
 //use session to get user details
 const Hero = (props) => {
-  const {connectionTest} = props;
+  const {connectionTest, userFN} = props;
 
   const dateOptions = {
     weekday: 'long',
@@ -14,7 +14,7 @@ const Hero = (props) => {
   
   return (
     <div className='hero-banner'>
-      <div className='hero-banner__greeting'>Hi Username!</div>
+      <div className='hero-banner__greeting'>Hi {userFN}!</div>
       <div className='hero-banner__today'>Today is {Date()}</div>
       <div className='hero-banner__quick-info'>
         {connectionTest}

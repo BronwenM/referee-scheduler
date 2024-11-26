@@ -7,9 +7,14 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import Hero from "./components/Hero/Hero";
 import CalendarComponent from "./components/Calendar/CalendarComponent";
 import AvailabilityForm from "./components/AvailabilityForm/AvailabilityForm";
+import {useUser} from "./context/userContext.jsx";
+import users from './mocks/users.js';
 
 function App() {
+  
   const [message, setMessage] = useState("");
+  const {user, setUser} = useUser();
+  
   useEffect(() => {
     axios
       .get("/api/test")
@@ -19,19 +24,21 @@ function App() {
       .catch((e) => {
         console.log(e.message);
       });
+
+    setUser(users[0])
   }, []);
 
   return (
     <>
       <Router>
-        <Hero connectionTest={message}/>
-        <NavBar />
-        <main className="app__content">
-          <h1></h1>
-          <Dashboard />
-          {/* <CalendarComponent /> */}
-          {/* <AvailabilityForm /> */}
-        </main>
+          <Hero connectionTest={message} userFN={user.name}/>
+          <NavBar />
+          <main className="app__content">
+            <h1></h1>
+            <Dashboard />
+            {/* <CalendarComponent /> */}
+            {/* <AvailabilityForm /> */}
+          </main>
       </Router>
     </>
   );
