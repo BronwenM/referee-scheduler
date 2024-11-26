@@ -163,105 +163,6 @@ const assignerUser = {
   phone: "555-012-3456"
 }
 
-const users = [
-  {
-    ...user1,
-    unavailableTimes: [
-      
-    ]
-  },
-  {
-    ...user2,
-    unavailableTimes: [
-      
-    ]
-  },
-  {
-    ...user3,
-    unavailableTimes: [
-      
-    ]
-  },
-  {
-    ...user4,
-    unavailableTimes: [
-      
-    ]
-  },
-  {
-    ...user5,
-    unavailableTimes: [
-      
-    ]
-  },
-  {
-    ...user6,
-    unavailableTimes: [
-      
-    ]
-  },
-  {
-    ...user7,
-    unavailableTimes: [
-      
-    ]
-  },
-  {
-    ...user8,
-    unavailableTimes: [
-      
-    ]
-  },
-  {
-    ...user9,
-    unavailableTimes: [
-      
-    ]
-  },
-  {
-    ...user10,
-    unavailableTimes: [
-      
-    ]
-  },
-  {
-    ...adminUser,
-    unavailableTimes: [
-      
-    ]
-  },
-  {
-    ...assignerUser,
-    unavailableTimes: [
-      
-    ]
-  },
-];
-
-const exampleOfficialRole = {
-  id: 3,
-  name: 'official',
-  description: 'Official with read-only access to assignments',
-  created_at: '2024-11-25T21:16:57.687Z',
-  updated_at: '2024-11-25T21:16:57.687Z'
-};
-
-const exampleUserRole = {
-  id: 1,
-  role_id: 1,
-  user_id: 1,
-  created_at: '2024-11-25T21:17:06.719Z',
-  updated_at: '2024-11-25T21:17:06.719Z'
-};
-
-const examplePermissions = {
-  id: 1,
-  role_id: 1,
-  action_name: 'create assigner',
-  created_at: '2024-11-25T21:17:06.773Z',
-  updated_at: '2024-11-25T21:17:06.773Z'
-};
-
 const exampleUnavailability1 = {
   id: 1,
   official_id: 9,
@@ -285,3 +186,98 @@ const exampleUnavailability2 = {
   created_at: '2024-11-25T21:17:06.418Z',
   updated_at: '2024-11-25T21:17:06.418Z'
 };
+
+
+
+const users = [
+  {
+    ...user1,
+    unavailableTimes: [
+      exampleUnavailability1,
+      exampleUnavailability2
+    ],
+    assignments: []
+  },
+  {
+    ...user2,
+    unavailableTimes: [
+      exampleUnavailability1,
+      exampleUnavailability2
+    ],
+    assignments: []
+  },
+  {
+    ...user3,
+    unavailableTimes: [
+      exampleUnavailability1,
+      exampleUnavailability2
+    ],
+    assignments: []
+  },
+  {
+    ...user4,
+    unavailableTimes: [
+      exampleUnavailability1,
+      exampleUnavailability2
+    ],
+    assignments: []
+  },
+  {
+    ...user5,
+    unavailableTimes: [
+
+    ],
+    assignments: []
+  },
+  {
+    ...user6,
+    unavailableTimes: [
+
+    ],
+    assignments: []
+  },
+  {
+    ...user7,
+    unavailableTimes: [
+
+    ],
+    assignments: []
+  },
+  {
+    ...user8,
+    unavailableTimes: [
+
+    ],
+    assignments: []
+  },
+  {
+    ...user9,
+    unavailableTimes: [
+
+    ],
+    assignments: []
+  },
+  {
+    ...user10,
+    unavailableTimes: [
+
+    ],
+    assignments: []
+  },
+  {
+    ...adminUser,
+    unavailableTimes: [
+
+    ],
+    assignments: []
+  },
+  {
+    ...assignerUser,
+    unavailableTimes: [
+
+    ],
+    assignments: []
+  },
+];
+
+export default users;
