@@ -8,3 +8,11 @@ const exampleAssignment = {
   created_at: '2024-11-25T21:17:06.851Z',
   updated_at: '2024-11-25T21:17:06.851Z'
 }
+
+const examplePayRate = {
+  id: 1,
+  game_type: 'regular season',
+  pay_rate: 1,
+  created_at: '2024-11-25T21:17:06.840Z',
+  updated_at: '2024-11-25T21:17:06.840Z'
+};
