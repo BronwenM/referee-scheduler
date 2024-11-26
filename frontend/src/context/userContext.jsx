@@ -5,6 +5,14 @@ const UserContext = createContext();
 const UserProvider = ({children}) => {
   const [user, setUser] = useState(null);
 
+  const getUser = () => {
+    return user;
+  };
+
+  const selectUser = (newUser) => {
+    setUser(newUser);
+  };
+
   return (
     <UserContext.Provider value={{user, setUser}}>
       {children}
