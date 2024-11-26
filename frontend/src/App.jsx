@@ -7,6 +7,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import Hero from "./components/Hero/Hero";
 import CalendarComponent from "./components/Calendar/CalendarComponent";
 import AvailabilityForm from "./components/AvailabilityForm/AvailabilityForm";
+import { UserProvider } from "./context/userContext.jsx";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -24,14 +25,16 @@ function App() {
   return (
     <>
       <Router>
-        <Hero connectionTest={message}/>
-        <NavBar />
-        <main className="app__content">
-          <h1></h1>
-          <Dashboard />
-          {/* <CalendarComponent /> */}
-          {/* <AvailabilityForm /> */}
-        </main>
+        <UserProvider>
+          <Hero connectionTest={message} />
+          <NavBar />
+          <main className="app__content">
+            <h1></h1>
+            <Dashboard />
+            {/* <CalendarComponent /> */}
+            {/* <AvailabilityForm /> */}
+          </main>
+        </UserProvider>
       </Router>
     </>
   );
