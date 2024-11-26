@@ -6,6 +6,7 @@ import "./App.scss";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Hero from "./components/Hero/Hero";
 import CalendarComponent from "./components/Calendar/CalendarComponent";
+import AvailabilityForm from "./components/AvailabilityForm/AvailabilityForm";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -29,6 +30,7 @@ function App() {
           <h1></h1>
           <Dashboard />
           {/* <CalendarComponent /> */}
+          {/* <AvailabilityForm /> */}
         </main>
       </Router>
     </>
