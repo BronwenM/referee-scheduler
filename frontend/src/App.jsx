@@ -5,6 +5,7 @@ import NavBar from "./components/Navbar/Navbar";
 import "./App.scss";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Hero from "./components/Hero/Hero";
+import CalendarComponent from "./components/Calendar/CalendarComponent";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -27,6 +28,7 @@ function App() {
         <main className="app__content">
           <h1></h1>
           <Dashboard />
+          {/* <CalendarComponent /> */}
         </main>
       </Router>
     </>
