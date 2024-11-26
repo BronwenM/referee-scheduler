@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import ReactCalendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Button from '../Button/Button';
 
 const AvailabilityForm = () => {
@@ -21,15 +23,36 @@ const AvailabilityForm = () => {
     setUnavailableDates(UnavailableDatesArray);
   };
 
+   // A helper function to set the hours and minutes of a date
+   const setDateTime = (date, time) => {
+    const [hours, minutes] = time.split(':');
+    date.setHours(hours, minutes);
+    return date;
+  };
+
   const handleSubmit = () => {
-    if (!timeRange.startTime || !timeRange.endTime) {
-      alert('Please select both start and end times.');
+      // Check if both start and end time and date are selected
+      if (!selectedDate || !timeRange.startTime || !timeRange.endTime) {
+        toast.error('Please select a date and both start and end time.');
+        return;
+      }
+
+    const now = new Date(); // Get the current date and time
+
+    // Create new Date objects for the start and end times of the unavailable period
+    const startDateTime = setDateTime(new Date(selectedDate), timeRange.startTime); 
+    const endDateTime = setDateTime(new Date(selectedDate), timeRange.endTime); 
+
+
+    // This checks if the selected date and time are in the past
+    if (startDateTime < now || endDateTime < now) {
+      toast.error('Please select a date and time in the future.');
       return;
     }
 
     const selectedTimeRange = `${timeRange.startTime} - ${timeRange.endTime}`;
     const unavailableDatesArray = unavailableDates.join(', ');
-    alert(`Unavailable Time: ${selectedTimeRange}\nUnavailable Dates: ${unavailableDatesArray}`);
+    toast.success(`Unavailable Time: ${selectedTimeRange}\nUnavailable Dates: ${unavailableDatesArray}`);
 
     setSelectedDate(new Date());
     setTimeRange({ startTime: '', endTime: '' });
@@ -72,6 +95,7 @@ const AvailabilityForm = () => {
         name="Submit"
         className="primary" 
       />
+      <ToastContainer /> {/* You can customize this further.*/}
     </div>
   );
 };
