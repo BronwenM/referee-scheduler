@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  association: one
+  title: MyString
+  home_team: MyString
+  away_team: MyString
+  date_time: 2024-11-25 09:50:49
+  location: MyText
+  field: MyString
+  officials_assigned: false
+  status: MyString
+  game_type: MyString
+
+two:
+  association: two
+  title: MyString
+  home_team: MyString
+  away_team: MyString
+  date_time: 2024-11-25 09:50:49
+  location: MyText
+  field: MyString
+  officials_assigned: false
+  status: MyString
+  game_type: MyString

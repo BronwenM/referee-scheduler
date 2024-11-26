@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_23_234038) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_25_201642) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,13 +19,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_23_234038) do
     t.bigint "official_id", null: false
     t.bigint "assigner_id", null: false
     t.string "position"
-    t.bigint "game_pay_id"
+    t.bigint "game_payment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["assigner_id"], name: "index_assignments_on_assigner_id"
     t.index ["game_id", "official_id"], name: "index_assignments_on_game_id_and_official_id", unique: true
     t.index ["game_id"], name: "index_assignments_on_game_id"
-    t.index ["game_pay_id"], name: "index_assignments_on_game_pay_id"
+    t.index ["game_payment_id"], name: "index_assignments_on_game_payment_id"
     t.index ["official_id"], name: "index_assignments_on_official_id"
   end
 
@@ -38,16 +38,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_23_234038) do
     t.index ["root_user_id"], name: "index_associations_on_root_user_id"
   end
 
-  create_table "game_pays", force: :cascade do |t|
+  create_table "game_payments", force: :cascade do |t|
     t.string "game_type", null: false
     t.integer "pay_rate", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["game_type"], name: "index_game_pays_on_game_type", unique: true
+    t.index ["game_type"], name: "index_game_payments_on_game_type"
   end
 
   create_table "games", force: :cascade do |t|
-    t.bigint "association_id", null: false
+    t.bigint "user_association_id", null: false
     t.string "title", null: false
     t.string "home_team", null: false
     t.string "away_team", null: false
@@ -59,7 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_23_234038) do
     t.string "game_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["association_id"], name: "index_games_on_association_id"
+    t.index ["user_association_id"], name: "index_games_on_user_association_id"
   end
 
   create_table "permissions", force: :cascade do |t|
@@ -76,7 +76,19 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_23_234038) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_roles_on_name", unique: true
+  end
+
+  create_table "unavailabilities", force: :cascade do |t|
+    t.bigint "official_id", null: false
+    t.integer "week_day"
+    t.boolean "all_day", default: false, null: false
+    t.time "time_from"
+    t.time "time_to"
+    t.date "available_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["official_id"], name: "index_unavailabilities_on_official_id"
+    t.check_constraint "all_day = true AND time_from IS NULL AND time_to IS NULL OR all_day = false AND time_from IS NOT NULL AND time_to IS NOT NULL", name: "check_all_day_time_constraints"
   end
 
   create_table "user_roles", force: :cascade do |t|
@@ -90,7 +102,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_23_234038) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.bigint "association_id"
+    t.bigint "user_association_id"
     t.string "name", null: false
     t.string "username", null: false
     t.string "email", null: false
@@ -100,17 +112,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_23_234038) do
     t.text "payment_info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["association_id"], name: "index_users_on_association_id"
+    t.index ["user_association_id"], name: "index_users_on_user_association_id"
   end
 
-  add_foreign_key "assignments", "game_pays"
+  add_foreign_key "assignments", "game_payments"
   add_foreign_key "assignments", "games"
   add_foreign_key "assignments", "users", column: "assigner_id"
   add_foreign_key "assignments", "users", column: "official_id"
   add_foreign_key "associations", "users", column: "root_user_id"
-  add_foreign_key "games", "associations"
+  add_foreign_key "games", "associations", column: "user_association_id"
   add_foreign_key "permissions", "roles"
+  add_foreign_key "unavailabilities", "users", column: "official_id"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
-  add_foreign_key "users", "associations"
+  add_foreign_key "users", "associations", column: "user_association_id"
 end
