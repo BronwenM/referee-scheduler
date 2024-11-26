@@ -9,8 +9,8 @@ class CreateGames < ActiveRecord::Migration[7.0]
       t.text :location, null: false
       t.string :field
       t.boolean :officials_assigned, default: false, null: false
-      t.string :status, default: "scheduled", null: false
-      t.string :game_type, null: false
+      t.string :status, default: "upcoming", null: false # upcoming, complete, cancelled, delayed
+      t.string :game_type, null: false # what kind of game
       t.timestamps
     end
   end
