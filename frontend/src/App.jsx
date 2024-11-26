@@ -13,7 +13,7 @@ import users from './mocks/users.js';
 function App() {
   
   const [message, setMessage] = useState("");
-  const {getUser, setUser} = useUser();
+  const {user, setUser} = useUser();
   
   useEffect(() => {
     axios
@@ -31,7 +31,7 @@ function App() {
   return (
     <>
       <Router>
-          <Hero connectionTest={message} />
+          <Hero connectionTest={message} userFN={user.name}/>
           <NavBar />
           <main className="app__content">
             <h1></h1>
