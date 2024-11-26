@@ -4,8 +4,8 @@ import './Button.scss';
 const Button = (props) => {
   const{ handle, name, className } = props;
   return (
-    <button className={`button ${className}`} onClick={handle}>
-      {name}
+    <button className={`custom-button ${className}`} onClick={handle}>
+      <div>{name}</div>
     </button>
   );
 };
