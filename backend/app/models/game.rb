@@ -1,5 +1,5 @@
 class Game < ApplicationRecord
-  belongs_to :user_association, class_name: 'User'
+  belongs_to :user_association, class_name: 'Association'
 
   has_many :assignments
   has_many :officials, through: :assignments, source: :official
