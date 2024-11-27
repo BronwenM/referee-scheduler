@@ -7,6 +7,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import Hero from "./components/Hero/Hero";
 import CalendarComponent from "./components/Calendar/CalendarComponent";
 import AvailabilityForm from "./components/AvailabilityForm/AvailabilityForm";
+import Login from "./components/Login/Login";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -29,6 +30,7 @@ function App() {
         <main className="app__content">
           <h1></h1>
           <Dashboard />
+          <Login />
           {/* <CalendarComponent /> */}
           {/* <AvailabilityForm /> */}
         </main>

@@ -238,6 +238,8 @@ const users = [
   },
 ];
 
+
+
 const exampleOfficialRole = {
   id: 3,
   name: 'official',
@@ -285,3 +287,5 @@ const exampleUnavailability2 = {
   created_at: '2024-11-25T21:17:06.418Z',
   updated_at: '2024-11-25T21:17:06.418Z'
 };
+
+export default users;
