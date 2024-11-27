@@ -14,7 +14,7 @@ class Api::UsersController < ApplicationController
     render json: { error: 'User not found' }, status: :not_found
   end
 
-  #Post /users, allows user creation plus role and permissions assignment
+  #POST /users, allows user creation plus role and permissions assignment
   def create
     role = Role.includes(:permissions).find_by(name: params[:role_name])
 

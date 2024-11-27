@@ -32,13 +32,14 @@ class Api::AssignmentsController < ApplicationController
     )
 
     if assignment.save
-      redner json: { assignment: assignment, message: 'Assignment created successfully' }, status: :created
+      render json: { assignment: assignment, message: 'Assignment created successfully' }, status: :created
     else
       render json: { errors: assignment.errors.full_messaeges }, status: :unprocessable_entity
     end
   end
 
   private
+
   def assignment_params
     params.require(:assignment).permit(:game_id, :official_id, :assigner_id, :position, :game_payment_id)
   end
