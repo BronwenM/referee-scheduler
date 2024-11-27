@@ -17,7 +17,7 @@ class Api::GamesController < ApplicationController
       status: game.status,
       game_type: game.game_type,
       officials_assigned: game.officials.any?,
-      officials: game.officials.map { |official| { id: official.id, name: official.name } }
+      officials: game.officials.map { |official| { id: official.id, name: official.name } } #work official email in as well
     }
   end
 
@@ -32,7 +32,7 @@ class Api::GamesController < ApplicationController
     if game.save
       render json: { game: game, message: 'Game created successfully' }, status: :created
     else
-      render json: { errprs: game.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: game.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
