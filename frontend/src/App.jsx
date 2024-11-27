@@ -9,8 +9,8 @@ import CalendarComponent from "./components/Calendar/CalendarComponent";
 import AvailabilityForm from "./components/AvailabilityForm/AvailabilityForm";
 import { useUser } from "./context/userContext.jsx";
 import users from "./mocks/users.js";
+import Footer from "./components/Footer/Footer.jsx";
 import Login from "./components/Login/Login";
-
 
 function App() {
   const [message, setMessage] = useState("");
@@ -33,7 +33,7 @@ function App() {
   return (
     <>
       <Router>
-        <Hero connectionTest={message} userFN={user.name || "User"} />
+        <Hero connectionTest={message} userFN={user.name ? user.name : "User"} />
         <NavBar />
         <main className="app__content">
           <h1></h1>
@@ -42,6 +42,7 @@ function App() {
           {/* <CalendarComponent /> */}
           {/* <AvailabilityForm /> */}
         </main>
+        <Footer/>
       </Router>
     </>
   );
