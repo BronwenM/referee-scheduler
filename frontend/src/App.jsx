@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate as navigate } from "react-router-dom";
 import NavBar from "./components/Navbar/Navbar";
 import "./App.scss";
 import Dashboard from "./components/Dashboard/Dashboard";
@@ -15,7 +15,7 @@ import Login from "./components/Login/Login";
 function App() {
   const [message, setMessage] = useState("");
   const { user, setUser } = useUser();
-  
+
   useEffect(() => {
     axios
       .get("/api/test")
@@ -25,25 +25,22 @@ function App() {
       .catch((e) => {
         console.log(e.message);
       });
-      
-      setUser(users[0]);
+
+    setUser(users[0]);
   }, []);
-  
 
   return (
     <>
-      <Router>
-        <Hero connectionTest={message} userFN={user.name ? user.name : "User"} />
-        <NavBar />
-        <main className="app__content">
-          <h1></h1>
-          <Dashboard />
-          {/* <Login /> */}
-          {/* <CalendarComponent /> */}
-          {/* <AvailabilityForm /> */}
-        </main>
-        <Footer/>
-      </Router>
+      <Hero connectionTest={message} userFN={user.name ? user.name : "User"} />
+      <NavBar />
+      <main className="app__content">
+        <Routes>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/availability" element={<AvailabilityForm/>} />
+        </Routes>
+      </main>
+      <Footer />
     </>
   );
 }
