@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Route, Routes, useNavigate as navigate } from "react-router-dom";
+import { Route, Routes, useNavigate as navigate, useNavigate } from "react-router-dom";
 import NavBar from "./components/Navbar/Navbar";
 import "./App.scss";
 import Dashboard from "./components/Dashboard/Dashboard";
@@ -17,15 +17,16 @@ import AssignmentForm from "./components/AssignmentForm/AssignmentForm.jsx";
 function App() {
   const [message, setMessage] = useState("");
   const { user, setUser, userLoggedIn } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
-      .get("/api/test")
+      .get("/api/authenticated_user", { withCredentials: true })
       .then((response) => {
-        setMessage(response.data.message);
+        setUser(response.data.user);
       })
       .catch((e) => {
-        console.log(e.message);
+        console.log('Not authenticated: ', e.message);
       });
 
     //TODO: before demo remove this
