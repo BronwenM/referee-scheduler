@@ -1,20 +1,23 @@
 import React, {createContext, useContext, userContext, useState} from 'react';
+import { useNavigate as navigate, replace } from 'react-router-dom';
 
 const UserContext = createContext();
 
 const UserProvider = ({children}) => {
   const [user, setUser] = useState({});
 
-  const getUser = () => {
-    return user;
+  const login = (newUser) => {
+    setUser(newUser);
+    navigate("/dashboard")
   };
 
-  const selectUser = (newUser) => {
-    setUser(newUser);
+  const logout = () => {
+    setUser({});
+    navigate("/", {replace: true})
   };
 
   return (
-    <UserContext.Provider value={{user, setUser}}>
+    <UserContext.Provider value={{user, setUser, login, logout}}>
       {children}
     </UserContext.Provider>
   );

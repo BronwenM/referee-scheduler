@@ -11,6 +11,7 @@ import { useUser } from "./context/userContext.jsx";
 import users from "./mocks/users.js";
 import Footer from "./components/Footer/Footer.jsx";
 import Login from "./components/Login/Login";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.jsx";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -26,7 +27,7 @@ function App() {
         console.log(e.message);
       });
 
-    setUser(users[0]);
+    // setUser(users[0]);
   }, []);
 
   return (
@@ -37,7 +38,7 @@ function App() {
         <Routes>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/availability" element={<AvailabilityForm/>} />
+          <Route path="/availability" element={<ProtectedRoute> <AvailabilityForm/> </ProtectedRoute>} />
         </Routes>
       </main>
       <Footer />
