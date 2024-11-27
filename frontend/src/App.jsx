@@ -14,7 +14,7 @@ import { useAuth } from "./hooks/useAuth.jsx";
 
 function App() {
   const [message, setMessage] = useState("");
-  const { user, setUser } = useAuth();
+  const { user, setUser, userLoggedIn } = useAuth();
 
   useEffect(() => {
     axios
@@ -27,11 +27,12 @@ function App() {
       });
 
     // setUser(users[0]);
+    console.log(userLoggedIn())
   }, []);
 
   return (
     <>
-      { user.name && <Hero connectionTest={message} userFN={user.name ? user.name : "User"} />}
+      { userLoggedIn() && <Hero connectionTest={message} userFN={user.name ? user.name : "User"} />}
       <NavBar />
       <main className="app__content">
         <Routes>
