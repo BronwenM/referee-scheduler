@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./navbar.scss";
 import { useAuth } from "../../hooks/useAuth";
+import Button from "../Button/Button";
 
 const NavBar = () => {
   const {logout, userLoggedIn} = useAuth();
@@ -15,7 +16,7 @@ const NavBar = () => {
       </div>
       <ul className="navbar-links">
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/dashboard">Home</Link>
         </li>
         <li>
           <Link to="/availability">Availability</Link>
@@ -27,7 +28,7 @@ const NavBar = () => {
           <Link to="/profile">Profile</Link>
         </li>
         <li>
-          {userLoggedIn() ? <button onClick={logout}>Logout</button> : <Link to="/login">Login</Link>}
+          {userLoggedIn() ? <Button handle={logout} name="Logout"/> : <Link to="/login">Login</Link>}
         </li>
       </ul>
     </nav>

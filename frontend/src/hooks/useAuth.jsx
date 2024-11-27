@@ -25,8 +25,12 @@ const AuthProvider = ({children}) => {
     return (Object.keys(user).length !== 0 && user.constructor === Object)
   }
 
+  const getRole = () => {
+    return user.role
+  }
+
   return (
-    <AuthContext.Provider value={{user, setUser, login, logout, userLoggedIn}}>
+    <AuthContext.Provider value={{user, setUser, login, logout, userLoggedIn, getRole}}>
       {children}
     </AuthContext.Provider>
   );
