@@ -8,7 +8,7 @@ const AuthProvider = ({children}) => {
     const storedUser = sessionStorage.getItem("user");
 
     //Load user from storage
-    return storedUser ? JSON.parse(storedUser) : {};
+    return storedUser ? JSON.parse(storedUser) : { role: '', permissions: [] };
   });
 
   const navigate = useNavigate();
@@ -16,29 +16,36 @@ const AuthProvider = ({children}) => {
   //Add user to the state and navigate to dashboard
   //TODO: add mechanism to add user to session storage => Check!
   const login = (newUser) => {
-    setUser(newUser);
-    sessionStorage.setItem("user", JSON.stringify(newUser));
+    const { role, permissions } = newUser;
+    const userToStore = { role, permissions };
+
+    setUser(userToStore);
+    sessionStorage.setItem("user", JSON.stringify(userToStore));
     navigate("/dashboard");
   };
 
   //TODO: add mechanism to remove user from session storage => Check!
   const logout = () => {
-    setUser({});
+    setUser({ role: '', permissions: [] });
     sessionStorage.removeItem("user");
     navigate("/", {replace: true});
   };
 
   //return true/false based on if user is logged in
   const userLoggedIn = () => {
-    return (Object.keys(user).length !== 0 && user.constructor === Object)
+    return user.role !== '';
   };
 
   const getRole = () => {
     return user.role
   };
 
+  const getPermissions = () => {
+    return user.permissions;
+  };
+
   return (
-    <AuthContext.Provider value={{user, setUser, login, logout, userLoggedIn, getRole}}>
+    <AuthContext.Provider value={{ user, setUser, login, logout, userLoggedIn, getRole }}>
       {children}
     </AuthContext.Provider>
   );
