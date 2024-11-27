@@ -22,6 +22,23 @@ module Backend
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
-    config.api_only = true
+
+    # Cookies middleware for Rails API backend
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore, key: '_backend_session'
+
+    # This allows cookie-setting from React frontend
+    config.action_dispatch.cookies_same_site_protection = :lax
+
+    # Enabling CORS
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins ENV['FRONTEND_URL']&.split(',')
+        resource '*',
+        headers: :any,
+        methods: [:get, :post, :put, :patch, :delete, :options, :head],
+        credentials: true
+      end
+    end
   end
 end
