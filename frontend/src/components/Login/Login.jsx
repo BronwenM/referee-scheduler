@@ -4,19 +4,15 @@ import 'react-toastify/dist/ReactToastify.css';
 import Button from '../Button/Button';
 import axios from "axios";
 import users from '../../mocks/users';
+import { useAuth } from '../../hooks/useAuth';
 
 
 const Login = () => {
-  //This userRef is used to set the focus on the username input field when the page loads
-  const userRef = useRef();
+  //BM: Removed useRef and replaced with autfocused attribute
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
-  //to set the focus on the username input field 
-  useEffect(() => {
-    userRef.current.focus();
-  }, []);
+  const {login} = useAuth();
 
   //This clears the error message when the user types in the username or password
   useEffect(() => {
@@ -38,6 +34,8 @@ const Login = () => {
     if (user) {
       console.log('Login successful:', user);
       toast.success('Login successful');
+      login(user);
+      
     } else {
       setError('Invalid username or password');
       toast.error('Invalid username or password');
@@ -57,12 +55,12 @@ const Login = () => {
       <label htmlFor="username">Username:</label>
       <input
         id="username"
-        ref={userRef}
         type="text"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         autoComplete='off'
         required
+        autoFocus
       />
       <br />
       <label htmlFor="password">Password:</label>
