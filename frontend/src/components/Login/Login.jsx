@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Button from '../Button/Button';
 import axios from "axios";
 import users from '../../mocks/users';
+import { useAuth } from '../../hooks/useAuth';
 
 
 const Login = () => {
@@ -11,6 +12,7 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const {login} = useAuth();
 
   //This clears the error message when the user types in the username or password
   useEffect(() => {
@@ -32,6 +34,7 @@ const Login = () => {
     if (user) {
       console.log('Login successful:', user);
       toast.success('Login successful');
+      login(user);
       
     } else {
       setError('Invalid username or password');

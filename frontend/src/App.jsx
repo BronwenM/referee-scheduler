@@ -26,7 +26,7 @@ function App() {
         console.log(e.message);
       });
 
-    setUser(users[0]);
+    // setUser(users[0]);
   }, []);
 
   return (
@@ -35,7 +35,7 @@ function App() {
       <NavBar />
       <main className="app__content">
         <Routes>
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<ProtectedRoute> <Dashboard /> </ProtectedRoute>} />
           <Route path="/login" element={<Login />} />
           <Route path="/availability" element={<ProtectedRoute> <AvailabilityForm /> </ProtectedRoute>} />
         </Routes>
