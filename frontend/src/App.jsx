@@ -26,19 +26,39 @@ function App() {
         console.log(e.message);
       });
 
-    // setUser(users[0]);
-    console.log(userLoggedIn())
+    //TODO: before demo remove this
+    setUser(users[0]);
   }, []);
 
   return (
     <>
-      { userLoggedIn() && <Hero connectionTest={message} userFN={user.name ? user.name : "User"} />}
+      {userLoggedIn() && (
+        <Hero
+          connectionTest={message}
+          userFN={user.name ? user.name : "User"}
+        />
+      )}
       <NavBar />
       <main className="app__content">
         <Routes>
-          <Route path="/dashboard" element={<ProtectedRoute> <Dashboard /> </ProtectedRoute>} />
           <Route path="/login" element={<Login />} />
-          <Route path="/availability" element={<ProtectedRoute> <AvailabilityForm /> </ProtectedRoute>} />
+          <Route path="/profile" element={<h1>Profile</h1>} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/availability"
+            element={
+              <ProtectedRoute>
+                <AvailabilityForm />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </main>
       <Footer />
