@@ -1,7 +1,7 @@
 class Api::AssignmentsController < ApplicationController
   def index
-    assignmenst = Assignment.all
-    render json: assignmenst
+    assignments = Assignment.all
+    render json: assignments
   end
 
   def show
