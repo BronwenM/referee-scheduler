@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       cookies.signed[:user_id] = { value: user.id, httponly: true, secure: Rails.env.production? }
       render json: { message: 'Logged in successfully' }, status: :ok
     else
-      render json: { errpr: 'Ivalid credentials' }, status: :unauthorized
+      render json: { error: 'Ivalid credentials' }, status: :unauthorized
     end
   end
 
