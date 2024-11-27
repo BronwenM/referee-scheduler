@@ -17,7 +17,7 @@ class Api::GamesController < ApplicationController
       status: game.status,
       game_type: game.game_type,
       officials_assigned: game.officials.any?,
-      officials: game.officials.map { |official| { id: official.id, name: official.name } } #work official email in as well
+      officials: game.officials.map { |official| { id: official.id, name: official.name, email: official.email } }
     }
   end
 
