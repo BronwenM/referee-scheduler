@@ -12,6 +12,7 @@ import Login from "./components/Login/Login";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.jsx";
 import { useAuth } from "./hooks/useAuth.jsx";
 
+
 function App() {
   const [message, setMessage] = useState("");
   const { user, setUser, userLoggedIn } = useAuth();
@@ -51,6 +52,7 @@ function App() {
               </ProtectedRoute>
             }
           />
+
           <Route
             path="/availability"
             element={
