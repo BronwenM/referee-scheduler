@@ -9,6 +9,8 @@ import CalendarComponent from "./components/Calendar/CalendarComponent";
 import AvailabilityForm from "./components/AvailabilityForm/AvailabilityForm";
 import { useUser } from "./context/userContext.jsx";
 import users from "./mocks/users.js";
+import Login from "./components/Login/Login";
+
 
 function App() {
   const [message, setMessage] = useState("");
@@ -36,6 +38,7 @@ function App() {
         <main className="app__content">
           <h1></h1>
           <Dashboard />
+          {/* <Login /> */}
           {/* <CalendarComponent /> */}
           {/* <AvailabilityForm /> */}
         </main>
