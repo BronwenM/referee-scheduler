@@ -5,17 +5,16 @@ import NavBar from "./components/Navbar/Navbar";
 import "./App.scss";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Hero from "./components/Hero/Hero";
-import CalendarComponent from "./components/Calendar/CalendarComponent";
 import AvailabilityForm from "./components/AvailabilityForm/AvailabilityForm";
-import { useUser } from "./context/userContext.jsx";
 import users from "./mocks/users.js";
 import Footer from "./components/Footer/Footer.jsx";
 import Login from "./components/Login/Login";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.jsx";
+import { useAuth } from "./hooks/useAuth.jsx";
 
 function App() {
   const [message, setMessage] = useState("");
-  const { user, setUser } = useUser();
+  const { user, setUser } = useAuth();
 
   useEffect(() => {
     axios
@@ -27,18 +26,18 @@ function App() {
         console.log(e.message);
       });
 
-    // setUser(users[0]);
+    setUser(users[0]);
   }, []);
 
   return (
     <>
-      <Hero connectionTest={message} userFN={user.name ? user.name : "User"} />
+      { user.name && <Hero connectionTest={message} userFN={user.name ? user.name : "User"} />}
       <NavBar />
       <main className="app__content">
         <Routes>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/availability" element={<ProtectedRoute> <AvailabilityForm/> </ProtectedRoute>} />
+          <Route path="/availability" element={<ProtectedRoute> <AvailabilityForm /> </ProtectedRoute>} />
         </Routes>
       </main>
       <Footer />
