@@ -1,0 +1,27 @@
+.footer {
+  background-color: cadetblue;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  align-items: start;
+  padding: 8px 32px;
+}
+
+.footer__links {
+  list-style: none;
+  
+  padding: 0;
+  margin: 0;
+  
+  li {
+    padding: 4px;
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+}
