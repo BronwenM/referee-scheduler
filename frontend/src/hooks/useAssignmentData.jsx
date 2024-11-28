@@ -10,12 +10,12 @@ const useAssignmentData = () => {
     const fetchData = async () => {
       try {
         // Fetch games from the API
-        const gamesResponse = await axios.get('/api/games');
+        const gamesResponse = await axios.get('/api/games', { withCredentials: true });
         const unassignedGames = gamesResponse.data.filter(game => !game.officials_assigned);
         setGames(unassignedGames);
 
         // Fetch unavailabilities for officials with all_day set to true
-        const unavailabilitiesResponse = await axios.get('/api/unavailabilities');
+        const unavailabilitiesResponse = await axios.get('/api/unavailabilities', { withCredentials: true });
         const allDayUnavailabilities = unavailabilitiesResponse.data.filter(unavailability => unavailability.all_day);
 
         console.log(allDayUnavailabilities);
@@ -24,7 +24,7 @@ const useAssignmentData = () => {
         const officialIds = [...new Set(allDayUnavailabilities.map(unavailability => unavailability.official_id))];
 
         // Fetch assignments for each official to check if they are assigned to a game
-        const assignmentRequests = officialIds.map(id => axios.get(`/api/assignments?official_id=${id}`));
+        const assignmentRequests = officialIds.map(id => axios.get(`/api/assignments?official_id=${id}`, { withCredentials: true }));
         const assignmentResponses = await Promise.all(assignmentRequests);
 
         // Filter officials who are not assigned to any game
@@ -33,7 +33,7 @@ const useAssignmentData = () => {
           .map((response, index) => officialIds[index]);
 
         // Fetch user details for available officials
-        const userRequests = availableOfficials.map(id => axios.get(`/api/users/${id}`));
+        const userRequests = availableOfficials.map(id => axios.get(`/api/users/${id}`, { withCredentials: true }));
         const userResponses = await Promise.all(userRequests);
         const usersData = userResponses.map(response => response.data);
 
@@ -50,7 +50,7 @@ const useAssignmentData = () => {
   // Function to create an assignment
   const createAssignment = async (assignmentData) => {
     try {
-      const response = await axios.post('/api/assignments', assignmentData);
+      const response = await axios.post('/api/assignments', assignmentData, { withCredentials: true });
       return response.data;
     } catch (error) {
       console.error(error);
