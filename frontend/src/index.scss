@@ -4,6 +4,11 @@
   font-weight: regular;
 }
 
+@font-face {
+  font-family: Inter;
+  src: url(./assets/fonts/Inter/Inter-VariableFont.ttf);
+}
+
 html {
   box-sizing: border-box;
   min-height: 100%;
@@ -18,5 +23,5 @@ html {
 body {
   background-color: #28c3b4;
   margin: 0;
-  font-family: Hind;
+  font-family: Inter, Hind;
 }
