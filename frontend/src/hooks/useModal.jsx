@@ -20,7 +20,6 @@ const ModalProvider = ({children}) => {
       {children}
     </ModalContext.Provider>
   )
-  // return { toggleModal, loadModalData, modalData, showModal };
 };
 
 const useModal = () => {

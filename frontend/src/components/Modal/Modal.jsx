@@ -1,11 +1,37 @@
 import React from "react";
 import { useModal } from "../../hooks/useModal";
-import './modal.scss';
+import "./modal.scss";
+
+const AssignmentModalView = (props) => {
+  const {data} = props;
+
+  return (
+    <>
+      <header>
+        <h1>Assignment</h1>
+      </header>
+      <article>{Object.values(data).map(val => <div>{val.toString()}</div>)}</article>
+    </>
+  );
+};
+
+const GameModalView = (props) => {
+  const {data} = props;
+
+  return (
+    <>
+      <header>
+        <h1>Game</h1>
+      </header>
+      <article>{Object.keys(data).map(key => <div>{key}</div>)}</article>
+    </>
+  );
+};
 
 const Modal = (props) => {
-  const { modalData, toggleModal } = useModal();
-  const { content } = props;
-  
+  const { toggleModal, modalData } = useModal();
+  const { viewType } = props;
+
   return (
     <>
       <div className="modal__background" onClick={toggleModal}></div>
@@ -14,7 +40,8 @@ const Modal = (props) => {
           Close
         </button>
         <div className="modal__content__children">
-          {content ? content : modalData}
+          {viewType === "assignment" && <AssignmentModalView data={modalData}/>}
+          {viewType === "game" && <GameModalView data={modalData}/>}
         </div>
       </div>
     </>
