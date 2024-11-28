@@ -4,17 +4,17 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   namespace :api do
-    resources :users, only: [:index, :show]
-    resources :associations, only: [:index, :show]
+    resources :users, only: [:index, :show, :create, :update, :destroy]
+    resources :associations, only: [:index, :show, :create]
     resources :roles, only: [:index, :show]
     resources :permissions, only: [:index, :show]
-    resources :games, only: [:index, :show] do
+    resources :games, only: [:index, :show, :create, :delete] do
       collection do
         get :find_unassigned
       end
     end
-    resources :assignments, only: [:index, :show,:create] #Added create here so I can post to it
-    resources :unavailabilities, only: [:index, :show]
+    resources :assignments, only: [:index, :show, :create, :destroy]
+    resources :unavailabilities, only: [:index, :show, :update]
     resources :user_roles, only: [:index, :show]
     resources :game_payments, only: [:index, :show]
     get 'test', to: 'test#index'

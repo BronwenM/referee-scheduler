@@ -1,4 +1,5 @@
 class Api::UsersController < ApplicationController
+  before_action :authorize_admin, only: :destroy
   
   #GET /users
   def index
@@ -39,9 +40,51 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  #POST /users/edit
+  def update
+    user = User.find_by(id: params[:id])
+
+    if user
+      if user.update(user_params)
+        if params[:role_name].present?
+          role = Role.find_by(id: params[:id])
+          if role
+            user.update(role: role)
+          else
+            return render json: { error: 'Role not found' }, status: :unprocessable_entity
+          end
+        end
+
+        render json: { user: user, message: 'User updated successfully' }, status: :ok
+      else
+        render json: { errors: user.errors.full_messaeges }, status: :unprocessable_entity
+      end
+    else
+      render json: { error: 'User not found' }, status: :not_found
+    end
+  end
+
+  #POST /users/delete
+  def destroy
+    user = User.find_by(id: params[:id])
+
+    if user
+      user.destroy
+      render json: { message: 'User deleted successfully' }, status: :ok
+    else
+      render json: { error: 'User not found' }, status: :not_found
+    end
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :username)
+  end
+
+  def authorize_admin
+    unless current_user&.admin?
+      render json: { error: 'Unauthorized' }, status: :unauthorized
+    end
   end
 end
