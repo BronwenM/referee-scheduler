@@ -1429,6 +1429,136 @@ game10 = Game.create!(
   status: 'delayed',
   game_type: 'regular season'
 )
+
+game11 = Game.create!(
+  user_association: association1,
+  title: 'Week 2',
+  home_team: 'The Batting Bandits',
+  away_team: 'Base Hitters',
+  date_time: Time.now + 8.day,
+  location: '1256 Maple Hollow Road',
+  field: 'Diamond Breeze Field',
+  officials_assigned: false,
+  status: 'upcoming',
+  game_type: 'regular season'
+)
+
+game12 = Game.create!(
+  user_association: association1,
+  title: 'Week 2',
+  home_team: 'Pitch Perfect',
+  away_team: 'The Diamond Sluggers',
+  date_time: Time.now + 8.day,
+  location: '89 Sunrise Trail',
+  field: 'Cedar Valley Park',
+  officials_assigned: false,
+  status: 'upcoming',
+  game_type: 'regular season'
+)
+
+game13 = Game.create!(
+  user_association: association1,
+  title: 'Week 2',
+  home_team: 'Fastballs & Fireballs',
+  away_team: 'The Diamond Dusters',
+  date_time: Time.now + 9.day,
+  location: '432 Willow Bend Avenue',
+  field: 'Summit Ridge Ballpark',
+  officials_assigned: false,
+  status: 'upcoming',
+  game_type: 'regular season'
+)
+
+game14 = Game.create!(
+  user_association: association1,
+  title: 'Week 2',
+  home_team: 'Ballpark Bandits',
+  away_team: 'The Swinging Squirrels',
+  date_time: Time.now + 9.day,
+  location: '17 Birchwood Terrace',
+  field: 'Sandlot Oasis Stadium',
+  officials_assigned: false,
+  status: 'upcoming',
+  game_type: 'regular season'
+)
+
+game15 = Game.create!(
+  user_association: association1,
+  title: 'Week 2',
+  home_team: 'The Dugout Divas',
+  away_team: 'Bunt Force Trauma',
+  date_time: Time.now + 10.day,
+  location: '6789 Riverstone Parkway',
+  field: 'Harborline Sports Complex',
+  officials_assigned: false,
+  status: 'upcoming',
+  game_type: 'regular season'
+)
+
+game16 = Game.create!(
+  user_association: association1,
+  title: 'Week 2',
+  home_team: 'The Triple Threats',
+  away_team: 'Grand Slam Gurus',
+  date_time: Time.now + 10.day,
+  location: '302 Evergreen Lane',
+  field: 'Ironwood Glades Field',
+  officials_assigned: false,
+  status: 'upcoming',
+  game_type: 'regular season'
+)
+
+game17 = Game.create!(
+  user_association: association1,
+  title: 'Week 2',
+  home_team: 'The Stolen Bases',
+  away_team: 'Slide into Home',
+  date_time: Time.now + 11.day,
+  location: '901 Sand Dune Boulevard',
+  field: 'Golden Horizon Grounds',
+  officials_assigned: false,
+  status: 'upcoming',
+  game_type: 'regular season'
+)
+
+game18 = Game.create!(
+  user_association: association1,
+  title: 'Week 2',
+  home_team: 'The Fast & The Furious',
+  away_team: 'Hit and Run Heroes',
+  date_time: Time.now + 11.day,
+  location: '55 Crimson Creek Drive',
+  field: 'Starview Sports Dome',
+  officials_assigned: false,
+  status: 'upcoming',
+  game_type: 'regular season'
+)
+
+game19 = Game.create!(
+  user_association: association1,
+  title: 'Week 2',
+  home_team: 'The Batting Angels',
+  away_team: 'Home Run Hustlers',
+  date_time: Time.now + 12.day,
+  location: '212 Quarry Ridge Lane',
+  field: 'Bluffside Diamond',
+  officials_assigned: false,
+  status: 'upcoming',
+  game_type: 'regular season'
+)
+
+game20 = Game.create!(
+  user_association: association1,
+  title: 'Week 2',
+  home_team: 'The Softball Sharks',
+  away_team: 'Catch Me If You Can',
+  date_time: Time.now + 12.day,
+  location: '784 Golden Acres Way',
+  field: 'Echo Ridge Softball Complex',
+  officials_assigned: false,
+  status: 'upcoming',
+  game_type: 'regular season'
+)
 puts 'Games created'
 
 # Create Game Pay Rates
