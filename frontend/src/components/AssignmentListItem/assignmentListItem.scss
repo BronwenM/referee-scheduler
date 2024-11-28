@@ -7,6 +7,18 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  user-select: none;
+}
+
+.assignment-preview__content {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+  user-select: none;
+  cursor: pointer;
 }
 
 .assignment-preview__datetime {

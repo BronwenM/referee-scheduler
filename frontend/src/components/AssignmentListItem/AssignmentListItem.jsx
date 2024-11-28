@@ -2,10 +2,11 @@ import React from "react";
 import "./assignmentListItem.scss";
 
 const AssignmentListItem = (props) => {
-  const {gameDate, gameTime, level, gameName, field, position, confirmation} = props;
+  const {gameDate, gameTime, level, gameName, field, position, confirmation, toggleModal} = props;
 
   return (
     <div className="assignment-preview">
+      <div className="assignment-preview__content" onClick={toggleModal}>
       <div className="assignment-preview__datetime">
         <div className="assignment-preview__date">
           <span>{gameDate.month}</span>
@@ -27,11 +28,15 @@ const AssignmentListItem = (props) => {
           <span>{position}</span>
         </div>
       </div>
+      </div>
       <select className="assignment-preview__confirmation">
         <option default>Pending</option>
         <option>Accept</option>
         <option>Reject</option>
       </select>
+      {/* <div className="assignment-preview__confirmation">
+        <button type='button'>?</button>
+      </div> */}
     </div>
   );
 };
