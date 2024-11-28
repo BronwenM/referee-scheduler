@@ -1,4 +1,4 @@
-import React, { useState, createContext, useContext } from "react";
+import React, { useState, createContext, useContext, useEffect } from "react";
 
 const ModalContext = createContext();
 
@@ -14,6 +14,14 @@ const ModalProvider = ({children}) => {
   const toggleModal = () => {
     setShowModal(!showModal);
   }
+
+  useEffect(() => {
+    if(showModal){
+      document.documentElement.style.overflowY = "hidden"
+    } else if (!showModal) {
+      document.documentElement.style.overflowY = "scroll"
+    }
+  }, [showModal])
 
   return (
     <ModalContext.Provider value={{ toggleModal, loadModalData, modalData, showModal }}>

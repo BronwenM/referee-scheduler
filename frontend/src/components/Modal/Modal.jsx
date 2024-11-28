@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useModal } from "../../hooks/useModal";
 import "./modal.scss";
 
@@ -10,7 +10,7 @@ const AssignmentModalView = (props) => {
       <header>
         <h1>Assignment</h1>
       </header>
-      <article>{Object.values(data).map(val => <div>{val.toString()}</div>)}</article>
+      <article>{Object.values(data).map(val => <div key={val}>{val.toString()}</div>)}</article>
     </>
   );
 };
@@ -29,11 +29,13 @@ const GameModalView = (props) => {
 };
 
 const Modal = (props) => {
-  const { toggleModal, modalData } = useModal();
+  const { toggleModal, modalData, showModal } = useModal();
   const { viewType } = props;
 
+  
+  
   return (
-    <>
+    <div className="modal">
       <div className="modal__background" onClick={toggleModal}></div>
       <div className="modal__content">
         <button className="modal__close-button" onClick={toggleModal}>
@@ -44,7 +46,7 @@ const Modal = (props) => {
           {viewType === "game" && <GameModalView data={modalData}/>}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
