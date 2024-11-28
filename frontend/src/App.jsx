@@ -12,6 +12,7 @@ import Login from "./components/Login/Login";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.jsx";
 import { useAuth } from "./hooks/useAuth.jsx";
 import AssignmentForm from "./components/AssignmentForm/AssignmentForm.jsx";
+import GameForm from "./components/GameForm/GameForm.jsx";
 
 
 function App() {

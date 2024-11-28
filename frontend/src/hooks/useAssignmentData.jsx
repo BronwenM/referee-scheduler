@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-
+//TODO set up caching and local storage 
 const useAssignmentData = () => {
   const [games, setGames] = useState([]);
   const [users, setUsers] = useState([]);
@@ -26,6 +26,8 @@ const useAssignmentData = () => {
         // Fetch assignments for each official to check if they are assigned to a game
         const assignmentRequests = officialIds.map(id => axios.get(`/api/assignments?official_id=${id}`, { withCredentials: true }));
         const assignmentResponses = await Promise.all(assignmentRequests);
+
+        console.log(assignmentResponses);
 
         // Filter officials who are not assigned to any game
         const availableOfficials = assignmentResponses
@@ -63,3 +65,8 @@ const useAssignmentData = () => {
 };
 
 export default useAssignmentData;
+
+// HI THIS IS ALEXIS
+//HEllo how is life?
+// I'm real fuckin tired today bro. you?
+// Im doing great and ready to kick ass
