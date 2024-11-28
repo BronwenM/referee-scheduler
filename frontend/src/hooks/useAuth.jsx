@@ -14,7 +14,7 @@ const AuthProvider = ({children}) => {
   const navigate = useNavigate();
 
   //Add user to the state and navigate to dashboard
-  //TODO: add mechanism to add user to session storage => Check!
+  //TODO: make sure user sesssion/state includes name, user name & email
   const login = (newUser) => {
     const { role, permissions } = newUser;
     const userToStore = { role, permissions };
@@ -24,7 +24,7 @@ const AuthProvider = ({children}) => {
     navigate("/dashboard");
   };
 
-  //TODO: add mechanism to remove user from session storage => Check!
+  //TODO: make sure user sesssion/state includes name, user name & email
   const logout = () => {
     setUser({ role: '', permissions: [] });
     sessionStorage.removeItem("user");
