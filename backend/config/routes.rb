@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       end
     end
     resources :assignments, only: [:index, :show, :create, :destroy]
-    resources :unavailabilities, only: [:index, :show]
+    resources :unavailabilities, only: [:index, :show, :update]
     resources :user_roles, only: [:index, :show]
     resources :game_payments, only: [:index, :show]
     get 'test', to: 'test#index'
