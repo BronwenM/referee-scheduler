@@ -1,4 +1,5 @@
 class Api::AssignmentsController < ApplicationController
+  before_action :authorize_assigner, only: [:destroy]
 
   #GET /assignments
   def index
@@ -10,6 +11,8 @@ class Api::AssignmentsController < ApplicationController
   def show
     assignment = Assignment.find(params[:id])
     render json: assignment
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: 'Assignment not found' }, status: :not_found
   end
 
   #POST /assignments
@@ -47,10 +50,31 @@ class Api::AssignmentsController < ApplicationController
       render json: { errors: assignment.errors.full_messaeges }, status: :unprocessable_entity
     end
   end
+  
+  #POST /assignments/delete
+  def destroy
+    assignment = Assignment.find_by(id: params[:id])
+    
+    if assignment
+      assignment.destroy
+      render json: { message: 'Assignment deleted successfully' }, status: :ok
+    else
+      render json: { error: 'Assignment not found' }, status: :not_found
+    end
+  end
 
   private
-
+  
   def assignment_params
     params.require(:assignment).permit(:game_id, :official_id, :assigner_id, :position, :game_payment_id)
+  end  
+
+  def authorize_assigner
+    assignment = Assignment.find(params[:id])
+    unless current_user == assignment.assigner || current_user.admin?
+      render json: { error: 'Unauthorized' }, status: :unauthorized
+    end
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: 'Assignment not found' }, status: :not_found
   end
 end
