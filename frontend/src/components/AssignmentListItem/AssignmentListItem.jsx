@@ -4,11 +4,11 @@ import { useModal } from "../../hooks/useModal";
 
 const AssignmentListItem = (props) => {
   const {gameDate, gameTime, level, gameName, field, position, confirmation} = props;
-  const {toggleModal} = useModal()
+  const {toggleModal, loadModalData} = useModal()
 
   return (
     <div className="assignment-preview">
-      <div className="assignment-preview__content" onClick={toggleModal}>
+      <div className="assignment-preview__content" onClick={() => {toggleModal(); loadModalData(props)}}>
       <div className="assignment-preview__datetime">
         <div className="assignment-preview__date">
           <span>{gameDate.month}</span>
