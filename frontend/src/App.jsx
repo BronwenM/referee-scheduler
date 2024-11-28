@@ -11,6 +11,7 @@ import Footer from "./components/Footer/Footer.jsx";
 import Login from "./components/Login/Login";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.jsx";
 import { useAuth } from "./hooks/useAuth.jsx";
+import AssignmentForm from "./components/AssignmentForm/AssignmentForm.jsx";
 
 
 function App() {
@@ -62,6 +63,7 @@ function App() {
             }
           />
         </Routes>
+        <AssignmentForm />
       </main>
       <Footer />
     </>
