@@ -48,24 +48,11 @@ function App() {
         <Routes>
           <Route index element={<HomePage />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<h1>Profile</h1>} />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute permittedRoles={["official"]}>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
-            path="/availability"
-            element={
-              <ProtectedRoute>
-                <AvailabilityForm />
-              </ProtectedRoute>
-            }
-          />
+          <Route element={<ProtectedRoute permittedRoles={["official", "admin"]} />} >
+            <Route path="/dashboard" element={<Dashboard />} />          
+            <Route path="/availability" element={ <AvailabilityForm /> } />
+            <Route path="/profile" element={<h1>Profile</h1>} />
+          </Route>
         </Routes>
         <AssignmentForm />
       </main>
