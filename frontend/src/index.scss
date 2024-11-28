@@ -1,3 +1,9 @@
+@font-face {
+  font-family: Hind;
+  src: url(./assets/fonts/Hind/Hind-Regular.ttf);
+  font-weight: regular;
+}
+
 html {
   box-sizing: border-box;
   min-height: 100%;
@@ -12,13 +18,5 @@ html {
 body {
   background-color: #28c3b4;
   margin: 0;
+  font-family: Hind;
 }
-
-// #root {
-//   display: grid;
-//   grid-template-areas: 
-//     "hero"
-//     "nav"
-//     "content"
-//     "footer";
-// }
