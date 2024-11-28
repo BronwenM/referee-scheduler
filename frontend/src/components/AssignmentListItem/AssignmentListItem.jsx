@@ -1,8 +1,10 @@
 import React from "react";
 import "./assignmentListItem.scss";
+import { useModal } from "../../hooks/useModal";
 
 const AssignmentListItem = (props) => {
-  const {gameDate, gameTime, level, gameName, field, position, confirmation, toggleModal} = props;
+  const {gameDate, gameTime, level, gameName, field, position, confirmation} = props;
+  const {toggleModal} = useModal()
 
   return (
     <div className="assignment-preview">

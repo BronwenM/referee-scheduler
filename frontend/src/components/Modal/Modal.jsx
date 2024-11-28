@@ -3,9 +3,9 @@ import { useModal } from "../../hooks/useModal";
 import './modal.scss';
 
 const Modal = (props) => {
-  const { modalData } = useModal();
-  const { content, toggleModal } = props;
-
+  const { modalData, toggleModal } = useModal();
+  const { content } = props;
+  
   return (
     <>
       <div className="modal__background" onClick={toggleModal}></div>
