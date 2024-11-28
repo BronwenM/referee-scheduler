@@ -1,32 +1,30 @@
 import React from "react";
-import './assignmentListItem.scss';
+import "./assignmentListItem.scss";
 
-const AssignmentListItem = () => {
+const AssignmentListItem = (props) => {
+  const {gameDate, gameTime, level, gameName, field, position, confirmation} = props;
+
   return (
     <div className="assignment-preview">
       <div className="assignment-preview__datetime">
         <div className="assignment-preview__date">
-          <span>Month</span>
-          <span>00</span>
+          <span>{gameDate.month}</span>
+          <span>{gameDate.day}</span>
         </div>
-        <span className="assignment-preview__time">@ 6:30 PM</span>
+        <span className="assignment-preview__time">@ {gameTime}</span>
       </div>
       <div className="assignment-preview__details">
+        <div className="assignment-preview__level">
+          <span>{level}</span>
+          <span>{gameName}</span>
+        </div>
         <div className="assignment-preview__field">
           <span>Field</span>
-          <span>Field #2</span>
+          <span>{field}</span>
         </div>
         <div className="assignment-preview__position">
           <span>Position</span>
-          <span>Plate</span>
-        </div>
-        <div className="assignment-preview__position">
-          <span>Position</span>
-          <span>Plate</span>
-        </div>
-        <div className="assignment-preview__level">
-          <span>Level</span>
-          <span>U17A</span>
+          <span>{position}</span>
         </div>
       </div>
       <select className="assignment-preview__confirmation">
