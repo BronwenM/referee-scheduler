@@ -32,15 +32,15 @@ const AssignmentForm = () => {
     console.log(selectedUser, selectedGame, selectedPosition);
 
     try {
-      const assinmentData = await axios.post('/api/assignments', {
+      const assinmentData = {
         game_id: selectedGame, 
         official_id: selectedUser,
         assigner_id: 5,
         position: selectedPosition,
         game_payment_id: 1,
-      });
+      };
 
-      await createAssignment(assignmentData);
+      await createAssignment(assinmentData);
 
 
       // Reset the form
