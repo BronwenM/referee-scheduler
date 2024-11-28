@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   namespace :api do
     resources :users, only: [:index, :show]
-    resources :associations, only: [:index, :show]
+    resources :associations, only: [:index, :show, :create]
     resources :roles, only: [:index, :show]
     resources :permissions, only: [:index, :show]
     resources :games, only: [:index, :show] do
