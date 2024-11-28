@@ -13,6 +13,7 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.jsx";
 import { useAuth } from "./hooks/useAuth.jsx";
 import AssignmentForm from "./components/AssignmentForm/AssignmentForm.jsx";
 import GameForm from "./components/GameForm/GameForm.jsx";
+import HomePage from "./components/HomePage/HomePage.jsx";
 
 
 function App() {
@@ -45,12 +46,13 @@ function App() {
       <NavBar />
       <main className="app__content">
         <Routes>
+          <Route index element={<HomePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<h1>Profile</h1>} />
           <Route
             path="/dashboard"
             element={
-              <ProtectedRoute>
+              <ProtectedRoute permittedRoles={["official"]}>
                 <Dashboard />
               </ProtectedRoute>
             }
