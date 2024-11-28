@@ -2,12 +2,13 @@
   width: 100%;
   background-color: #bebebe;
   border-radius: 8px;
-  padding: 16px 24px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   user-select: none;
+
+  
 }
 
 .assignment-preview__content {
@@ -19,6 +20,8 @@
   gap: 16px;
   user-select: none;
   cursor: pointer;
+  // margin: -16px;
+  padding: 16px;
 }
 
 .assignment-preview__datetime {
@@ -66,4 +69,8 @@
     flex-direction: column;
     align-items: flex-start;
   }
+}
+
+.assignment-preview__confirmation{
+  margin-right: 24px;
 }
