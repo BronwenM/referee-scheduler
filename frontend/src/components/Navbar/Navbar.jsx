@@ -3,33 +3,13 @@ import { Link } from "react-router-dom";
 import "./navbar.scss";
 import { useAuth } from "../../hooks/useAuth";
 import Button from "../Button/Button";
+import { links } from "../../assets/routes/navRoutes";
 
-// const officialLinks = ['dashboard', 'availability', 'calendar', 'assignments']
-
-
+//NOTE: Currently all available links are exposed to user in console. Remove to backend?
 const NavBar = () => {
   const {logout, userLoggedIn, getRole} = useAuth();
   const userRole = getRole();
   
-  const links = {
-    "dashboard": {
-      linkName: "Dashboard",
-      visibleTo: ['admin', 'assigner', 'official']
-    },
-    "availability": {
-      linkName: "Availability",
-      visibleTo: ['official']
-    },
-    "calendar": {
-      linkName: "Calendar",
-      visibleTo: ['admin', 'assigner', 'official']
-    },
-    "profile": {
-      linkName: "Profile",
-      visibleTo: ['admin', 'assigner', 'official']
-    },
-  }
-
   return (
     <nav className="navbar">
       <div className="navbar-logo">
@@ -38,19 +18,11 @@ const NavBar = () => {
         </Link>
       </div>
       <ul className="navbar-links">
-        
-        <li>
-          <Link to="/dashboard">Home</Link>
-        </li>
-        <li>
-          <Link to="/availability">Availability</Link>
-        </li>
-        <li>
-          <Link to="/calendar">Calendar</Link>
-        </li>
-        <li>
-          <Link to="/profile">Profile</Link>
-        </li>
+        {links.filter(link => link.visibleTo.includes(userRole)).map(link =>
+          <li key={link.id}>
+            <Link to={link.linkTo}>{link.linkName}</Link>
+          </li>
+        )}
         <li>
           {userLoggedIn() ? <Button handle={logout} name="Logout"/> : <Link to="/login">Login</Link>}
         </li>

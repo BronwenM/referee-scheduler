@@ -3,7 +3,7 @@ class Api::SessionsController < ApplicationController
   
   # Create and set cookies
   def create
-    user = User.joins("JOIN user_roles ON users.id = user_roles.user_id JOIN roles ON user_roles.role_id = roles.id").select("users.*").select("roles.name AS user_role").find_by(email: params[:email]) #TODO
+    user = User.joins("JOIN user_roles ON users.id = user_roles.user_id JOIN roles ON user_roles.role_id = roles.id").select("users.*").select("roles.name AS user_role").find_by("email=? OR username=?", params[:userIdentifier], params[:userIdentifier]) #TODO
     if user&.authenticate(params[:password])
 
       # When in production, Rails.env.production evaluates to true and enables secure option
