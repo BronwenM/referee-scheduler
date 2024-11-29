@@ -16,20 +16,24 @@ class Api::UsersController < ApplicationController
   end
 
   #POST /users, allows user creation plus role and permissions assignment
-  def create
+  def create    
     role = Role.includes(:permissions).find_by(name: params[:role_name])
 
     if role
-      user = User.new(user_params.merge(role: role))
-
+      user = User.create!({**user_params, password: params[:password], password_confirmation: params[:password_confirmation]})
+      
+      UserRole.create!(user: user, role: role)
+      
       if user.save
-        role.permissions.each do |permission|
-          user.permissions << permission
-        end
-
+        #FIX THIS LATER
+        # Rails.logger.info("user.roles: #{user.roles[0].permissions}")
+        # role.permissions.each do |permission|
+        #   user.permissions << permission
+        # end
+        
         render json: {
           user: user,
-          permissions: user.permissions,
+          permissions: user.roles[0].permissions,
           message: "User created successfully with role '#{role.name}' and associated permissions."
           }, status: :created
       else
@@ -79,7 +83,7 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :username)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :username, :address, :phone, :user_association_id, :payment_info)
   end
 
   def authorize_admin
