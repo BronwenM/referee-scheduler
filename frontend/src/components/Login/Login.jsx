@@ -1,48 +1,48 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Button from '../Button/Button';
 import axios from "axios";
-import users from '../../mocks/users';
 import { useAuth } from '../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
   //BM: Removed useRef and replaced with autfocused attribute
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const {login} = useAuth();
+  const navigate = useNavigate();
 
   //This clears the error message when the user types in the username or password
   useEffect(() => {
-    if (username || password) {
+    if (email || password) {
       setError('');
     }
-  }, [username, password]);
+  }, [email, password]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!username || !password) {
+    if (!email || !password) {
       setError('Username and password are required');
       return;
     }
 
-    //This finds the user(from users.js mock data) in the users array and logs them in if the username and password match(This is strickly for the mock data) When we start posting to the backend, we will use the axios.post method to post the username and password to the backend and the backend will return the user if the username and password match
-    const user = users.find((user) => user.username === username && user.password === password);
-    if (user) {
-      // console.log('Login successful:', user);
-      // toast.success('Login successful');
-      login(user);
-      
-    } else {
-      setError('Invalid username or password');
-      toast.error('Invalid username or password');
+    try {
+      const response = await axios.post('/api/sessions', { email, password });
+      console.log('Login successful:', response.data);
+      toast.success('Login successful');
+      login(response.data);
+      navigate('/');
+    } catch (error) {
+      console.error('Login failed:', error);
+      setError('Invalid email or password');
+      toast.error('Invalid email or password');
     }
 
-
-    setUsername('');
+    setEmail('');
     setPassword('');
   };
 
@@ -52,16 +52,16 @@ const Login = () => {
     <ToastContainer />
     <h1>Login</h1>
     <form>
-      <label htmlFor="username">Username:</label>
-      <input
-        id="username"
-        type="text"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        autoComplete='off'
-        required
-        autoFocus
-      />
+    <label htmlFor="email">Email:</label>
+        <input
+          id="email"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          autoComplete="off"
+          required
+          autoFocus
+        />
       <br />
       <label htmlFor="password">Password:</label>
       <input

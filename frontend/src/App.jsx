@@ -22,14 +22,14 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get("/api/authenticated_user", { withCredentials: true })
-      .then((response) => {
-        setUser(response.data.user);
-      })
-      .catch((e) => {
-        console.log('Not authenticated: ', e.message);
-      });
+    // axios
+    //   .get("/api/authenticated_user", { withCredentials: true })
+    //   .then((response) => {
+    //     setUser(response.data.user);
+    //   })
+    //   .catch((e) => {
+    //     console.log('Not authenticated: ', e.message);
+    //   });
 
     //TODO: before demo remove this
     setUser(users[0]);
@@ -54,7 +54,6 @@ function App() {
             <Route path="/profile" element={<h1>Profile</h1>} />
           </Route>
         </Routes>
-        <AssignmentForm />
       </main>
       <Footer />
     </>

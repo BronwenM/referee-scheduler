@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :unavailabilities, only: [:index, :show, :update]
     resources :user_roles, only: [:index, :show]
     resources :game_payments, only: [:index, :show]
+    resources :sessions, only: [:create, :destroy] #Added this so that I can ping the backend to see if the user is logged in or not.
     get 'test', to: 'test#index'
   end
 end

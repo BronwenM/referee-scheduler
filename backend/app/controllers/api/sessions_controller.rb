@@ -1,4 +1,5 @@
 class Api::SessionsController < ApplicationController
+  include ActionController::Cookies #Had to add this for cookies to work. Not sure if this is the best way to do it. I looked it up online.
   
   # Create and set cookies
   def create
