@@ -16,8 +16,8 @@ const AuthProvider = ({children}) => {
   //Add user to the state and navigate to dashboard
   //TODO: make sure user sesssion/state includes name, user name & email
   const login = (newUser) => {
-    const { role, permissions } = newUser;
-    const userToStore = { role, permissions };
+    const { role, permissions, name, username, email } = newUser;
+    const userToStore = { role, permissions, name, username, email };
 
     setUser(userToStore);
     sessionStorage.setItem("user", JSON.stringify(userToStore));
@@ -26,7 +26,7 @@ const AuthProvider = ({children}) => {
 
   //TODO: make sure user sesssion/state includes name, user name & email
   const logout = () => {
-    setUser({ role: '', permissions: [] });
+    setUser({ role: '', permissions: [], name: '', username: '', email: '' });
     sessionStorage.removeItem("user");
     navigate("/", {replace: true});
   };
