@@ -13,5 +13,4 @@ class User < ApplicationRecord
 
   # attribute :permissions, default: []
   
-  end
-
+end

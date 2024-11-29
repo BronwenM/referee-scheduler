@@ -9,29 +9,29 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   //BM: Removed useRef and replaced with autfocused attribute
-  const [email, setEmail] = useState('');
+  const [userIdentifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const {login} = useAuth();
   const navigate = useNavigate();
 
-  //This clears the error message when the user types in the username or password
+  //This clears the error message when the user types in the userIdentifier or password
   useEffect(() => {
-    if (email || password) {
+    if (userIdentifier || password) {
       setError('');
     }
-  }, [email, password]);
+  }, [userIdentifier, password]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!email || !password) {
-      setError('Username and password are required');
+    if (!userIdentifier || !password) {
+      setError('Email/Username and password are required');
       return;
     }
 
     try {
-      const response = await axios.post('/api/sessions', { email, password });
+      const response = await axios.post('/api/sessions', { userIdentifier, password });
       console.log('Login successful:', response.data);
       toast.success('Login successful');
       console.log(response.data);
@@ -39,11 +39,11 @@ const Login = () => {
       navigate('/');
     } catch (error) {
       console.error('Login failed:', error);
-      setError('Invalid email or password');
-      toast.error('Invalid email or password');
+      setError('Invalid email/username or password');
+      toast.error('Invalid email/username or password');
     }
 
-    setEmail('');
+    setIdentifier('');
     setPassword('');
   };
 
@@ -53,12 +53,12 @@ const Login = () => {
     <ToastContainer />
     <h1>Login</h1>
     <form>
-    <label htmlFor="email">Email:</label>
+      <label htmlFor="userIdentifier">Username or Email:</label>
         <input
-          id="email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          id="userIdentifier"
+          type="userIdentifier"
+          value={userIdentifier}
+          onChange={(e) => setIdentifier(e.target.value)}
           autoComplete="off"
           required
           autoFocus

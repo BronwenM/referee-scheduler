@@ -16,8 +16,8 @@ const AuthProvider = ({children}) => {
   //Add user to the state and navigate to dashboard
   //TODO: make sure user sesssion/state includes name, user name & email
   const login = (newUser) => {
-    const { role, permissions, name, username, email } = newUser.user;
-    const userToStore = { role, permissions, name, username, email };
+    const { user_role, permissions, name, username, email } = newUser.user;
+    const userToStore = { role: user_role, permissions, name, username, email };
 
     setUser(userToStore);
     sessionStorage.setItem("user", JSON.stringify(userToStore));
