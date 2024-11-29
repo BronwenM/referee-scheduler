@@ -27,7 +27,7 @@ class Api::GamesController < ApplicationController
     render json: { error: 'Game not found' }, status: :not_found
   end
 
-  # GET /games/unassigned
+  #GET /games/:id for games without assignments
   def find_unassigned
     games = Game.left_joins(:assignments).where(assignments: { id: nil })
     render json: games
@@ -35,7 +35,6 @@ class Api::GamesController < ApplicationController
 
   # POST /games
   def create
-    Rails.logger.info("Received parameters:\n#{JSON.pretty_generate(params.to_unsafe_h)}")
     game = Game.new(game_params)
 
     if game.save
@@ -45,7 +44,7 @@ class Api::GamesController < ApplicationController
     end
   end
 
-  # DELETE /games/:id
+   #POST /games/delete
   def destroy
     game = Game.find_by(id: params[:id])
 
