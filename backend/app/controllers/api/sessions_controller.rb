@@ -8,9 +8,9 @@ class Api::SessionsController < ApplicationController
 
       # When in production, Rails.env.production evaluates to true and enables secure option
       cookies.signed[:user_id] = { value: user.id, httponly: true, secure: Rails.env.production? }
-      render json: { message: 'Logged in successfully' , user:user}, status: :ok
+      render json: { message: 'Logged in successfully', user: user}, status: :ok
     else
-      render json: { error: 'Ivalid credentials' }, status: :unauthorized
+      render json: { error: 'Invalid credentials' }, status: :unauthorized
     end
   end
 

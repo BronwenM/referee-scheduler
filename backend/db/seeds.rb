@@ -350,6 +350,17 @@ user30 = User.create!(
   payment_info: ''
 )
 
+test_user = User.create!(
+  user_association: association1,
+  name: 'Test User',
+  username: 'test',
+  email: 'test@test.com',
+  password: 'test',
+  address: 'test',
+  phone: 1,
+  payment_info: ''
+)
+
 puts 'Users created'
 
 # Create Unavailabilities
@@ -1232,6 +1243,7 @@ puts 'Creating User_Roles'
 UserRole.create!(user: user1, role: admin)
 UserRole.create!(user: user2, role: admin)
 UserRole.create!(user: user3, role: admin)
+UserRole.create!(user: test_user, role: admin)
 UserRole.create!(user: user4, role: assigner)
 UserRole.create!(user: user5, role: assigner)
 UserRole.create!(user: user6, role: assigner)
