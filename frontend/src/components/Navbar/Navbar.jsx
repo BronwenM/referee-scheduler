@@ -11,24 +11,50 @@ const NavBar = () => {
   const {logout, userLoggedIn, getRole} = useAuth();
   const userRole = getRole();
   
-  const links = {
-    "dashboard": {
+  const links = [
+    {
+      id: 1,
       linkName: "Dashboard",
+      linkTo: '/dashboard',
       visibleTo: ['admin', 'assigner', 'official']
     },
-    "availability": {
+    {
+      id: 2,
       linkName: "Availability",
+      linkTo: '/availability',
       visibleTo: ['official']
     },
-    "calendar": {
+    {
+      id: 3,
       linkName: "Calendar",
+      linkTo: '/calendar',
       visibleTo: ['admin', 'assigner', 'official']
     },
-    "profile": {
+    {
+      id: 4,
       linkName: "Profile",
+      linkTo: '/profile',
       visibleTo: ['admin', 'assigner', 'official']
     },
-  }
+    {
+      id: 5,
+      linkName: "Create Game",
+      linkTo: '/new-game',
+      visibleTo: ['admin']
+    },
+    {
+      id: 6,
+      linkName: "Create Assignment",
+      linkTo: '/new-assignment',
+      visibleTo: ['admin', 'assigner']
+    },
+    {
+      id: 7,
+      linkName: "View Reports",
+      linkTo: '/reports',
+      visibleTo: ['admin', 'assigner']
+    },
+  ]
 
   return (
     <nav className="navbar">
@@ -39,7 +65,7 @@ const NavBar = () => {
       </div>
       <ul className="navbar-links">
         
-        <li>
+        {/* <li>
           <Link to="/dashboard">Home</Link>
         </li>
         <li>
@@ -50,7 +76,12 @@ const NavBar = () => {
         </li>
         <li>
           <Link to="/profile">Profile</Link>
-        </li>
+        </li> */}
+        {links.filter(link => link.visibleTo.includes(userRole)).map(link =>
+          <li key={link.id}>
+            <Link to={link.linkTo}>{link.linkName}</Link>
+          </li>
+        )}
         <li>
           {userLoggedIn() ? <Button handle={logout} name="Logout"/> : <Link to="/login">Login</Link>}
         </li>
