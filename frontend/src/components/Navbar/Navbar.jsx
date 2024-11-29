@@ -3,59 +3,13 @@ import { Link } from "react-router-dom";
 import "./navbar.scss";
 import { useAuth } from "../../hooks/useAuth";
 import Button from "../Button/Button";
+import { links } from "../../assets/routes/navRoutes";
 
-// const officialLinks = ['dashboard', 'availability', 'calendar', 'assignments']
-
-
+//NOTE: Currently all available links are exposed to user in console. Remove to backend?
 const NavBar = () => {
   const {logout, userLoggedIn, getRole} = useAuth();
   const userRole = getRole();
   
-  const links = [
-    {
-      id: 1,
-      linkName: "Dashboard",
-      linkTo: '/dashboard',
-      visibleTo: ['admin', 'assigner', 'official']
-    },
-    {
-      id: 2,
-      linkName: "Availability",
-      linkTo: '/availability',
-      visibleTo: ['official']
-    },
-    {
-      id: 3,
-      linkName: "Calendar",
-      linkTo: '/calendar',
-      visibleTo: ['admin', 'assigner', 'official']
-    },
-    {
-      id: 4,
-      linkName: "Profile",
-      linkTo: '/profile',
-      visibleTo: ['admin', 'assigner', 'official']
-    },
-    {
-      id: 5,
-      linkName: "Create Game",
-      linkTo: '/new-game',
-      visibleTo: ['admin']
-    },
-    {
-      id: 6,
-      linkName: "Create Assignment",
-      linkTo: '/new-assignment',
-      visibleTo: ['admin', 'assigner']
-    },
-    {
-      id: 7,
-      linkName: "View Reports",
-      linkTo: '/reports',
-      visibleTo: ['admin', 'assigner']
-    },
-  ]
-
   return (
     <nav className="navbar">
       <div className="navbar-logo">
@@ -64,19 +18,6 @@ const NavBar = () => {
         </Link>
       </div>
       <ul className="navbar-links">
-        
-        {/* <li>
-          <Link to="/dashboard">Home</Link>
-        </li>
-        <li>
-          <Link to="/availability">Availability</Link>
-        </li>
-        <li>
-          <Link to="/calendar">Calendar</Link>
-        </li>
-        <li>
-          <Link to="/profile">Profile</Link>
-        </li> */}
         {links.filter(link => link.visibleTo.includes(userRole)).map(link =>
           <li key={link.id}>
             <Link to={link.linkTo}>{link.linkName}</Link>
