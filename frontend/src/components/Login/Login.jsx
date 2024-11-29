@@ -32,8 +32,8 @@ const Login = () => {
     //This finds the user(from users.js mock data) in the users array and logs them in if the username and password match(This is strickly for the mock data) When we start posting to the backend, we will use the axios.post method to post the username and password to the backend and the backend will return the user if the username and password match
     const user = users.find((user) => user.username === username && user.password === password);
     if (user) {
-      console.log('Login successful:', user);
-      toast.success('Login successful');
+      // console.log('Login successful:', user);
+      // toast.success('Login successful');
       login(user);
       
     } else {
