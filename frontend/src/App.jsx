@@ -17,6 +17,7 @@ import HomePage from "./components/HomePage/HomePage.jsx";
 import AccountForm from "./components/CreateAccountForm/AccountForm.jsx";
 import GamesPage from "./components/GamesPage/GamesPage.jsx";
 import ReportPage from "./components/ReportPage/ReportPage.jsx";
+import LocationPage from "./components/LocationPage/LocationPage.jsx";
 
 
 function App() {
