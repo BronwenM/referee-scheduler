@@ -15,13 +15,7 @@ class Api::AssignmentsController < ApplicationController
     render json: { error: 'Assignment not found' }, status: :not_found
   end
 
-  #GET /users/:id/assignments (get user assignments)
-  def by_user_id
-    user_assignments = Assignment.where("official_id=?", params[:user_id])
-    render json: user_assignments
-  rescue ActiveRecord::RecordNotFound
-    render json: { error: 'Assignment not found' }, status: :not_found
-  end
+  
 
   #POST /assignments
   def create

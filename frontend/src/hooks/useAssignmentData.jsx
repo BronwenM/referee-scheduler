@@ -5,6 +5,7 @@ const useAssignmentData = () => {
   const [games, setGames] = useState([]);
   const [users, setUsers] = useState([]);
   const [error, setError] = useState(null);
+  const [userGames, setUserGames] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -62,14 +63,17 @@ const useAssignmentData = () => {
   };
 
   //OFFICIAL:Get assignments by user
-  const getAssignmentsByUser = async (user) => {
-    const assignmentRequests = officialIds.map(id => axios.get(`/api/assignments?official_id=${id}`, { withCredentials: true }));
-
+  const getAssignmentsByUser = async (userID) => {
+    const userAssignments = await axios.get(`/api/users/${userID}/assignments`, { withCredentials: true });
+    const assignmentResponses = await Promise.resolve(userAssignments);
+    setUserGames(assignmentResponses.data)
+    console.log("Assignments for userID", userID, assignmentResponses.data);
+    // return userGames;
   }
 
   //ADMIN/ASSIGNER: Get all assignments
 
-  return { games, users, error, createAssignment };
+  return { games, users, error, createAssignment, getAssignmentsByUser, userGames };
 };
 
 export default useAssignmentData;

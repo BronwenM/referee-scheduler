@@ -15,6 +15,14 @@ class Api::UsersController < ApplicationController
     render json: { error: 'User not found' }, status: :not_found
   end
 
+  #GET /users/:id/assignments (get user assignments)
+  def by_user_id
+    user_assignments = Assignment.where("official_id=?", params[:user_id])
+    render json: user_assignments, include: {game: {}, game_payment: {}}
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: 'Assignment not found' }, status: :not_found
+  end
+
   #POST /users, allows user creation plus role and permissions assignment
   def create    
     role = Role.includes(:permissions).find_by(name: params[:role_name])
