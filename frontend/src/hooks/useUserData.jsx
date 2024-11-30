@@ -8,8 +8,6 @@ const useUserData = (userID) => {
     const userAssignments = await axios.get(`/api/users/${userID}/assignments`, { withCredentials: false });
     const assignmentResponses = await Promise.resolve(userAssignments);
     setUserAssignments(assignmentResponses.data)
-    // console.log("Assignments for userID", userID, assignmentResponses.data);
-    // return userGames;
   }
 
   return { getAssignmentsByUser, userAssignments }

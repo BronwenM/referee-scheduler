@@ -16,7 +16,7 @@ class Api::UsersController < ApplicationController
   end
 
   #GET /users/:id/assignments (get user assignments)
-  def by_user_id
+  def assignments_by_user_id
     user_assignments = Assignment.where("official_id=?", params[:user_id])
     render json: user_assignments, include: {game: {}, game_payment: {}}
   rescue ActiveRecord::RecordNotFound
