@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :associations, only: [:index, :show, :create]
     resources :roles, only: [:index, :show]
     resources :permissions, only: [:index, :show]
-    resources :games, only: [:index, :show, :create, :delete] do
+    resources :games, only: [:index, :show, :create, :update, :delete] do
       collection do
         get :find_unassigned
       end

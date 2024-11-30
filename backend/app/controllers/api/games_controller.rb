@@ -33,7 +33,7 @@ class Api::GamesController < ApplicationController
     render json: games
   end
 
-  # POST /games
+  #POST /games
   def create
     game = Game.new(game_params)
 
@@ -41,6 +41,24 @@ class Api::GamesController < ApplicationController
       render json: { game: game, message: 'Game created successfully' }, status: :created
     else
       render json: { errors: game.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  #POST /games/edit
+  def update
+    game = Game.find_by(id: params[:id])
+
+    if game
+      if game.update (game_params)
+        render json: {
+          game: game,
+          message: 'Game updated successfully'
+        }, status: :ok
+      else
+        render json: { errors: game.errors.full_messages }, status: :unprocessable_entity
+      end
+    else
+      render json: { error: 'Game not found' }, status: :not_found
     end
   end
 
