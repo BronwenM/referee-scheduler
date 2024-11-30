@@ -14,6 +14,8 @@ import { useAuth } from "./hooks/useAuth.jsx";
 import AssignmentForm from "./components/AssignmentForm/AssignmentForm.jsx";
 import GameForm from "./components/GameForm/GameForm.jsx";
 import HomePage from "./components/HomePage/HomePage.jsx";
+import AccountForm from "./components/CreateAccountForm/AccountForm.jsx";
+import GamesPage from "./components/GamesPage/GamesPage.jsx";
 
 
 function App() {
@@ -54,6 +56,7 @@ function App() {
             <Route path="/profile" element={<h1>Profile</h1>} />
           </Route>
         </Routes>
+        
       </main>
       <Footer />
     </>
