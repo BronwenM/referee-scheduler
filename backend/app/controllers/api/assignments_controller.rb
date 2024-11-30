@@ -15,6 +15,8 @@ class Api::AssignmentsController < ApplicationController
     render json: { error: 'Assignment not found' }, status: :not_found
   end
 
+  
+
   #POST /assignments
   def create
     #This prints to the console for debugging purposes
