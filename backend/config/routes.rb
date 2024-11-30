@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   namespace :api do
-    resources :users, only: [:index, :show, :create, :update, :destroy]
+    resources :users, only: [:index, :show, :create, :update, :destroy] do
+      resources :assignments, to: 'assignments#by_user_id'
+    end
     resources :associations, only: [:index, :show, :create]
     resources :roles, only: [:index, :show]
     resources :permissions, only: [:index, :show]

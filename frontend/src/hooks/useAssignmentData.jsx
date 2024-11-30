@@ -61,6 +61,14 @@ const useAssignmentData = () => {
     }
   };
 
+  //OFFICIAL:Get assignments by user
+  const getAssignmentsByUser = async (user) => {
+    const assignmentRequests = officialIds.map(id => axios.get(`/api/assignments?official_id=${id}`, { withCredentials: true }));
+
+  }
+
+  //ADMIN/ASSIGNER: Get all assignments
+
   return { games, users, error, createAssignment };
 };
 

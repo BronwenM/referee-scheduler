@@ -10,7 +10,7 @@ class Api::UsersController < ApplicationController
   #GET /users/:id, includes role and associated permissions, plus error handling if user not found
   def show
     user = User.find(params[:id])
-    render json: user, include: { role: { include: :permissions } }
+    render json: user, include: { roles: { include: :permissions }, assignments: {} }
   rescue ActiveRecord::RecordNotFound
     render json: { error: 'User not found' }, status: :not_found
   end
