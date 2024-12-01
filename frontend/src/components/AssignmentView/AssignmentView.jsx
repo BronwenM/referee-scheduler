@@ -6,33 +6,9 @@ import AssignmentListItem from "../AssignmentListItem/AssignmentListItem";
 const AssignmentView = () => {
   const { getAssignmentsByUser, userAssignments } = useUserData(10); //change to 10 to hardcode a view of assignments
 
-  const convertDateString = (dateString) => {
-    const date = new Date(dateString);
-    const isAM = date.getHours() <= 12;
-    const monthsArr = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-
-    return {
-      year: date.getFullYear(),
-      day: date.getDate(),
-      month: monthsArr[date.getMonth()],
-      time: isAM
-        ? `${date.getHours()}:${date.getMinutes()} AM`
-        : `${date.getHours() - 12}:${date.getMinutes()} PM`,
-    };
-  };
+  const assignments = userAssignments.map((game) => 
+    <AssignmentListItem key={game.assignment.id} assigner={game.assigner} assignment={game.assignment} game={game.game} partners={game.partners} pay={game.pay_rate} />
+  );
 
   return (
     <div>
@@ -41,23 +17,7 @@ const AssignmentView = () => {
         Get User {Cookies.get('new_user_id')} Assignments 
       </button>
       <div>
-        {userAssignments.length === 0 && <p>No assignments here!</p>}
-        {userAssignments.map((game) => {
-          const parsedDate = convertDateString(game.game.date_time);
-
-          const assginmentData = {
-            date: {day: parsedDate.day, month: parsedDate.month, year: parsedDate.year},
-            time: parsedDate.time,
-            level: '',
-            gameName: game.game.title,
-            field: game.game.field,
-            position: game.position
-          }
-          
-          return (
-            <AssignmentListItem key={game.id} gameDate={{day: parsedDate.day, month: parsedDate.month, year: parsedDate.year}} gameTime={parsedDate.time} level="U17A" gameName={game.game.title} field={game.game.field} position={game.position}/>
-          );
-        })}
+        {userAssignments.length === 0 ? <p>No assignments here!</p> : assignments}
       </div>
     </div>
   );
