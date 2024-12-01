@@ -2,10 +2,12 @@ import React, {useEffect} from "react";
 import { useModal } from "../../hooks/useModal";
 import "./modal.scss";
 import { useAuth } from "../../hooks/useAuth";
+import useUtils from "../../hooks/useUtils";
 
 const AssignmentModalView = (props) => {
   const {assigner, assignment, game, partners, pay} = props.data;
   const {user} = useAuth()
+  const {convertDateString, toTitleCase} = useUtils();
 
   return (
     <>
@@ -18,11 +20,11 @@ const AssignmentModalView = (props) => {
           <li>Game: {game.home_team} vs {game.away_team}</li>
           <li>Officials</li>
           <ul>
-            <li>{user.name}</li>
-            {partners.map(partner => <li key={partner.id}>{partner.name}</li>)}
+            <li>{toTitleCase(assignment.position)}: {user.name}</li>
+            {partners.map(partner => <li key={partner.id}>{toTitleCase(partner.position)}: {partner.name}</li>)}
           </ul>
           <li>Pay Rate: ${pay.pay_rate}</li>
-          <li>More:</li>
+          <li>Date: {game.date_time}</li>
         </ul>
       </article>
     </>
