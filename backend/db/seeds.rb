@@ -1322,7 +1322,8 @@ game1 = Game.create!(
   field: 'Main Field',
   officials_assigned: true,
   status: 'upcoming',
-  game_type: 'regular season'
+  game_type: 'regular season',
+  created_at: rand(1.years).seconds.ago
 )
 
 game2 = Game.create!(
@@ -1335,7 +1336,8 @@ game2 = Game.create!(
   field: 'Thunderstrike Field',
   officials_assigned: true,
   status: 'upcoming',
-  game_type: 'regular season'
+  game_type: 'regular season',
+  created_at: rand(1.years).seconds.ago
 )
 
 game3 = Game.create!(
@@ -1348,7 +1350,8 @@ game3 = Game.create!(
   field: 'Victory Park',
   officials_assigned: true,
   status: 'upcoming',
-  game_type: 'regular season'
+  game_type: 'regular season',
+  created_at: rand(1.years).seconds.ago
 )
 
 game4 = Game.create!(
@@ -1361,7 +1364,8 @@ game4 = Game.create!(
   field: 'Sunset Diamond',
   officials_assigned: true,
   status: 'upcoming',
-  game_type: 'regular season'
+  game_type: 'regular season',
+  created_at: rand(1.years).seconds.ago
 )
 
 game5 = Game.create!(
@@ -1374,7 +1378,8 @@ game5 = Game.create!(
   field: 'Golden Glove Stadium',
   officials_assigned: true,
   status: 'upcoming',
-  game_type: 'regular season'
+  game_type: 'regular season',
+  created_at: rand(1.years).seconds.ago
 )
 
 game6 = Game.create!(
@@ -1387,7 +1392,8 @@ game6 = Game.create!(
   field: 'Main Field',
   officials_assigned: true,
   status: 'upcoming',
-  game_type: 'regular season'
+  game_type: 'regular season',
+  created_at: rand(1.years).seconds.ago
 )
 
 game7 = Game.create!(
@@ -1400,7 +1406,8 @@ game7 = Game.create!(
   field: 'Thunderstrike Field',
   officials_assigned: true,
   status: 'upcoming',
-  game_type: 'regular season'
+  game_type: 'regular season',
+  created_at: rand(1.years).seconds.ago
 )
 
 game8 = Game.create!(
@@ -1413,7 +1420,8 @@ game8 = Game.create!(
   field: 'Victory Park',
   officials_assigned: true,
   status: 'upcoming',
-  game_type: 'regular season'
+  game_type: 'regular season',
+  created_at: rand(1.years).seconds.ago
 )
 
 game9 = Game.create!(
@@ -1426,7 +1434,8 @@ game9 = Game.create!(
   field: 'Sunset Diamond',
   officials_assigned: true,
   status: 'upcoming',
-  game_type: 'regular season'
+  game_type: 'regular season',
+  created_at: rand(1.years).seconds.ago
 )
 
 game10 = Game.create!(
@@ -1439,7 +1448,8 @@ game10 = Game.create!(
   field: 'Golden Glove Stadium',
   officials_assigned: false,
   status: 'delayed',
-  game_type: 'regular season'
+  game_type: 'regular season',
+  created_at: rand(1.years).seconds.ago
 )
 
 game11 = Game.create!(
@@ -1452,7 +1462,8 @@ game11 = Game.create!(
   field: 'Diamond Breeze Field',
   officials_assigned: false,
   status: 'upcoming',
-  game_type: 'regular season'
+  game_type: 'regular season',
+  created_at: rand(1.years).seconds.ago
 )
 
 game12 = Game.create!(
@@ -1465,7 +1476,8 @@ game12 = Game.create!(
   field: 'Cedar Valley Park',
   officials_assigned: false,
   status: 'upcoming',
-  game_type: 'regular season'
+  game_type: 'regular season',
+  created_at: rand(1.years).seconds.ago
 )
 
 game13 = Game.create!(
@@ -1478,7 +1490,8 @@ game13 = Game.create!(
   field: 'Summit Ridge Ballpark',
   officials_assigned: false,
   status: 'upcoming',
-  game_type: 'regular season'
+  game_type: 'regular season',
+  created_at: rand(1.years).seconds.ago
 )
 
 game14 = Game.create!(
@@ -1491,7 +1504,8 @@ game14 = Game.create!(
   field: 'Sandlot Oasis Stadium',
   officials_assigned: false,
   status: 'upcoming',
-  game_type: 'regular season'
+  game_type: 'regular season',
+  created_at: rand(1.years).seconds.ago
 )
 
 game15 = Game.create!(
@@ -1504,7 +1518,8 @@ game15 = Game.create!(
   field: 'Harborline Sports Complex',
   officials_assigned: false,
   status: 'upcoming',
-  game_type: 'regular season'
+  game_type: 'regular season',
+  created_at: rand(1.years).seconds.ago
 )
 
 game16 = Game.create!(
@@ -1517,7 +1532,8 @@ game16 = Game.create!(
   field: 'Ironwood Glades Field',
   officials_assigned: false,
   status: 'upcoming',
-  game_type: 'regular season'
+  game_type: 'regular season',
+  created_at: rand(1.years).seconds.ago
 )
 
 game17 = Game.create!(
@@ -1530,7 +1546,8 @@ game17 = Game.create!(
   field: 'Golden Horizon Grounds',
   officials_assigned: false,
   status: 'upcoming',
-  game_type: 'regular season'
+  game_type: 'regular season',
+  created_at: rand(1.years).seconds.ago
 )
 
 game18 = Game.create!(
@@ -1543,7 +1560,8 @@ game18 = Game.create!(
   field: 'Starview Sports Dome',
   officials_assigned: false,
   status: 'upcoming',
-  game_type: 'regular season'
+  game_type: 'regular season',
+  created_at: rand(1.years).seconds.ago
 )
 
 game19 = Game.create!(
@@ -1556,7 +1574,8 @@ game19 = Game.create!(
   field: 'Bluffside Diamond',
   officials_assigned: false,
   status: 'upcoming',
-  game_type: 'regular season'
+  game_type: 'regular season',
+  created_at: rand(1.years).seconds.ago
 )
 
 game20 = Game.create!(
@@ -1569,7 +1588,8 @@ game20 = Game.create!(
   field: 'Echo Ridge Softball Complex',
   officials_assigned: false,
   status: 'upcoming',
-  game_type: 'regular season'
+  game_type: 'regular season',
+  created_at: rand(1.years).seconds.ago
 )
 puts 'Games created'
 
@@ -1588,7 +1608,8 @@ assignment1 = Assignment.create!(
   official: user9,
   assigner: user4,
   position: 'plate',
-  game_payment: rate1
+  game_payment: rate1,
+  created_at: rand(3.months).seconds.ago
 )
 
 assignment2 = Assignment.create!(
@@ -1596,7 +1617,8 @@ assignment2 = Assignment.create!(
   official: user10,
   assigner: user4,
   position: 'base',
-  game_payment: rate1
+  game_payment: rate1,
+  created_at: rand(3.months).seconds.ago
 )
 
 assignment3 = Assignment.create!(
@@ -1604,7 +1626,8 @@ assignment3 = Assignment.create!(
   official: user11,
   assigner: user5,
   position: 'plate',
-  game_payment: rate1
+  game_payment: rate1,
+  created_at: rand(3.months).seconds.ago
 )
 
 assignment4 = Assignment.create!(
@@ -1612,7 +1635,8 @@ assignment4 = Assignment.create!(
   official: user12,
   assigner: user5,
   position: 'base',
-  game_payment: rate1
+  game_payment: rate1,
+  created_at: rand(3.months).seconds.ago
 )
 
 assignment5 = Assignment.create!(
@@ -1620,7 +1644,8 @@ assignment5 = Assignment.create!(
   official: user13,
   assigner: user6,
   position: 'plate',
-  game_payment: rate1
+  game_payment: rate1,
+  created_at: rand(3.months).seconds.ago
 )
 
 assignment6 = Assignment.create!(
@@ -1628,7 +1653,8 @@ assignment6 = Assignment.create!(
   official: user14,
   assigner: user6,
   position: 'base',
-  game_payment: rate1
+  game_payment: rate1,
+  created_at: rand(3.months).seconds.ago
 )
 
 assignment7 = Assignment.create!(
@@ -1636,7 +1662,8 @@ assignment7 = Assignment.create!(
   official: user15,
   assigner: user7,
   position: 'plate',
-  game_payment: rate1
+  game_payment: rate1,
+  created_at: rand(3.months).seconds.ago
 )
 
 assignment8 = Assignment.create!(
@@ -1644,7 +1671,8 @@ assignment8 = Assignment.create!(
   official: user16,
   assigner: user7,
   position: 'base',
-  game_payment: rate1
+  game_payment: rate1,
+  created_at: rand(3.months).seconds.ago
 )
 
 assignment9 = Assignment.create!(
@@ -1652,7 +1680,8 @@ assignment9 = Assignment.create!(
   official: user17,
   assigner: user8,
   position: 'plate',
-  game_payment: rate1
+  game_payment: rate1,
+  created_at: rand(3.months).seconds.ago
 )
 
 assignment10 = Assignment.create!(
@@ -1660,7 +1689,8 @@ assignment10 = Assignment.create!(
   official: user18,
   assigner: user8,
   position: 'base',
-  game_payment: rate1
+  game_payment: rate1,
+  created_at: rand(3.months).seconds.ago
 )
 
 assignment11 = Assignment.create!(
@@ -1668,7 +1698,8 @@ assignment11 = Assignment.create!(
   official: user19,
   assigner: user4,
   position: 'plate',
-  game_payment: rate1
+  game_payment: rate1,
+  created_at: rand(3.months).seconds.ago
 )
 
 assignment12 = Assignment.create!(
@@ -1676,7 +1707,8 @@ assignment12 = Assignment.create!(
   official: user20,
   assigner: user4,
   position: 'base',
-  game_payment: rate1
+  game_payment: rate1,
+  created_at: rand(3.months).seconds.ago
 )
 
 assignment13 = Assignment.create!(
@@ -1684,7 +1716,8 @@ assignment13 = Assignment.create!(
   official: user21,
   assigner: user5,
   position: 'plate',
-  game_payment: rate1
+  game_payment: rate1,
+  created_at: rand(3.months).seconds.ago
 )
 
 assignment14 = Assignment.create!(
@@ -1692,7 +1725,8 @@ assignment14 = Assignment.create!(
   official: user22,
   assigner: user5,
   position: 'base',
-  game_payment: rate1
+  game_payment: rate1,
+  created_at: rand(3.months).seconds.ago
 )
 
 assignment15 = Assignment.create!(
@@ -1700,7 +1734,8 @@ assignment15 = Assignment.create!(
   official: user23,
   assigner: user6,
   position: 'plate',
-  game_payment: rate1
+  game_payment: rate1,
+  created_at: rand(3.months).seconds.ago
 )
 
 assignment16 = Assignment.create!(
@@ -1708,7 +1743,8 @@ assignment16 = Assignment.create!(
   official: user24,
   assigner: user6,
   position: 'base',
-  game_payment: rate1
+  game_payment: rate1,
+  created_at: rand(3.months).seconds.ago
 )
 
 assignment17 = Assignment.create!(
@@ -1716,6 +1752,63 @@ assignment17 = Assignment.create!(
   official: user25,
   assigner: user7,
   position: 'plate',
-  game_payment: rate1
+  game_payment: rate1,
+  created_at: rand(3.months).seconds.ago
+)
+
+#Create multiple assignments for user10 (Isabella Harris) for display testing
+#20 games abailable
+assignment18 = Assignment.create!(
+  game: game2,
+  official: user10,
+  assigner: user4,
+  position: 'evaluator',
+  game_payment: rate1,
+  created_at: rand(3.months).seconds.ago
+)
+
+assignment19 = Assignment.create!(
+  game: game3,
+  official: user10,
+  assigner: user4,
+  position: 'base',
+  game_payment: rate1,
+  created_at: rand(3.months).seconds.ago
+)
+
+assignment20 = Assignment.create!(
+  game: game4,
+  official: user10,
+  assigner: user4,
+  position: 'base',
+  game_payment: rate1,
+  created_at: rand(3.months).seconds.ago
+)
+
+assignment21 = Assignment.create!(
+  game: game5,
+  official: user10,
+  assigner: user4,
+  position: 'plate',
+  game_payment: rate1,
+  created_at: rand(3.months).seconds.ago
+)
+
+assignment22 = Assignment.create!(
+  game: game6,
+  official: user10,
+  assigner: user4,
+  position: 'base',
+  game_payment: rate1,
+  created_at: rand(3.months).seconds.ago
+)
+
+assignment23 = Assignment.create!(
+  game: game7,
+  official: user10,
+  assigner: user4,
+  position: 'plate',
+  game_payment: rate1,
+  created_at: rand(3.months).seconds.ago
 )
 puts 'Assignments Created'
