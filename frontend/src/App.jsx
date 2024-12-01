@@ -59,7 +59,6 @@ function App() {
             <Route path="/profile" element={<h1>Profile</h1>} />
           </Route>
         </Routes>
-        <ProfileEditPage />
       </main>
       <Footer />
     </>

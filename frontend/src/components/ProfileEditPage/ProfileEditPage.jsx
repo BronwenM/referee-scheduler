@@ -5,6 +5,7 @@ import Button from '../Button/Button';
 
 const ProfileEditPage = () => {
   const [userId, setUserId] = useState(null);
+  const [message, setMessage] = useState('');
   const [userData, setUserData] = useState({
     name: '',
     email: '',
@@ -14,7 +15,7 @@ const ProfileEditPage = () => {
     user_association_id: 1,
     payment_info: ''
   });
-  const [message, setMessage] = useState('');
+  
 
   useEffect(() => {
     const userIdFromCookie = Cookies.get('new_user_id');
