@@ -1,61 +1,80 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import Button from '../Button/Button';
+import React, { useState, useEffect } from 'react';
 import useAssignmentData from '../../hooks/useAssignmentData';
+import Button from '../Button/Button';
 
 const AssignmentForm = () => {
-  const { games, users, createAssignment } = useAssignmentData();
-  const [selectedUser, setSelectedUser] = useState('');
+  const { games, assignments, setAssignments, fetchAvailableOfficialsForGame, createAssignment, error } = useAssignmentData();
+  const [selectedOfficial, setSelectedOfficial] = useState('');
   const [selectedGame, setSelectedGame] = useState('');
   const [selectedPosition, setSelectedPosition] = useState('');
-  const [error, setError] = useState(null);
+  const [availableOfficials, setAvailableOfficials] = useState([]);
+  const [formError, setFormError] = useState(null);
 
-  const handleUserChange = (e) => {
-    setSelectedUser(e.target.value);
-  };
+  useEffect(() => {
+    const fetchOfficials = async () => {
+      if (selectedGame) {
+        try {
+          const officials = await fetchAvailableOfficialsForGame(selectedGame);
+          setAvailableOfficials(officials);
+        } catch (error) {
+          console.error('Failed to fetch available officials:', error);
+        }
+      } else {
+        setAvailableOfficials([]);
+      }
+    };
 
-  const handleGameChange = (e) => {
-    setSelectedGame(e.target.value);
-  };
-
-  const handlePositionChange = (e) => {
-    setSelectedPosition(e.target.value);
-  };
+    fetchOfficials();
+  }, [selectedGame, fetchAvailableOfficialsForGame]);
 
   const handleAssign = async (e) => {
     e.preventDefault();
-    if (!selectedUser || !selectedGame || !selectedPosition) {
-      setError('Please select a game, an official, and a position.');
+    if (!selectedOfficial || !selectedGame || !selectedPosition) {
+      setFormError('Please select a game, an official, and a position.');
       return;
     }
 
-    console.log(selectedUser, selectedGame, selectedPosition);
+    const isAlreadyAssigned = assignments.some(
+      (assignment) => assignment.game_id === selectedGame && assignment.official_id === selectedOfficial
+    );
+
+    if (isAlreadyAssigned) {
+      setFormError('This official is already assigned to the selected game.');
+      return;
+    }
 
     try {
-      const assinmentData = {
-        game_id: selectedGame, 
-        official_id: selectedUser,
+      const assignmentData = {
+        game_id: selectedGame,
+        official_id: selectedOfficial,
         assigner_id: 5,
         position: selectedPosition,
         game_payment_id: 1,
       };
 
-      await createAssignment(assinmentData);
+      await createAssignment(assignmentData);
 
+      setAssignments(prevAssignments => [...prevAssignments, assignmentData]);
 
-      // Reset the form
+      const officials = await fetchAvailableOfficialsForGame(selectedGame);
+      setAvailableOfficials(officials);
+
       setSelectedGame('');
-      setSelectedUser('');
+      setSelectedOfficial('');
       setSelectedPosition('');
+      setFormError(null);
     } catch (error) {
       console.error(error);
-      setError(error.message);
+      setFormError(error.message);
     }
   };
+
+  const unassignedGames = games.filter(game => !game.officials_assigned);
 
   return (
     <div className="assignment-form">
       <h1>Assignment Form</h1>
+      {formError && <p>Error: {formError}</p>}
       {error && <p>Error: {error}</p>}
       <form onSubmit={handleAssign}>
         <div className="form-group">
@@ -64,28 +83,29 @@ const AssignmentForm = () => {
             id="gameSelect"
             className="form-control"
             value={selectedGame}
-            onChange={handleGameChange}
+            onChange={(e) => setSelectedGame(e.target.value)}
           >
             <option value="">Select a game</option>
-            {games.map((game) => (
+            {unassignedGames.map((game) => (
               <option key={`game-${game.id}`} value={game.id}>
-                {game.title} - {game.date_time}
+                {game.home_team} vs {game.away_team} - {game.date_time}
               </option>
             ))}
           </select>
         </div>
         <div className="form-group">
-          <label htmlFor="userSelect">Select Official</label>
+          <label htmlFor="officialSelect">Select Official</label>
           <select
-            id="userSelect"
+            id="officialSelect"
             className="form-control"
-            value={selectedUser}
-            onChange={handleUserChange}
+            value={selectedOfficial}
+            onChange={(e) => setSelectedOfficial(e.target.value)}
+            disabled={!selectedGame}
           >
             <option value="">Select Official</option>
-            {users.map((user) => (
-              <option key={`user-${user.id}`} value={user.id}>
-                {user.name}
+            {selectedGame && availableOfficials.map((official) => (
+              <option key={`official-${official.id}`} value={official.id}>
+                {official.name}
               </option>
             ))}
           </select>
@@ -96,7 +116,7 @@ const AssignmentForm = () => {
             id="positionSelect"
             className="form-control"
             value={selectedPosition}
-            onChange={handlePositionChange}
+            onChange={(e) => setSelectedPosition(e.target.value)}
           >
             <option value="">Select a position</option>
             <option value="Referee">Referee</option>
@@ -104,25 +124,8 @@ const AssignmentForm = () => {
             <option value="Fourth Official">Fourth Official</option>
           </select>
         </div>
-        <Button 
-          name="Assign" 
-          className="button--primary" 
-          handle={handleAssign}
-        />
+        <Button name="Assign" className="button--primary" handle={handleAssign} />
       </form>
-      <div className="games-list">
-        <h2>Games List</h2>
-        {games.map((game) => (
-          <div key={`game-detail-${game.id}`} className="game-details">
-            <h3>{game.title}</h3>
-            <p>Home Team: {game.home_team}</p>
-            <p>Away Team: {game.away_team}</p>
-            <p>Date and Time: {game.date_time}</p>
-            <p>Location: {game.location}</p>
-            <p>Field: {game.field}</p>
-          </div>
-        ))}
-      </div>
     </div>
   );
 };
