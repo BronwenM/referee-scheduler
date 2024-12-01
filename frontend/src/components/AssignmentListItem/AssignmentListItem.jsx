@@ -48,7 +48,7 @@ const AssignmentListItem = (props) => {
 
   return (
     <div className="assignment-preview">
-      <div className="assignment-preview__content" onClick={() => {toggleModal(); loadModalData(props)}}>
+      <div className="assignment-preview__content" onClick={() => {loadModalData({...props}); toggleModal()}}>
       <div className="assignment-preview__datetime">
         <div className="assignment-preview__date">
           <span>{parsedDate.month}</span>
@@ -58,8 +58,9 @@ const AssignmentListItem = (props) => {
       </div>
       <div className="assignment-preview__details">
         <div className="assignment-preview__level">
-          <span>{toTitleCase(game.title)}</span>
-          {/* <span style={{fontSize: "8px"}}>{game.home_team} vs {game.away_team}</span> */}
+          {/* <span>Game</span> */}
+          {/* <span>{toTitleCase(game.title)}</span> */}
+          <span className="assignment-preview__teams">{game.home_team} vs <br/>{game.away_team}</span>
         </div>
         <div className="assignment-preview__field">
           <span>Field</span>
