@@ -17,6 +17,7 @@ import HomePage from "./components/HomePage/HomePage.jsx";
 import AccountForm from "./components/CreateAccountForm/AccountForm.jsx";
 import GamesPage from "./components/GamesPage/GamesPage.jsx";
 import ReportPage from "./components/ReportPage/ReportPage.jsx";
+import ProfileEditPage from "./components/ProfileEditPage/ProfileEditPage.jsx";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
 
     //TODO: before demo remove this
     setUser(users[0]);
+    console.log(user[0]);
   }, []);
 
   return (
@@ -57,6 +59,7 @@ function App() {
             <Route path="/profile" element={<h1>Profile</h1>} />
           </Route>
         </Routes>
+        <ProfileEditPage />
       </main>
       <Footer />
     </>

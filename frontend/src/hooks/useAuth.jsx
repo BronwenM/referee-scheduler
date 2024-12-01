@@ -30,6 +30,7 @@ const AuthProvider = ({children}) => {
   const logout = () => {
     setUser({ role: '', permissions: [], name: '', username: '', email: '' });
     sessionStorage.removeItem("user");
+    Cookies.remove('new_user_id');
     navigate("/", {replace: true});
   };
 
