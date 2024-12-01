@@ -1,40 +1,45 @@
 import React from "react";
 import "./assignmentListItem.scss";
 import { useModal } from "../../hooks/useModal";
+import useUtils from "../../hooks/useUtils";
 
 const AssignmentListItem = (props) => {
-  const {gameDate, gameTime, level, gameName, field, position, confirmation} = props;
+  const {assigner, assignment, game, partners, pay} = props;
   const {toggleModal, loadModalData} = useModal()
+  const {convertDateString, toTitleCase} = useUtils();
+
+  const parsedDate = convertDateString(game.date_time);
 
   return (
     <div className="assignment-preview">
-      <div className="assignment-preview__content" onClick={() => {toggleModal(); loadModalData(props)}}>
+      <div className="assignment-preview__content" onClick={() => {loadModalData({...props}); toggleModal()}}>
       <div className="assignment-preview__datetime">
         <div className="assignment-preview__date">
-          <span>{gameDate.month}</span>
-          <span>{gameDate.day}</span>
+          <span>{parsedDate.month}</span>
+          <span>{parsedDate.day}</span>
         </div>
-        <span className="assignment-preview__time">@ {gameTime}</span>
+        <span className="assignment-preview__time">@ {parsedDate.time}</span>
       </div>
       <div className="assignment-preview__details">
         <div className="assignment-preview__level">
-          <span>{level}</span>
-          <span>{gameName}</span>
+          {/* <span>Game</span> */}
+          {/* <span>{toTitleCase(game.title)}</span> */}
+          <span className="assignment-preview__teams">{game.home_team} vs <br/>{game.away_team}</span>
         </div>
         <div className="assignment-preview__field">
           <span>Field</span>
-          <span>{field}</span>
+          <span>{game.field}</span>
         </div>
         <div className="assignment-preview__position">
           <span>Position</span>
-          <span>{position}</span>
+          <span>{toTitleCase(assignment.position)}</span>
         </div>
       </div>
       </div>
-      <select className="assignment-preview__confirmation">
-        <option default>Pending</option>
-        <option>Accept</option>
-        <option>Reject</option>
+      <select name="user-accepts-assignment" className="assignment-preview__confirmation">
+        <option value={null} default>Pending</option>
+        <option value={true}>Accept</option>
+        <option value={false}>Reject</option>
       </select>
       {/* <div className="assignment-preview__confirmation">
         <button type='button'>?</button>

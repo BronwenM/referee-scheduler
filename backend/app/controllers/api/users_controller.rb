@@ -16,11 +16,15 @@ class Api::UsersController < ApplicationController
   end
 
   #GET /users/:id/assignments (get user assignments)
-  def by_user_id
-    user_assignments = Assignment.where("official_id=?", params[:user_id])
-    render json: user_assignments, include: {game: {}, game_payment: {}}
-  rescue ActiveRecord::RecordNotFound
-    render json: { error: 'Assignment not found' }, status: :not_found
+  def assignments_by_user_id
+    if User.find_by("id=?", params[:user_id])
+      user_assignments = Assignment.where("official_id=?", params[:user_id])
+      user_full_assignment_data = user_assignments.map { |assignment| { assignment: assignment, partners: User.joins("LEFT JOIN assignments ON users.id = assignments.official_id").select("users.id, users.name, users.email, users.phone").select("assignments.position").where("game_id=? AND NOT users.id=?", assignment.game_id, assignment.official_id) , game: Game.where("id=?", assignment.game_id).first, pay_rate: GamePayment.select("id, pay_rate").find_by("id=?", assignment.game_payment_id), assigner: User.select("id, name, email, phone").find_by("id=?", assignment.assigner_id) } }
+
+      render json: user_full_assignment_data
+    else
+      render json: { error: 'User not found' }, status: :not_found
+    end
   end
 
   #POST /users, allows user creation plus role and permissions assignment

@@ -29,6 +29,7 @@ const AuthProvider = ({children}) => {
   //TODO: make sure user sesssion/state includes name, user name & email
   const logout = () => {
     setUser({ role: '', permissions: [], name: '', username: '', email: '' });
+    Cookies.remove("new_user_id");
     sessionStorage.removeItem("user");
     Cookies.remove('new_user_id');
     navigate("/", {replace: true});

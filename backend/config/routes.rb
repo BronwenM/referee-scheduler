@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   namespace :api do
     resources :users, only: [:index, :show, :create, :update, :destroy] do
-      resources :assignments, to: 'users#by_user_id'
+      resources :assignments, to: 'users#assignments_by_user_id'
     end
     resources :associations, only: [:index, :show, :create]
     resources :roles, only: [:index, :show]
