@@ -9,6 +9,7 @@ const AssignmentModalView = (props) => {
   const {user} = useAuth()
   const {convertDateString, toTitleCase} = useUtils();
 
+  //TODO: Move Officials list to table. Fix information hierarchy 
   return (
     <>
       <header>

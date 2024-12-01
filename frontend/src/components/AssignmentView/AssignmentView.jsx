@@ -17,6 +17,8 @@ const AssignmentView = () => {
 
   return (
     <div>
+      <button type="button">Newest first</button>
+      <button type="button">Pending Assignments</button>
       <div>
         {userAssignments.length === 0 ? <h2>No assignments here!</h2> : assignments}
       </div>
