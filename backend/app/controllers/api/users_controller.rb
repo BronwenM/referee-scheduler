@@ -57,9 +57,13 @@ class Api::UsersController < ApplicationController
     user = User.find_by(id: params[:id])
 
     if user
-      if user.update(user_params)
+      user_params_filtered = user_params.to_h
+
+      user_params_filtered[:created_at] = user.created_at
+
+      if user.update(user_params_filtered)
         if params[:role_name].present?
-          role = Role.find_by(id: params[:id])
+          role = Role.find_by(name: params[:role_name])
           if role
             user.update(role: role)
           else
@@ -69,13 +73,12 @@ class Api::UsersController < ApplicationController
 
         render json: { user: user, message: 'User updated successfully' }, status: :ok
       else
-        render json: { errors: user.errors.full_messaeges }, status: :unprocessable_entity
+        render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
       end
     else
       render json: { error: 'User not found' }, status: :not_found
     end
   end
-
   #POST /users/delete
   def destroy
     user = User.find_by(id: params[:id])
@@ -100,3 +103,6 @@ class Api::UsersController < ApplicationController
     end
   end
 end
+
+
+
