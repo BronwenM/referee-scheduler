@@ -8,18 +8,20 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { CSVLink } from 'react-csv';
 import Button from '../Button/Button';
+import axios from 'axios';
+import './ReportPage.scss';
+import { toast } from 'react-toastify';
 
 const ReportPage = () => {
   const { games, error } = useGameData();
   const [tableData, setTableData] = useState([]);
   const table = useTable();
 
-  // Format and set table data when games data changes
   useEffect(() => {
     if (games.length > 0) {
       const formattedData = games.map(game => ({
         ...game,
-        date_time: new Date(game.date_time).toLocaleString(),
+        date_time: new Date(game.date_time).toLocaleString(), // 
         created_at: new Date(game.created_at).toLocaleString(),
         updated_at: new Date(game.updated_at).toLocaleString(),
       }));
@@ -27,12 +29,10 @@ const ReportPage = () => {
     }
   }, [games]);
 
-  // Handle error state
   if (error) {
     return <div>Error: {error}</div>;
   }
 
-  // Making the table columns
   const columns = [
     { key: 'title', title: 'Title', dataType: DataType.String },
     { key: 'home_team', title: 'Home Team', dataType: DataType.String },
@@ -47,12 +47,21 @@ const ReportPage = () => {
     { key: 'updated_at', title: 'Updated At', dataType: DataType.Date },
   ];
 
-  // If we want ot post the data to the server we can use this function.
-  const handleSave = () => {
-    console.log('Updated data:', tableData);
+  const handleSave = async () => {
+    try {
+      const updatedGames = tableData.map(async (game) => {
+        const response = await axios.patch(`/api/games/${game.id}`, game, { withCredentials: true });
+        return response.data;
+      });
+      await Promise.all(updatedGames);
+      toast.success('Data saved successfully!');
+      console.log('Updated data:', tableData);
+    } catch (error) {
+      toast.error('Failed to save edits.');
+      console.error('Failed to save data:', error);
+    }
   };
 
-  // Export data to PDF or CSV. using the documnetation from https://komarovalexander.github.io/ka-table/#/export-pdf
   const exportData = (type, orientation = 'portrait') => {
     const head = [columns.map(col => col.title)];
     const body = tableData.map(row => columns.map(col => getValueByColumn(row, col)));
@@ -72,7 +81,6 @@ const ReportPage = () => {
     }
   };
 
-  // Handle cell value change when editing
   const handleCellChange = (columnKey, rowKeyValue, value) => {
     setTableData(prevData =>
       prevData.map(row =>
@@ -81,7 +89,6 @@ const ReportPage = () => {
     );
   };
 
-  // Render cell editor based on column data type 
   const renderCellEditor = ({ column, rowKeyValue, value }) => {
     const commonProps = {
       value: value === true ? 'true' : value === false ? 'false' : value || '',
@@ -94,6 +101,17 @@ const ReportPage = () => {
       onBlur: () => table.closeEditor(rowKeyValue, column.key),
       autoFocus: true,
     };
+
+    if (column.key === 'date_time') {
+      return (
+        <input
+          type="datetime-local"
+          {...commonProps}
+          value={value || ''}
+          onChange={(event) => handleCellChange(column.key, rowKeyValue, event.target.value)}
+        />
+      );
+    }
 
     return column.dataType === DataType.Boolean ? (
       <select className='form-control' {...commonProps}>
