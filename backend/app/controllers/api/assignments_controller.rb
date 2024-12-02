@@ -11,6 +11,8 @@ class Api::AssignmentsController < ApplicationController
   def show
     assignment = Assignment.find(params[:id])
     render json: assignment
+
+    
   rescue ActiveRecord::RecordNotFound
     render json: { error: 'Assignment not found' }, status: :not_found
   end
@@ -63,6 +65,22 @@ class Api::AssignmentsController < ApplicationController
     else
       render json: { error: 'Assignment not found' }, status: :not_found
     end
+  end
+
+  def update
+    
+    assignment = Assignment.find_by(id: params[:id]) 
+    
+    render json: { message: 'Assignment not found' }, status: :not_found unless assignment
+
+    update_params = params.permit(:game_id, :official_id, :assigner_id, :position, :game_payment_id, :accepted)
+
+    params.except(:controller, :action).each do |key, value|
+      assignment.update(key => value)
+      puts "key: #{key}, value: #{value}"
+    end
+
+    render json: { user: user, message: 'User updated successfully' }, status: :ok
   end
 
   private

@@ -1,0 +1,33 @@
+.assignment-view {
+  display: grid;
+  grid-template-areas: 
+    "header header"
+    "sidebar content"
+  ;
+  grid-template-columns: minmax(auto, 225px) 1fr;
+
+  gap: 16px;
+}
+
+.assignment-view__header {
+  grid-area: header;
+}
+
+.assignment-view__filters {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  background-color: rebeccapurple;
+  margin-left: 8px;
+  grid-area: sidebar;
+
+  >* {
+    margin: 8px;
+  }
+  
+}
+
+.assignment-view__assignments {
+  grid-area: content;
+  min-width: 100%;
+}

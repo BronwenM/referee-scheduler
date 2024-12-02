@@ -82,8 +82,20 @@ const useUserData = (userID) => {
     setUserAssignments([ ...pending, ...accepted, ...rejected ]);
   };
 
+  //TODO: Aggregate function to contain all filter functions
   const filterAssignments = (filterBy) => {
 
+  }
+
+  const userAcceptAssignment = async (id, setAccept = null) => {
+    try {
+      const response = await axios.post(`/api/assignments/${id}?accepted=${setAccept}`, assignmentData, { withCredentials: true });
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      setError('Failed to create assignment');
+      throw error;
+    }
   }
 
   return { getAssignmentsByUser, userAssignments, sortAssignmentsByGameDate, sortAssignmentsByStatus };
