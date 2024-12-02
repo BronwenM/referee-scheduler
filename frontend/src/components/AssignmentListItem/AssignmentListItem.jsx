@@ -11,9 +11,7 @@ const AssignmentListItem = (props) => {
   const parsedDate = convertDateString(game.date_time);
 
   return (
-    <div className="assignment-preview">
-      <span style={{fontSize: "8px"}}>Assignment Created At: <br/> {convertDateString(assignment.created_at).full}</span>
-      <span style={{fontSize: "8px"}}>Game Created At: <br/> {convertDateString(game.created_at).full}</span>
+    <div className={`assignment-preview accepted-${assignment.accepted}`}>
       <div className="assignment-preview__content" onClick={() => {loadModalData({...props}); toggleModal()}}>
       <div className="assignment-preview__datetime">
         <div className="assignment-preview__date">

@@ -53,11 +53,40 @@ const useUserData = (userID) => {
   const getAssignmentsByUser = async () => {
     const userAssignments = await axios.get(`/api/users/${userID}/assignments`, { withCredentials: false });
     const assignmentResponses = await Promise.resolve(userAssignments);
-    console.log("user assignments", userAssignments.data);
+
+    assignmentResponses.data.sort((gameA, gameB) => {
+      return new Date(gameA.game.date_time) - new Date(gameB.game.date_time)
+    })
+
     setUserAssignments(assignmentResponses.data);
+    
   };
 
-  return { getAssignmentsByUser, userAssignments };
+  const sortAssignmentsByGameDate = (ascending = true) => {
+    const sorted = userAssignments.toSorted((gameA, gameB) => {
+      return new Date(gameA.game.date_time) - new Date(gameB.game.date_time)
+    })
+
+    ascending ? setUserAssignments(sorted) : setUserAssignments(sorted.reverse())
+  };
+
+  const sortAssignmentsByStatus = () => {
+    const sorted = userAssignments.toSorted((gameA, gameB) => {
+      return new Date(gameA.game.date_time) - new Date(gameB.game.date_time)
+    })
+
+    const pending = sorted.filter(assignment => assignment.assignment.accepted === null);
+    const accepted = sorted.filter(assignment => assignment.assignment.accepted === true);
+    const rejected = sorted.filter(assignment => assignment.assignment.accepted === false);
+
+    setUserAssignments([ ...pending, ...accepted, ...rejected ]);
+  };
+
+  const filterAssignments = (filterBy) => {
+
+  }
+
+  return { getAssignmentsByUser, userAssignments, sortAssignmentsByGameDate, sortAssignmentsByStatus };
 };
 
 export default useUserData;
