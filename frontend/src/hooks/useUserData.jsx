@@ -53,8 +53,6 @@ const useUserData = (userID) => {
   const getAssignmentsByUser = async () => {
     const userAssignments = await axios.get(`/api/users/${userID}/assignments`, { withCredentials: false });
     const assignmentResponses = await Promise.resolve(userAssignments);
-    
-    console.log("user assignments", userAssignments.data);
 
     assignmentResponses.data.sort((gameA, gameB) => {
       return new Date(gameA.game.date_time) - new Date(gameB.game.date_time)
