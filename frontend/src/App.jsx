@@ -18,6 +18,7 @@ import AccountForm from "./components/CreateAccountForm/AccountForm.jsx";
 import GamesPage from "./components/GamesPage/GamesPage.jsx";
 import ReportPage from "./components/ReportPage/ReportPage.jsx";
 import ProfileEditPage from "./components/ProfileEditPage/ProfileEditPage.jsx";
+import CalendarComponent from "./components/Calendar/CalendarComponent.jsx";
 
 
 function App() {
@@ -57,9 +58,13 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />          
             <Route path="/availability" element={ <AvailabilityForm /> } />
             <Route path="/profile" element={<h1>Profile</h1>} />
+            <Route path="/new-game" element={<GameForm />} />
+            <Route path="/new-assignment" element={<AssignmentForm />} />
+            <Route path="/reports" element={<ReportPage />} />
+            <Route path="/calendar" element={<CalendarComponent />} />
+            <Route path="/availability" element={<AvailabilityForm />} />
           </Route>
         </Routes>
-        <ReportPage />
       </main>
       <Footer />
     </>
