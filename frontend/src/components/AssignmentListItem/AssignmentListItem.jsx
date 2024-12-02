@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./assignmentListItem.scss";
 import { useModal } from "../../hooks/useModal";
 import useUtils from "../../hooks/useUtils";
+import useUserData from "../../hooks/useUserData";
 
 const AssignmentListItem = (props) => {
   const { assigner, assignment, game, partners, pay } = props;
   const { toggleModal, loadModalData } = useModal();
   const { convertDateString, toTitleCase } = useUtils();
-
+  const {userAcceptAssignment} = useUserData(assignment.official_id);
   const parsedDate = convertDateString(game.date_time);
 
   return (
@@ -47,20 +48,12 @@ const AssignmentListItem = (props) => {
             </div>
           </div>
         </div>
-        {/* <div className="assignment-preview__confirmation">
-        <button type='button'>?</button>
-        </div> */}
       </div>
-      <select
-        name="user-accepts-assignment"
-        className="assignment-preview__confirmation"
-      >
-        <option value={null} default>
-          Pending
-        </option>
-        <option value={true}>Accept</option>
-        <option value={false}>Reject</option>
-      </select>
+        <div className="assignment-preview__confirmation">
+          <button type='button' onClick={() => userAcceptAssignment(assignment.id, null)}>Mark Pending</button>
+          <button type='button' onClick={() => userAcceptAssignment(assignment.id, true)}>Accept Assignment</button>
+          <button type='button' onClick={() => userAcceptAssignment(assignment.id, false)}>Reject Assignment</button>
+        </div>
     </div>
   );
 };

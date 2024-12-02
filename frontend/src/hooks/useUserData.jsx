@@ -89,16 +89,16 @@ const useUserData = (userID) => {
 
   const userAcceptAssignment = async (id, setAccept = null) => {
     try {
-      const response = await axios.post(`/api/assignments/${id}?accepted=${setAccept}`, assignmentData, { withCredentials: true });
-      return response.data;
+      const response = await axios.patch(`/api/assignments/${id}`, {accepted: setAccept});
+      console.log("response data:", response.data.assignment)
+      
     } catch (error) {
       console.error(error);
-      setError('Failed to create assignment');
       throw error;
     }
   }
 
-  return { getAssignmentsByUser, userAssignments, sortAssignmentsByGameDate, sortAssignmentsByStatus };
+  return { getAssignmentsByUser, userAssignments, sortAssignmentsByGameDate, sortAssignmentsByStatus, userAcceptAssignment};
 };
 
 export default useUserData;

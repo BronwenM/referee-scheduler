@@ -73,20 +73,21 @@ class Api::AssignmentsController < ApplicationController
     
     render json: { message: 'Assignment not found' }, status: :not_found unless assignment
 
-    update_params = params.permit(:game_id, :official_id, :assigner_id, :position, :game_payment_id, :accepted)
+    # Rails.logger.info("Params are #{assignment_params}")
 
-    params.except(:controller, :action).each do |key, value|
-      assignment.update(key => value)
-      puts "key: #{key}, value: #{value}"
+    if assignment_params.has_key?(:accepted)
+      # puts "accepted is in params"
+      assignment.update(accepted: assignment_params[:accepted]) unless assignment.accepted == assignment_params[:accepted]
+      # puts "Assignment: #{assignment.accepted}"
     end
 
-    render json: { user: user, message: 'User updated successfully' }, status: :ok
+    render json: { assignment: assignment, message: 'Assignment updated successfully' }, status: :ok
   end
 
   private
   
   def assignment_params
-    params.require(:assignment).permit(:game_id, :official_id, :assigner_id, :position, :game_payment_id)
+    params.require(:assignment).permit(:game_id, :official_id, :assigner_id, :position, :game_payment_id, :accepted)
   end  
 
   def authorize_assigner
