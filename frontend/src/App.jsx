@@ -21,7 +21,6 @@ import ProfileEditPage from "./components/ProfileEditPage/ProfileEditPage.jsx";
 
 
 function App() {
-  const [message, setMessage] = useState("");
   const { user, setUser, userLoggedIn } = useAuth();
   const navigate = useNavigate();
 
@@ -37,15 +36,15 @@ function App() {
 
     //TODO: before demo remove this
     setUser(users[0]);
-    console.log(user[0]);
+    // console.log(user[0]);
   }, []);
 
   return (
     <>
       {userLoggedIn() && (
         <Hero
-          connectionTest={message}
           userFN={user.name ? user.name : "User"}
+          role={user.role}
         />
       )}
       <NavBar />

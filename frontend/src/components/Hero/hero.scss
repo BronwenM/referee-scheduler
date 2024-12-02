@@ -9,6 +9,12 @@
   flex-direction: column;
   justify-content: center;
 }
+.hero-banner__content {
+  max-width: 1280px;
+  align-self: center;
+  width: 100%;
+}
+
 .hero-banner__greeting {
   font-size: 2.5rem;
   font-weight: 600;
@@ -20,6 +26,8 @@
   padding: 32px 24px;
   margin: 24px 0;
   max-width: 60%;
+  width: fit-content;
+  min-width: 450px;
 
   span {
     margin-bottom: 8px;
