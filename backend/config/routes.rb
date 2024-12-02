@@ -15,7 +15,7 @@ Rails.application.routes.draw do
         get :find_unassigned
       end
     end
-    resources :assignments, only: [:index, :show, :create, :destroy]
+    resources :assignments, only: [:index, :show, :create, :destroy, :update]
     resources :unavailabilities, only: [:index, :show, :update]
     resources :user_roles, only: [:index, :show]
     resources :game_payments, only: [:index, :show]

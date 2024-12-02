@@ -82,11 +82,23 @@ const useUserData = (userID) => {
     setUserAssignments([ ...pending, ...accepted, ...rejected ]);
   };
 
+  //TODO: Aggregate function to contain all filter functions
   const filterAssignments = (filterBy) => {
 
   }
 
-  return { getAssignmentsByUser, userAssignments, sortAssignmentsByGameDate, sortAssignmentsByStatus };
+  const userAcceptAssignment = async (id, setAccept = null) => {
+    try {
+      const response = await axios.patch(`/api/assignments/${id}`, {accepted: setAccept});
+      console.log("response data:", response.data.assignment)
+      
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+
+  return { getAssignmentsByUser, userAssignments, sortAssignmentsByGameDate, sortAssignmentsByStatus, userAcceptAssignment};
 };
 
 export default useUserData;
