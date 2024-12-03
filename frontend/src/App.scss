@@ -4,3 +4,34 @@
     padding: 2rem;
     text-align: center;
 }
+
+#root {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
+    display: grid;
+    grid-template-areas: 
+        "hero"
+        "navbar"
+        "content"
+        "footer";
+    grid-template-rows: auto auto 1fr auto;
+    align-content: space-between;
+    height: 100%;
+}
+
+.hero-banner {
+    grid-area: hero;
+}
+
+.navbar {
+    grid-area: navbar;
+}
+
+.app__content{
+    grid-area: content;
+}
+
+.footer {
+    grid-area: footer;
+}

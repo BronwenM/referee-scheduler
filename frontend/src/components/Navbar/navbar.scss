@@ -7,15 +7,63 @@
   color: red;
   align-items: center;
   padding: 8px 32px;
+  min-height: 70px;
 }
+
 .navbar-links {
+  // overflow: hidden;
   list-style: none;
   display: flex;
   margin-left: auto;
 }
+
+.navbar-links__dropdown-open {
+  display: none;
+}
+
 .navbar-links li {
   margin: 0 15px;
   a {
     text-decoration: none;
+    display: block;
   }
+}
+
+.navbar__dropdown-btn {
+  display: none;
+}
+
+.navbar__top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 900px) {
+  .navbar__dropdown-btn {
+    display: block;
+    cursor: pointer;
+  }
+
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-links__dropdown-open {
+    display: block;
+    position: absolute;
+    background: aliceblue;
+    width: 100%;
+    margin: 0;
+    padding: 16px 32px;
+
+    li {
+      list-style: none;
+      margin-bottom: 8px;
+
+      a {
+        text-decoration: none;
+      }
+    }
+  }  
 }

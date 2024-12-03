@@ -16,7 +16,7 @@ const AssignmentListItem = (props) => {
       <div
         className="assignment-preview__content"
         onClick={() => {
-          loadModalData({ ...props });
+          loadModalData({ ...props }, 'assignment');
           toggleModal();
         }}
       >

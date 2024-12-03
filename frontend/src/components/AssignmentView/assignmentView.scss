@@ -4,7 +4,8 @@
     "header header"
     "sidebar content"
   ;
-  grid-template-columns: minmax(auto, 225px) 1fr;
+  grid-template-columns: minmax(auto, 225px) minmax(500px, 1fr);
+  grid-rows: auto 1fr ;
 
   gap: 16px;
 }
@@ -20,14 +21,33 @@
   background-color: rebeccapurple;
   margin-left: 8px;
   grid-area: sidebar;
+  border-radius: 8px;
+  color: #fff;
 
   >* {
     margin: 8px;
   }
-  
+
 }
 
 .assignment-view__assignments {
   grid-area: content;
   min-width: 100%;
+}
+
+@media screen and (max-width: 900px) {
+  .assignment-view{
+    grid-template-areas: 
+    "header header"
+    "sidebar sidebar"
+    "content content"
+    ;
+  }
+
+  .assignment-view__filters {
+    flex-direction: row;
+    margin-left: 0;
+    padding: 8px 4px;
+  }
+  
 }

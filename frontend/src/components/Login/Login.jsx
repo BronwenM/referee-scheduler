@@ -32,9 +32,7 @@ const Login = () => {
 
     try {
       const response = await axios.post('/api/sessions', { userIdentifier, password });
-      console.log('Login successful:', response.data);
-      toast.success('Login successful');
-      console.log(response.data);
+      // console.log('Login successful:', response.data);
       login(response.data);
       navigate('/');
     } catch (error) {

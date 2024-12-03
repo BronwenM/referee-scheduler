@@ -3,6 +3,7 @@ import { useModal } from "../../hooks/useModal";
 import "./modal.scss";
 import { useAuth } from "../../hooks/useAuth";
 import useUtils from "../../hooks/useUtils";
+import { Link } from "react-router-dom";
 
 const AssignmentModalView = (props) => {
   const { assigner, assignment, game, partners, pay } = props.data;
@@ -42,39 +43,51 @@ const AssignmentModalView = (props) => {
 };
 
 const GameModalView = (props) => {
-  const { data } = props;
+  const { game } = props.data;
 
   return (
     <>
       <header>
-        <h1>Game</h1>
+        <h1>{game.title}</h1>
+        <h4>{game.home_team} vs {game.away_team}</h4>
       </header>
       <article>
-        {Object.keys(data).map((key) => (
-          <div>{key}</div>
-        ))}
+        <p>Date and Time: {new Date(game.date_time).toLocaleString()}</p>
+        <p>Location: {game.location}</p>
+        <p>Field: {game.field}</p>
+        <p>Officials Assigned: {game.officials_assigned ? 'Yes' : 'No'}</p>
+        <p>Status: {game.status}</p>
+        <p>Game Type: {game.game_type}</p>
       </article>
     </>
   );
 };
 
 const Modal = (props) => {
-  const { toggleModal, modalData, showModal } = useModal();
-  const { viewType } = props;
+  const { toggleModal, modalData, showModal, view } = useModal();
+  const { user } = useAuth();
+  
 
   return (
     <div className="modal">
       <div className="modal__background" onClick={toggleModal}></div>
       <div className="modal__content">
-        <button className="modal__close-button" onClick={toggleModal}>
-          Close
-        </button>
+        <div className="modal__buttons">
+          <button className="modal__close-button" onClick={toggleModal}>
+            ✖
+          </button>
+        </div>
         <div className="modal__content__children">
-          {viewType === "assignment" && (
+          {view === "assignment" && (
             <AssignmentModalView data={modalData} />
           )}
-          {viewType === "game" && <GameModalView data={modalData} />}
+          {view === "game" && <GameModalView data={modalData} />}
         </div>
+        {view === 'game' && user.role === 'admin' && 
+            <Link className="modal__edit-button" onClick={toggleModal} to="new-game">
+              ✎ Edit Game
+            </Link>
+          }
       </div>
     </div>
   );

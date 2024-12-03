@@ -1,0 +1,82 @@
+.game-preview {
+  width: 100%;
+  background-color: #bebebe;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  user-select: none;
+  margin-bottom: 16px;
+  text-align: left;
+  padding: 16px;
+  cursor: pointer;
+}
+
+.game-preview__datetime {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    gap: 8px;
+    align-items: center;
+    min-width: fit-content;
+    justify-content: flex-start;
+
+  .game-preview__date {
+    display: flex;
+    flex-direction: column;
+
+    :first-child {
+      font-size: small;
+    }
+    
+    :last-child{
+      font-size: 2rem;
+    }
+  }
+  
+  .game-preview__time{
+    width: fit-content;
+    font-size: 1.5rem;
+  }
+}
+
+.game-preview__datetime::after {
+  content: "";
+  height: 4rem;
+  width: 1.5px;
+  background-color: #00000028;
+  margin: 0 16px;
+}
+
+
+.game-preview__details-wrapper {
+  width: 100%;
+  // margin-left: 16px;
+  flex-shrink: 10;
+
+  .game-preview__teams {
+    font-size: 0.75rem;
+    width: 100%;
+    margin-bottom: 6px;
+  }
+}
+
+.game-preview__details {
+  flex-grow: 0.5;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+
+  & > * {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.game-preview__confirmation{
+  margin-right: 24px;
+}

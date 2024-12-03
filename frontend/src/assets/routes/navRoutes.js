@@ -41,4 +41,16 @@ export const links = [
     linkTo: '/reports',
     visibleTo: ['admin', 'assigner']
   },
+  {
+    id: 8,
+    linkName: "Assignments",
+    linkTo: '/assignments',
+    visibleTo: ['official']
+  },
+  {
+    id: 9,
+    linkName: "Games",
+    linkTo: '/games',
+    visibleTo: ['assigner', 'admin']
+  },
 ]
