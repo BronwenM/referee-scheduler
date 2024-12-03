@@ -62,7 +62,6 @@ function App() {
             <Route path="/new-assignment" element={<AssignmentForm />} />
             <Route path="/reports" element={<ReportPage />} />
             <Route path="/calendar" element={<CalendarComponent />} />
-            <Route path="/availability" element={<AvailabilityForm />} />
           </Route>
         </Routes>
       </main>
