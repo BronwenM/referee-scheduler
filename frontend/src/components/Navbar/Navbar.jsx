@@ -22,7 +22,7 @@ const NavBar = () => {
             <Link to="/">
               <img src="/path-to-your-logo.png" alt="Logo" />
             </Link>
-            <button type="button" className="navbar__dropdown-btn" onClick={toggleDropdown}>+</button>
+            <button type="button" className={`navbar__dropdown-btn ${dropdownOpen ? 'dropdown-open' : ''}`} onClick={toggleDropdown}><i class="fa-solid fa-bars"></i></button>
           </div>
           <ul className='navbar-links'>
             {links.filter(link => link.visibleTo.includes(userRole)).map(link =>

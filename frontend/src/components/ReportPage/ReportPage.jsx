@@ -129,7 +129,8 @@ const ReportPage = () => {
 
   return (
     <div>
-      <h1>Games Report</h1>
+      <h1>Reports</h1>
+      <h2>All Games</h2>
       <Button handle={() => exportData('pdf')} name="Export to PDF" className="primary" />
       <Button handle={() => exportData('pdf', 'landscape')} name="Export to PDF (Landscape)" className="primary" />
       <CSVLink data={exportData('csv')} filename="games_report.csv">

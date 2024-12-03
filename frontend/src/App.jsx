@@ -73,12 +73,12 @@ function App() {
 
           {/* Admins Only */}
           <Route element={<ProtectedRoute permittedRoles={["admin"]} />} >
-            <Route path="/new-game" element={<h1>New Game</h1>}/>
+            <Route path="/new-game" element={<GameForm />}/>
           </Route>
 
           {/* Assigners Only */}
           <Route element={<ProtectedRoute permittedRoles={["assigner"]} />} >
-            <Route path="/new-assignment" element={<h1>New Assignment</h1>}/>
+            <Route path="/new-assignment" element={<AssignmentForm />}/>
           </Route>
 
           {/* Officials Only */}

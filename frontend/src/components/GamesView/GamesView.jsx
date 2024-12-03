@@ -11,8 +11,7 @@ const GamesPage = () => {
 
   return (
     <div>
-      <h1>Games List</h1>
-      {/* {games.length > 0 && <GameListItem game={games[0]} />} */}
+      <h1>All Games</h1>
       {games.length === 0 ? (
         <p>No games available</p>
       ) : 

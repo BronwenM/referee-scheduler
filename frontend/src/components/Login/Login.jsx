@@ -49,12 +49,12 @@ const Login = () => {
   return (
     <section>
     <ToastContainer />
-    <h1>Login</h1>
+    <h1>Login to Your Account</h1>
     <form>
-      <label htmlFor="userIdentifier">Username or Email:</label>
+      <label htmlFor="userIdentifier">Username or Email</label>
         <input
           id="userIdentifier"
-          type="userIdentifier"
+          type="text"
           value={userIdentifier}
           onChange={(e) => setIdentifier(e.target.value)}
           autoComplete="off"
@@ -62,7 +62,7 @@ const Login = () => {
           autoFocus
         />
       <br />
-      <label htmlFor="password">Password:</label>
+      <label htmlFor="password">Password</label>
       <input
         id="password"
         type="password"

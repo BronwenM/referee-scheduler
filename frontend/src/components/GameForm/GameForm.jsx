@@ -53,36 +53,39 @@ const handleGameSubmit = async (e) => {
 };
   return (
     <section>
-    <h1>Game Form</h1>
+    <h1>New Game</h1>
     <form onSubmit={handleGameSubmit}>
-      <label htmlFor="title">Title:</label>
+      <label htmlFor="title">Title</label>
       <input
         type="text"
         id="title"
         name="title"
         value={game.title}
         onChange={handleChange}
+        placeholder='ex. Regular Season Game 1'
       />
       <br />
-      <label htmlFor="home_team">Home Team:</label>
+      <label htmlFor="home_team">Home Team</label>
       <input
         type="text"
         id="home_team"
         name="home_team"
         value={game.home_team}
         onChange={handleChange}
+        placeholder='ex. Battling Bandits'
       />
       <br />
-      <label htmlFor="away_team">Away Team:</label>
+      <label htmlFor="away_team">Away Team</label>
       <input
         type="text"
         id="away_team"
         name="away_team"
         value={game.away_team}
         onChange={handleChange}
+        placeholder='ex. Crawford Castles'
       />
       <br />
-      <label htmlFor="date_time">Date and Time:</label>
+      <label htmlFor="date_time">Date and Time</label>
       <input
         type="datetime-local"
         id="date_time"
@@ -91,34 +94,27 @@ const handleGameSubmit = async (e) => {
         onChange={handleChange}
       />
       <br />
-      <label htmlFor="location">Location:</label>
+      <label htmlFor="location">Location</label>
       <input
         type="text"
         id="location"
         name="location"
         value={game.location}
         onChange={handleChange}
+        placeholder='ex. Steveston-London Secondary School'
       />
       <br />
-      <label htmlFor="field">Field:</label>
+      <label htmlFor="field">Field</label>
       <input
         type="text"
         id="field"
         name="field"
         value={game.field}
         onChange={handleChange}
+        placeholder='ex. Rink 3'
       />
       <br />
-      <label htmlFor="officials_assigned">Officials Assigned:</label>
-      <input
-        type="checkbox"
-        id="officials_assigned"
-        name="officials_assigned"
-        checked={game.officials_assigned}
-        onChange={handleChange}
-      />
-      <br />
-      <label htmlFor="status">Status:</label>
+      <label htmlFor="status">Status</label>
       <select
         id="status"
         name="status"
@@ -131,7 +127,7 @@ const handleGameSubmit = async (e) => {
         <option value="completed">Completed</option>
       </select>
       <br />
-      <label htmlFor="game_type">Game Type:</label>
+      <label htmlFor="game_type">Game Type</label>
       <select
         id="game_type"
         name="game_type"
@@ -144,11 +140,20 @@ const handleGameSubmit = async (e) => {
         <option value="friendly">Friendly</option>
       </select>
       <br />
+      {/* <label htmlFor="officials_assigned">Officials Assigned</label>
+      <input
+        type="checkbox"
+        id="officials_assigned"
+        name="officials_assigned"
+        checked={game.officials_assigned}
+        onChange={handleChange}
+      />
+      <br /> */}
       <Button 
         handle={handleGameSubmit}
         name="Create Game"
         className="primary"
-      />
+      />      
     </form>
   </section>
   );
