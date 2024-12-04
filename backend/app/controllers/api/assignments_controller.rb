@@ -49,6 +49,7 @@ class Api::AssignmentsController < ApplicationController
     
 
     if assignment.save
+      AssignmentMailer.assignment_email(assignment).deliver_now
       render json: { assignment: assignment, message: 'Assignment created successfully' }, status: :created
     else
       render json: { errors: assignment.errors.full_messaeges }, status: :unprocessable_entity
