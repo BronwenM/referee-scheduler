@@ -6,7 +6,7 @@ import {useUserData} from "../../hooks/useUserData";
 
 const AssignmentListItem = (props) => {
   const { assigner, assignment, game, partners, pay } = props;
-  const {userAcceptAssignment} = useUserData()
+  const {userAcceptAssignment} = useUserData();
   const { toggleModal, loadModalData } = useModal();
   const { convertDateString, toTitleCase } = useUtils();
   const parsedDate = convertDateString(game.date_time);

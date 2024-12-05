@@ -31,14 +31,48 @@
   box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 4px 0px;
   border: 2px solid #FFB640;
 
+  h3 {
+    margin: 0 0 8px 0;
+  }
+
   span {
     margin-bottom: 8px;
   }
 }
 
+.hero-banner__alert-msg {
+  font-size: small;
+}
+
+.hero-assignment__confirmation {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  
+  button {
+    color: #fff;
+    background-color: rgb(84, 84, 84);
+    font-size: 0.75rem;
+  }
+
+  .hero__accept-btn {
+    background-color: #177011;
+  }
+
+  .hero__reject-btn {
+    background-color: #9e0000;
+  }
+}
+
+
+
 @media screen and (max-width: 500px) {
   .hero-banner__quick-info {
     min-width: 100%;
     font-size: small;
+  }
+
+  .hero-assignment__confirmation {
+    display: none;
   }
 }
