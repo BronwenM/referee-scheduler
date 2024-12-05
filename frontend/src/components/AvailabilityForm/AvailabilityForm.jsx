@@ -4,6 +4,8 @@ import 'react-calendar/dist/Calendar.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Button from '../Button/Button';
+import Cookies from 'js-cookie';
+import axios from 'axios';
 
 const AvailabilityForm = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -19,44 +21,35 @@ const AvailabilityForm = () => {
     } else {
       UnavailableDatesArray.push(dateStr);
     }
-
     setUnavailableDates(UnavailableDatesArray);
   };
 
-   // A helper function to set the hours and minutes of a date
    const setDateTime = (date, time) => {
     const [hours, minutes] = time.split(':');
     date.setHours(hours, minutes);
     return date;
   };
+  const handleSubmit = async () => {
+    const userId = Cookies.get('new_user_id');
 
-  const handleSubmit = () => {
-      // Check if both start and end time and date are selected
-      if (!selectedDate || !timeRange.startTime || !timeRange.endTime) {
-        toast.error('Please select a date and both start and end time.');
-        return;
-      }
+    const startDateTime = setDateTime(new Date(selectedDate), timeRange.startTime);
+    const endDateTime = setDateTime(new Date(selectedDate), timeRange.endTime);
 
-    const now = new Date(); // Get the current date and time
-
-    // Create new Date objects for the start and end times of the unavailable period
-    const startDateTime = setDateTime(new Date(selectedDate), timeRange.startTime); 
-    const endDateTime = setDateTime(new Date(selectedDate), timeRange.endTime); 
-
-
-    // This checks if the selected date and time are in the past
-    if (startDateTime < now || endDateTime < now) {
-      toast.error('Please select a date and time in the future.');
-      return;
+    try {
+      const response = await axios.post('/api/unavailabilities', { 
+        official_id: userId, 
+        week_day: selectedDate.getDay(),
+        all_day: false,
+        time_from: startDateTime.toISOString(), 
+        time_to: endDateTime.toISOString(), 
+        available_date: selectedDate.toISOString().split('T')[0]
+      });
+  
+      toast.success('Unavailability updated successfully');
+    } catch (error) {
+      console.error('Error updating unavailability:', error);
+      toast.error('Error updating unavailability');
     }
-
-    const selectedTimeRange = `${timeRange.startTime} - ${timeRange.endTime}`;
-    const unavailableDatesArray = unavailableDates.join(', ');
-    toast.success(`Unavailable Time: ${selectedTimeRange}\nUnavailable Dates: ${unavailableDatesArray}`);
-
-    setSelectedDate(new Date());
-    setTimeRange({ startTime: '', endTime: '' });
-    setUnavailableDates([]);
   };
 
   return (
@@ -95,7 +88,7 @@ const AvailabilityForm = () => {
         name="Submit"
         className="primary" 
       />
-      <ToastContainer /> {/* You can customize this further.*/}
+      <ToastContainer />
     </div>
   );
 };

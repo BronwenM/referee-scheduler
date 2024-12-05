@@ -17,6 +17,9 @@ import AssignmentView from "./components/AssignmentView/AssignmentView.jsx";
 import { useModal } from "./hooks/useModal.jsx";
 import Modal from "./components/Modal/Modal.jsx";
 import CalendarComponent from "./components/Calendar/CalendarComponent.jsx"
+import ProfileEditPage from "./components/ProfileEditPage/ProfileEditPage.jsx";
+import CalendarComponent from "./components/Calendar/CalendarComponent.jsx";
+
 
 function App() {
   const { user, setUser, userLoggedIn } = useAuth();

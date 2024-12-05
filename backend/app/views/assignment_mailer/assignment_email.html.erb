@@ -1,0 +1,14 @@
+<%# I tried to use templates for sending email. Couldnt get it to work %>
+
+
+<p>Hello <%= @assignment.official.name %>,</p>
+
+<p>You have been assigned to a new game:</p>
+
+<p>
+  Game: <%= @assignment.game.title %><br>
+  Position: <%= @assignment.position %><br>
+  Date: <%= @assignment.game.date_time %>
+</p>
+
+<p>Best regards,<br>Your Team</p>
