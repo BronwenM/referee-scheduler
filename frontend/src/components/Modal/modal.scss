@@ -79,6 +79,15 @@
 
   button {
     color: #fff;
-    background-color: rgb(100, 129, 202)
+    background-color: rgb(84, 84, 84);
+    padding: 12px 16px;
+  }
+
+  .modal__accept-btn {
+    background-color: #177011;
+  }
+
+  .modal__reject-btn {
+    background-color: #9e0000;
   }
 }

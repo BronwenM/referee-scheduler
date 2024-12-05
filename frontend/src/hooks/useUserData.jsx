@@ -16,7 +16,7 @@ const UserDataProvider = (props) => {
 
     assignmentResponses.data.sort((gameA, gameB) => {
       return new Date(gameA.game.date_time) - new Date(gameB.game.date_time)
-    })
+    }).reverse()
 
     setUserAssignments(assignmentResponses.data);    
   };

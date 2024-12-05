@@ -4,11 +4,13 @@ import "./modal.scss";
 import { useAuth } from "../../hooks/useAuth";
 import useUtils from "../../hooks/useUtils";
 import { Link } from "react-router-dom";
+import { useUserData } from "../../hooks/useUserData";
 
 const AssignmentModalView = (props) => {
   const { assigner, assignment, game, partners, pay } = props.data;
   const { user } = useAuth();
   const { convertDateString, toTitleCase } = useUtils();
+  const {userAcceptAssignment} = useUserData();
 
   //TODO: Move Officials list to table. Fix information hierarchy
   return (
@@ -32,7 +34,7 @@ const AssignmentModalView = (props) => {
         <strong>Officials</strong> <br />
         {toTitleCase(assignment.position)}: {user.name} <br />
         {partners.map((partner) => (
-          <span title={partner.email}>
+          <span key={partner.id} title={partner.email}>
             {toTitleCase(partner.position)}: {partner.name} <br />
           </span>
         ))}
@@ -40,13 +42,13 @@ const AssignmentModalView = (props) => {
       <p>Pay Rate: ${pay.pay_rate}</p>
 
       <div className="modal-assignment__confirmation">
-        <button type="button">
+        <button type="button" className="modal__pending-btn" onClick={() =>  userAcceptAssignment(assignment.id, null)}>
           <i class="fa-solid fa-question"></i> Mark Pending
         </button>
-        <button type="button">
+        <button type="button" className="modal__accept-btn" onClick={() =>  userAcceptAssignment(assignment.id, true)}>
           <i class="fa-solid fa-check"></i> Accept Assignment
         </button>
-        <button type="button">
+        <button type="button" className="modal__reject-btn" onClick={() =>  userAcceptAssignment(assignment.id, false)}>
           <i class="fa-solid fa-xmark"></i> Reject Assignment
         </button>
       </div>
