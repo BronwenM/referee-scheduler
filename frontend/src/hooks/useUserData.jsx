@@ -1,55 +1,14 @@
-import React, { useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import axios from "axios";
+import { useAuth } from "./useAuth";
 
-/* 
-structure
-[
-  {
-    "assignment_details": {
-      "id",
-      "game_id",
-      "official_id",
-      "assigner_id",
-      "position",
-      "game_payment_id"
-    },
-    "partners": [
-      {
-        "id",
-        "name",
-        "email",
-        "phone",
-        "position"
-      }
-    ],
-    "game": {
-      "id",
-      "user_association_id",
-      "title",
-      "home_team",
-      "away_team",
-      "date_time",
-      "location",
-      "field",
-      "officials_assigned",
-      "status",
-      "game_type"
-    },
-    "pay_rate": {
-      "id",
-      "pay_rate"
-    },
-    "assigner": {
-      "id",
-      "name",
-      "email",
-      "phone"
-    }
-  }
-]
-*/
-const useUserData = (userID) => {
+const UserDataContext = createContext();
+
+const UserDataProvider = (props) => {
+  const {children} = props;
   const [userAssignments, setUserAssignments] = useState([]);
+  const {user} = useAuth();
+  const userID = user.id;
 
   const getAssignmentsByUser = async () => {
     const userAssignments = await axios.get(`/api/users/${userID}/assignments`, { withCredentials: false });
@@ -112,7 +71,16 @@ const useUserData = (userID) => {
     }
   }
 
-  return { getAssignmentsByUser, userAssignments, sortAssignmentsByGameDate, sortAssignmentsByStatus, userAcceptAssignment };
+  // return { getAssignmentsByUser, userAssignments, sortAssignmentsByGameDate, sortAssignmentsByStatus, userAcceptAssignment };
+  return (
+    <UserDataContext.Provider value={{ getAssignmentsByUser, userAssignments, sortAssignmentsByGameDate, sortAssignmentsByStatus, userAcceptAssignment }} >
+      {children}
+    </UserDataContext.Provider>
+  )
 };
 
-export default useUserData;
+const useUserData = () => {
+  return useContext(UserDataContext);
+}
+
+export {UserDataProvider, useUserData};

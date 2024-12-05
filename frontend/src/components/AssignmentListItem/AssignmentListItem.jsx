@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./assignmentListItem.scss";
 import { useModal } from "../../hooks/useModal";
 import useUtils from "../../hooks/useUtils";
-import useUserData from "../../hooks/useUserData";
+import {useUserData} from "../../hooks/useUserData";
 
 const AssignmentListItem = (props) => {
-  const { assigner, assignment, game, partners, pay, userAcceptAssignment } = props;
+  const { assigner, assignment, game, partners, pay } = props;
+  const {userAcceptAssignment} = useUserData()
   const { toggleModal, loadModalData } = useModal();
   const { convertDateString, toTitleCase } = useUtils();
   const parsedDate = convertDateString(game.date_time);
@@ -35,11 +36,6 @@ const AssignmentListItem = (props) => {
             {game.home_team} vs {game.away_team}
           </div>
           <div className="assignment-preview__details">
-            {/* <div className="assignment-preview__level">
-              <span>Game</span>
-              <span>{toTitleCase(game.title)}</span>
-              <span className="assignment-preview__teams">{game.home_team} vs <br/>{game.away_team}</span>
-            </div> */}
             <div className="assignment-preview__field">
               <span>Field</span>
               <span>{game.field}</span>

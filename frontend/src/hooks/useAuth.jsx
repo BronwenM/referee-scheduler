@@ -9,7 +9,7 @@ const AuthProvider = (props) => {
     const storedUser = sessionStorage.getItem("user");
 
     //Load user from storage
-    return storedUser ? JSON.parse(storedUser) : { role: '', permissions: [], name: '', username: '', email: '' };
+    return storedUser ? JSON.parse(storedUser) : { role: '', permissions: [], name: '', username: '', email: '', id: null };
   });
   const {children} = props;
 
@@ -19,8 +19,7 @@ const AuthProvider = (props) => {
   //TODO: make sure user sesssion/state includes name, user name & email
   const login = (newUser) => {
     const { user_role, permissions, name, username, email, id } = newUser.user;
-    const userToStore = { role: user_role, permissions, name, username, email };
-    Cookies.set('new_user_id', id, {expires: 7, secure:true, sameSite: true})
+    const userToStore = { role: user_role, permissions, name, username, email, id };
 
     setUser(userToStore);
     sessionStorage.setItem("user", JSON.stringify(userToStore));
@@ -29,10 +28,8 @@ const AuthProvider = (props) => {
 
   //TODO: make sure user sesssion/state includes name, user name & email
   const logout = () => {
-    setUser({ role: '', permissions: [], name: '', username: '', email: '' });
-    Cookies.remove("new_user_id");
+    setUser({ role: '', permissions: [], name: '', username: '', email: '', id: null });
     sessionStorage.removeItem("user");
-    Cookies.remove('new_user_id');
     navigate("/", {replace: true});
   };
 

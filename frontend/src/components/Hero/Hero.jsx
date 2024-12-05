@@ -1,15 +1,14 @@
 import React, {useEffect} from 'react'
 import './hero.scss'
 import useUtils from '../../hooks/useUtils';
-import useUserData from '../../hooks/useUserData';
-import Cookies from 'js-cookie';
+import {useUserData} from '../../hooks/useUserData.jsx';
 
 
 //use session to get user details
 const Hero = (props) => {
   const {role, userFN} = props;
   const {convertDateString, toTitleCase} = useUtils();
-  const {getAssignmentsByUser, userAssignments} = useUserData(Cookies.get('new_user_id'))
+  const {getAssignmentsByUser, userAssignments} = useUserData();
 
   useEffect(() => {
     getAssignmentsByUser()
@@ -41,7 +40,7 @@ const Hero = (props) => {
 
           { role === "assigner" &&
             <div className='hero-banner__quick-info'>
-              <span>Unassigned Games</span>
+              <span>Unassigned Games</span><br/>
               <span>New Games</span>
             </div>
           }      

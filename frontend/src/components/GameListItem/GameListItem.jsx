@@ -35,10 +35,11 @@ const GameListItem = (props) => {
             <span>{game.field}</span>
           </div>
           <div className="game-preview__position">
-            <span>{game.officials_assigned ? '' : <strong>No Officials Assigned</strong>}</span>
+            <span>{game.officials_assigned ? '' : <><strong>No Officials Assigned</strong></>}</span>
           </div>
         </div>
       </div>
+      { game.officials_assigned ? '' : dateWithinAWeek ? <span className="game-preview__alert-icon"><i class="fa-solid fa-exclamation"></i></span> : ''}
     </div>
   );
 };
