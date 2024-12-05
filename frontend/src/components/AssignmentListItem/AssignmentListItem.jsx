@@ -29,17 +29,16 @@ const AssignmentListItem = (props) => {
           </div>
           <span className="assignment-preview__time">@ {parsedDate.time}</span>
         </div>
-        <div>
-          <div style={{ fontSize: "0.75rem", width: "100%" }}>
-            {game.home_team} vs <br />
-            {game.away_team}
+        <div className="assignment-preview__details-wrapper">
+          <div className="assignment-preview__details-title">
+            {game.home_team} vs {game.away_team}
           </div>
           <div className="assignment-preview__details">
-            <div className="assignment-preview__level">
-              {/* <span>Game</span> */}
-              {/* <span>{toTitleCase(game.title)}</span> */}
-              {/* <span className="assignment-preview__teams">{game.home_team} vs <br/>{game.away_team}</span> */}
-            </div>
+            {/* <div className="assignment-preview__level">
+              <span>Game</span>
+              <span>{toTitleCase(game.title)}</span>
+              <span className="assignment-preview__teams">{game.home_team} vs <br/>{game.away_team}</span>
+            </div> */}
             <div className="assignment-preview__field">
               <span>Field</span>
               <span>{game.field}</span>

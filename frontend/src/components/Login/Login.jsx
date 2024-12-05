@@ -34,7 +34,7 @@ const Login = () => {
       const response = await axios.post('/api/sessions', { userIdentifier, password });
       // console.log('Login successful:', response.data);
       login(response.data);
-      navigate('/');
+      navigate('/dashboard');
     } catch (error) {
       console.error('Login failed:', error);
       setError('Invalid email/username or password');

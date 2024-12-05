@@ -1,14 +1,14 @@
 nav {
   z-index: 99;
+  top: -1px;
+  position: sticky;
 }
 
 .navbar {
-  background-color: cadetblue;
-  top: -1px;
-  position: sticky;
+  background-color: #247BA0;
   position: -webkit-sticky;
   display: flex;
-  color: red;
+  color: white !important;
   align-items: center;
   padding: 8px 32px;
   min-height: 70px;
@@ -18,6 +18,18 @@ nav {
   list-style: none;
   display: flex;
   margin-left: auto;
+  align-items: center;
+  width: 100%;
+  justify-content: space-evenly;
+
+  li {
+    margin: 0 15px;
+    
+      a {
+        text-decoration: none;
+        color:#fff;
+      }
+    }
 }
 
 .navbar-links__dropdown-open {
@@ -46,12 +58,12 @@ nav {
   }
 }
 
-.navbar-links li {
-  margin: 0 15px;
-  a {
-    text-decoration: none;
-    display: block;
-  }
+.navbar__logout-btn {
+  color: #3d290b;
+  font-weight: 600;
+  width: max-content;
+  padding: 8px 16px;
+  background-color: #FFB640;
 }
 
 .navbar__dropdown-btn {

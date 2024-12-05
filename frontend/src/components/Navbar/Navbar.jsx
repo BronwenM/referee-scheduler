@@ -31,7 +31,7 @@ const NavBar = () => {
               </li>
             )}
             <li>
-              {userLoggedIn() ? <Button handle={logout} name="Logout"/> : <Link to="/login">Login</Link>}
+              {userLoggedIn() ? <Button style="navbar__logout-btn" handle={logout} name={<span><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</span>}/> : <Link to="/login">Login</Link>}
             </li>
           </ul>
 
@@ -43,7 +43,7 @@ const NavBar = () => {
             </li>
           )}
           <li>
-            {userLoggedIn() ? <Button handle={() => {logout(); toggleDropdown()}} name="Logout" /> : <Link to="/login" onClick={toggleDropdown}>Login</Link>}
+            {userLoggedIn() ? <Button style="navbar__logout-btn" handle={() => {logout(); toggleDropdown()}} name={<span><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</span>} /> : <Link to="/login" onClick={toggleDropdown}>Login</Link>}
           </li>
         </ul>}
       </nav>

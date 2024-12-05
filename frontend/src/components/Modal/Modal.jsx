@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useModal } from "../../hooks/useModal";
 import "./modal.scss";
-import "./assignmentModal.scss";
 import { useAuth } from "../../hooks/useAuth";
 import useUtils from "../../hooks/useUtils";
 import { Link } from "react-router-dom";
@@ -23,32 +22,34 @@ const AssignmentModalView = (props) => {
         </p>
         <p></p>
       </header>
-        <div style={{cursor:"default", userSelect: "-moz-none"}}>
-          <span title={assigner.email}><strong>Assigner</strong> <br /> {assigner.name}</span>
-        </div>
-        <br/>
-        <div style={{cursor:"default", userSelect: "-moz-none"}}>
-          <strong>Officials</strong> <br />
-          {toTitleCase(assignment.position)}: {user.name} <br />
-          {partners.map((partner) => (
-            <span title={partner.email}>
-              {toTitleCase(partner.position)}: {partner.name} <br />
-            </span>
-          ))}
-        </div>
-        <p>Pay Rate: ${pay.pay_rate}</p>
-        
-        <div className="modal-assignment__confirmation">
-          <button type='button'><i class="fa-solid fa-question"></i> Mark Pending</button>
-          <button type='button'><i class="fa-solid fa-check"></i> Accept Assignment</button>
-          <button type='button'><i class="fa-solid fa-xmark"></i>  Reject Assignment</button>
-        </div>
-        <div className="modal-assignment__created-at">
-          Assignment Created: {convertDateString(assignment.created_at).full}
-        </div>
-        <div className="modal-assignment__created-at">
-          Assignment Updated: {convertDateString(assignment.updated_at).full}
-        </div>
+      <div style={{ cursor: "default", userSelect: "-moz-none" }}>
+        <span title={assigner.email}>
+          <strong>Assigner</strong> <br /> {assigner.name}
+        </span>
+      </div>
+      <br />
+      <div style={{ cursor: "default", userSelect: "-moz-none" }}>
+        <strong>Officials</strong> <br />
+        {toTitleCase(assignment.position)}: {user.name} <br />
+        {partners.map((partner) => (
+          <span title={partner.email}>
+            {toTitleCase(partner.position)}: {partner.name} <br />
+          </span>
+        ))}
+      </div>
+      <p>Pay Rate: ${pay.pay_rate}</p>
+
+      <div className="modal-assignment__confirmation">
+        <button type="button">
+          <i class="fa-solid fa-question"></i> Mark Pending
+        </button>
+        <button type="button">
+          <i class="fa-solid fa-check"></i> Accept Assignment
+        </button>
+        <button type="button">
+          <i class="fa-solid fa-xmark"></i> Reject Assignment
+        </button>
+      </div>
     </>
   );
 };
@@ -71,12 +72,6 @@ const GameModalView = (props) => {
         <p>Officials Assigned: {game.officials_assigned ? "Yes" : "No"}</p>
         <p>Status: {game.status}</p>
         <p>Game Type: {game.game_type}</p>
-        <div className="modal-assignment__created-at">
-          Game Created: {convertDateString(game.created_at).full}
-        </div>
-        <div className="modal-assignment__created-at">
-          Game Updated: {convertDateString(game.updated_at).full}
-        </div>
       </article>
     </>
   );
@@ -111,6 +106,12 @@ const Modal = (props) => {
             Edit Game <i class="fa-solid fa-pen-to-square"></i>
           </Link>
         )}
+        <div className="modal__created-at">
+          {toTitleCase(view)} Created: {convertDateString(modalData[view].created_at).full}
+        </div>
+        <div className="modal__created-at">
+          {toTitleCase(view)} Updated: {convertDateString(modalData[view].updated_at).full}
+        </div>
       </div>
     </div>
   );

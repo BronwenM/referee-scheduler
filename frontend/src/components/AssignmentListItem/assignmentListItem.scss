@@ -11,16 +11,17 @@
   text-align: left;
   overflow: hidden;
   box-shadow: rgb(0 0 0 / 25%) 2px 2px 4px 0px;
+  box-sizing: border-box;
 }
 
 .accepted-null {
   background-color: #fff;
-  border: 2px #bebebe solid;
+  border: 3px #bebebe solid;
 }
 
 .accepted-true {
   border: 3px #5dba56 solid;
-    background: #d4ffd1;
+  background: #d4ffd1;
 }
 
 .accepted-false {
@@ -59,13 +60,13 @@
     :first-child {
       font-size: small;
     }
-    
-    :last-child{
+
+    :last-child {
       font-size: 2rem;
     }
   }
-  
-  .assignment-preview__time{
+
+  .assignment-preview__time {
     width: fit-content;
   }
 }
@@ -77,12 +78,17 @@
   background-color: #00000028;
 }
 
+.assignment-preview__details-wrapper {
+  width: 100%;
+}
+
 .assignment-preview__details {
-  flex-grow: 0.5;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  gap: 32px;
+  margin-top: 8px;
 
   & > * {
     display: flex;
@@ -91,16 +97,63 @@
   }
 }
 
-.assignment-preview__confirmation{
+.assignment-preview__confirmation {
   margin-right: 24px;
   display: flex;
   gap: 8px;
   position: relative;
   transition: all ease-in-out 0.5s;
-  
-  &>* {
+
+  & > * {
     // transform: translateX(250px);
     font-size: 150%;
     padding: 8px;
+  }
+}
+
+.assignment-preview__details-title {
+  font-size: 0.75rem;
+  width: 100%;
+}
+
+@media screen and (max-width: 590px) {
+  .assignment-preview__confirmation {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .assignment-preview__content {
+    flex-direction: column;
+  }
+
+  .assignment-preview__details-wrapper > div {
+    text-align: center;
+  }
+
+  .assignment-preview__details {
+    gap: 0px;
+    justify-content: space-around;
+  }
+
+  .assignment-preview__confirmation {
+    display: none;
+  }
+
+  .assignment-preview__datetime::after {
+    display: none;
+  }
+
+  .assignment-preview__details-wrapper::before {
+    content: "";
+    height: 1.5px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.1568627451);
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .assignment-preview__datetime .assignment-preview__time {
+    font-size: x-large;
   }
 }

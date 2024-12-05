@@ -15,12 +15,16 @@ html {
   overflow-y: scroll;
 }
 
+html * {
+  border-radius: 0px !important;
+}
+
 *, *:before, *:after {
   box-sizing: inherit;
 }
 
 body {
-  background-color: #fff;
+  background-color: #FFF5ED;
   margin: 0;
   font-family: Inter, Hind;
 }

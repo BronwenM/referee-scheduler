@@ -1,6 +1,9 @@
 .game-preview {
   width: 100%;
-  background-color: #bebebe;
+  background-color: #fff;
+  // border: 2px #bebebe solid;
+  box-shadow: rgb(0 0 0 / 25%) 2px 2px 4px 0px;
+
   border-radius: 8px;
   display: flex;
   flex-direction: row;

@@ -1,6 +1,6 @@
 .hero-banner {
   width: 100%;
-  background-color: bisque;
+  background-color: #FFF5ED;
   height: 50dvh;
   padding: 32px;
   margin: auto;
@@ -21,15 +21,24 @@
 }
 
 .hero-banner__quick-info {
-  background-color: #fff;
+  background-color: #ffb6402d;
   border-radius: 8px;
   padding: 32px 24px;
   margin: 24px 0;
   max-width: 60%;
   width: fit-content;
   min-width: 450px;
+  box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 4px 0px;
+  border: 2px solid #FFB640;
 
   span {
     margin-bottom: 8px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .hero-banner__quick-info {
+    min-width: 100%;
+    font-size: small;
   }
 }

@@ -15,7 +15,11 @@ const GamesPage = () => {
   return (
     <div>
       <h1>All Games</h1>
-      <Calendar className="react-calendar" />
+      <div>
+        <h5>Filter Games</h5>
+        <input aria-label="Date from" min={new Date()} type="date" />
+        <input aria-label="Date to" min='2024-12-04' type="date" />
+      </div>
       {games.length === 0 ? (
         <p>No games available</p>
       ) : 

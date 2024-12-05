@@ -2,8 +2,7 @@
   display: grid;
   grid-template-areas: 
     "header header"
-    "sidebar content"
-  ;
+    "sidebar content";
   grid-template-rows: auto 1fr ;
   width: 100%;
   gap: 16px;
@@ -18,13 +17,11 @@
   display: flex;
   flex-direction: column;
   text-align: left;
-  background-color: rgb(19, 16, 99);
+  background-color: #135e7e;
   padding: 8px;
   grid-area: sidebar;
   border-radius: 8px;
   color: #fff;
-  position: sticky;
-  top: 10px;
 
   >* {
     margin: 8px;
@@ -34,7 +31,6 @@
 
 .assignment-view__assignments {
   grid-area: content;
-  min-width: 100%;
 }
 
 @media screen and (min-width: 901px) {
@@ -46,8 +42,7 @@
     grid-template-areas: 
     "header header"
     "sidebar sidebar"
-    "content content"
-    ;
+    "content content";
     width: inherit;
   }
 
