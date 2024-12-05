@@ -91,6 +91,7 @@ const handleGameSubmit = async (e) => {
         id="date_time"
         name="date_time"
         value={game.date_time}
+        step={300}
         onChange={handleChange}
       />
       <br />

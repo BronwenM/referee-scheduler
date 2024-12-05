@@ -26,6 +26,7 @@ const AssignmentListItem = (props) => {
           <div className="assignment-preview__date">
             <span>{parsedDate.month}</span>
             <span>{parsedDate.day}</span>
+            <span>{parsedDate.year}</span>
           </div>
           <span className="assignment-preview__time">@ {parsedDate.time}</span>
         </div>

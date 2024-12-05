@@ -126,7 +126,7 @@ const AssignmentForm = () => {
             <option value="Fourth Official">Fourth Official</option>
           </select>
         </div>
-        <Button name="Assign" className="button--primary" handle={handleAssign} />
+        <Button name="Create Assignment" className="button--primary" handle={handleAssign} />
       </form>
     </div>
   );

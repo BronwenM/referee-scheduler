@@ -61,8 +61,12 @@
       font-size: small;
     }
 
-    :last-child {
+    :nth-child(2){
       font-size: 2rem;
+    }
+
+    :last-child {
+      font-size: small;
     }
   }
 

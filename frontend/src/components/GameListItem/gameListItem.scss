@@ -16,6 +16,11 @@
   cursor: pointer;
 }
 
+.game-preview__no-officials-alert {
+  border: 3px #ffb640 solid;
+  background: #ffb64059;
+}
+
 .game-preview__datetime {
     display: flex;
     flex-direction: row;
@@ -33,8 +38,12 @@
       font-size: small;
     }
     
-    :last-child{
+    :nth-child(2){
       font-size: 2rem;
+    }
+
+    :last-child {
+      font-size: small;
     }
   }
   
@@ -55,7 +64,6 @@
 
 .game-preview__details-wrapper {
   width: 100%;
-  // margin-left: 16px;
   flex-shrink: 10;
 
   .game-preview__teams {
@@ -72,6 +80,7 @@
   justify-content: flex-start;
   align-items: center;
   gap: 16px;
+  font-size: 0.9rem;
 
   & > * {
     display: flex;
@@ -82,4 +91,40 @@
 
 .game-preview__confirmation{
   margin-right: 24px;
+}
+
+@media screen and (max-width: 600px) {
+  .game-preview {
+    flex-direction: column;
+  }
+
+  .game-preview__details-wrapper > div {
+    text-align: left;
+  }
+
+  .game-preview__details {
+    gap: 8px;
+    justify-content: flex-start;
+  }
+
+  .game-preview__datetime::after {
+    display: none;
+  }
+
+  .game-preview__details-wrapper::before {
+    content: "";
+    height: 1.5px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.1568627451);
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .game-preview__datetime {
+    margin-bottom: 16px;
+  }
+
+  .game-preview__datetime .assignment-preview__time {
+    font-size: large;
+  }
 }

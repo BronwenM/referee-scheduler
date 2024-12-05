@@ -9,13 +9,17 @@ const GameListItem = (props) => {
   const { toggleModal, loadModalData } = useModal();
 
   const parsedDate = convertDateString(game.date_time);
+  
+  const gameDate = new Date(game.date_time);
+  const dateWithinAWeek = ((Date.now() - gameDate) / 36e5) <= 168;
 
   return (
-    <div className="game-preview" onClick={() => {loadModalData({...props}, 'game'); toggleModal()}}>
+    <div className={`game-preview ${!game.officials_assigned ? dateWithinAWeek ? 'game-preview__no-officials-alert' : '' : ''}`} onClick={() => {loadModalData({...props}, 'game'); toggleModal()}}>
       <div className="game-preview__datetime">
         <div className="game-preview__date">
           <span>{parsedDate.month}</span>
           <span>{parsedDate.day}</span>
+          <span>{parsedDate.year}</span>
         </div>
         <span className="game-preview__time">@ {parsedDate.time}</span>
       </div>
@@ -31,7 +35,7 @@ const GameListItem = (props) => {
             <span>{game.field}</span>
           </div>
           <div className="game-preview__position">
-            <span>{game.officials_assigned ? 'Yes' : 'No'}</span>
+            <span>{game.officials_assigned ? '' : <strong>No Officials Assigned</strong>}</span>
           </div>
         </div>
       </div>

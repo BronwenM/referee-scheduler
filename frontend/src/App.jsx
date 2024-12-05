@@ -18,7 +18,6 @@ import { useModal } from "./hooks/useModal.jsx";
 import Modal from "./components/Modal/Modal.jsx";
 import CalendarComponent from "./components/Calendar/CalendarComponent.jsx"
 import ProfileEditPage from "./components/ProfileEditPage/ProfileEditPage.jsx";
-import CalendarComponent from "./components/Calendar/CalendarComponent.jsx";
 
 
 function App() {
@@ -43,7 +42,7 @@ function App() {
           {/* Routes any authenticated user can access */}
           <Route element={<ProtectedRoute permittedRoles={["admin", "assigner", "official"]} />} >
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/profile" element={<h1>Profile</h1>} />
+            <Route path="/profile" element={<ProfileEditPage />} />
           </Route>
 
           {/* Routes only admins and assigners can acccess */}
