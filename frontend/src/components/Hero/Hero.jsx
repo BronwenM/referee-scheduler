@@ -3,7 +3,6 @@ import './hero.scss'
 import useUtils from '../../hooks/useUtils';
 import {useUserData} from '../../hooks/useUserData.jsx';
 
-
 //use session to get user details
 const Hero = (props) => {
   const {role, userFN} = props;
@@ -29,8 +28,8 @@ const Hero = (props) => {
               <span className='hero-banner__next-date'>{convertDateString(nextGame.game.date_time).full}</span><br/>
               <span className='hero-banner__next-location'>Location: {nextGame.game.location}</span><br/>
               <span className='hero-banner__next-position'>Position: {toTitleCase(nextGame.assignment.position)}</span><br/>
-              {console.log('next', nextGame)}
-              {(nextGame.accepted === undefined) && 
+              {console.log('next', nextGame.assignment.accepted)}
+              {(nextGame.assignment.accepted === null) && 
                 <>
                   <br/>
                   <span className='hero-banner__alert-msg'><em>You have not accepted this game! Please update your assignments</em></span>

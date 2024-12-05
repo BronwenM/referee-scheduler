@@ -53,4 +53,10 @@ export const links = [
     linkTo: '/games',
     visibleTo: ['assigner', 'admin']
   },
+  {
+    id: 10,
+    linkName: "Create Account",
+    linkTo: '/new-account',
+    visibleTo: ['admin']
+  },
 ]

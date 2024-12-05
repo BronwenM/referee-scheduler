@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 //TODO pull up the fetching of data in the backend. Fetching data here is only for admins so the front end can be more general
 const useAssignmentData = () => {
@@ -69,6 +70,7 @@ const useAssignmentData = () => {
       const response = await axios.post('/api/assignments', assignmentData, { withCredentials: true });
       // Update the assignments state with the new assignment
       setAssignments(prevAssignments => [...prevAssignments, response.data]);
+      toast.success("Assignment created and official has been notified!")
       return response.data;
     } catch (error) {
       console.error(error);

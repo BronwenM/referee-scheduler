@@ -96,7 +96,6 @@ const Modal = (props) => {
         </div>
         <div className="modal__content__children">
           {view === "assignment" && <AssignmentModalView data={modalData} />}
-          {view === "assignment" && console.log("modal data", modalData)}
           {view === "game" && <GameModalView data={modalData} />}
         </div>
         {view === "game" && user.role === "admin" && (

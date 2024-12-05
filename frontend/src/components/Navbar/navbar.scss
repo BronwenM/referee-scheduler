@@ -75,6 +75,25 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    text-decoration: none;
+    font-size: larger;
+    font-family: cursive;
+
+    img {
+      transition: all ease-in-out 0.5s;
+    }
+
+    img:hover {
+      transform: rotate(900deg);
+      transition: all ease-in-out 0.5s;
+    }
+  }
 }
 
 @media screen and (max-width: 900px) {

@@ -4,6 +4,7 @@ import "./navbar.scss";
 import { useAuth } from "../../hooks/useAuth";
 import Button from "../Button/Button";
 import { links } from "../../assets/routes/navRoutes";
+import Logo from '../../assets/images/CYB-logo.png';
 
 //NOTE: Currently all available links are exposed to user in console. Remove to backend?
 const NavBar = () => {
@@ -19,8 +20,9 @@ const NavBar = () => {
       <nav>
         <div className={`navbar ${dropdownOpen ? 'navbar__dropdown' : ''}`}>
           <div className={`navbar__top`}>
-            <Link to="/">
-              <img src="/path-to-your-logo.png" alt="Logo" />
+            <Link to="/profile">
+              <img src={Logo} alt="Logo" style={{height: "46px"}} />
+              Cover Your Bases
             </Link>
             <button type="button" className={`navbar__dropdown-btn ${dropdownOpen ? 'dropdown-open' : ''}`} onClick={toggleDropdown}><i class="fa-solid fa-bars"></i></button>
           </div>
