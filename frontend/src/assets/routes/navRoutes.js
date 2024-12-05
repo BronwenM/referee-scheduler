@@ -15,7 +15,7 @@ export const links = [
     id: 3,
     linkName: "Calendar",
     linkTo: '/calendar',
-    visibleTo: ['admin', 'assigner', 'official']
+    visibleTo: ['official']
   },
   {
     id: 4,

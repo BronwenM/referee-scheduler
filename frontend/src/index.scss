@@ -11,8 +11,7 @@
 
 html {
   box-sizing: border-box;
-  min-height: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
   overflow-y: scroll;
 }
 
@@ -24,5 +23,4 @@ body {
   background-color: #fff;
   margin: 0;
   font-family: Inter, Hind;
-  height: 100dvh;
 }

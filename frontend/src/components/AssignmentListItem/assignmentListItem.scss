@@ -9,22 +9,26 @@
   user-select: none;
   margin-bottom: 16px;
   text-align: left;
+  overflow: hidden;
+  box-shadow: rgb(0 0 0 / 25%) 2px 2px 4px 0px;
 }
 
 .accepted-null {
-  background-color: #bebebe;
+  background-color: #fff;
+  border: 2px #bebebe solid;
 }
 
 .accepted-true {
-  background-color: #5dba56;
+  border: 3px #5dba56 solid;
+    background: #d4ffd1;
 }
 
 .accepted-false {
-  background-color: #a96259;
-  
-  :not(option){
-    text-decoration: line-through;
-  }
+  background-color: #ffd9d4;
+  color: #9e0000;
+  border: 3px #9e0000 solid;
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
 }
 
 .assignment-preview__content {
@@ -89,4 +93,14 @@
 
 .assignment-preview__confirmation{
   margin-right: 24px;
+  display: flex;
+  gap: 8px;
+  position: relative;
+  transition: all ease-in-out 0.5s;
+  
+  &>* {
+    // transform: translateX(250px);
+    font-size: 150%;
+    padding: 8px;
+  }
 }

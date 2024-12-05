@@ -4,9 +4,8 @@
     "header header"
     "sidebar content"
   ;
-  grid-template-columns: minmax(auto, 225px) minmax(500px, 1fr);
-  grid-rows: auto 1fr ;
-
+  grid-template-rows: auto 1fr ;
+  width: 100%;
   gap: 16px;
 }
 
@@ -15,14 +14,17 @@
 }
 
 .assignment-view__filters {
+  max-height: max-content;
   display: flex;
   flex-direction: column;
   text-align: left;
-  background-color: rebeccapurple;
-  margin-left: 8px;
+  background-color: rgb(19, 16, 99);
+  padding: 8px;
   grid-area: sidebar;
   border-radius: 8px;
   color: #fff;
+  position: sticky;
+  top: 10px;
 
   >* {
     margin: 8px;
@@ -35,6 +37,10 @@
   min-width: 100%;
 }
 
+@media screen and (min-width: 901px) {
+  
+}
+
 @media screen and (max-width: 900px) {
   .assignment-view{
     grid-template-areas: 
@@ -42,12 +48,14 @@
     "sidebar sidebar"
     "content content"
     ;
+    width: inherit;
   }
 
   .assignment-view__filters {
     flex-direction: row;
     margin-left: 0;
     padding: 8px 4px;
+    align-items: center;
   }
   
 }

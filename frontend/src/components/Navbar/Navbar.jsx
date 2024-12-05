@@ -36,7 +36,7 @@ const NavBar = () => {
           </ul>
 
         </div>
-        {dropdownOpen && <ul className='navbar-links__dropdown-open'>
+        { <ul className={`navbar-links__dropdown-open ${dropdownOpen ? 'dropdown-open' : ''}`}>
           {links.filter(link => link.visibleTo.includes(userRole)).map(link =>
             <li key={link.id}>
               <Link to={link.linkTo} onClick={toggleDropdown}>{link.linkName}</Link>

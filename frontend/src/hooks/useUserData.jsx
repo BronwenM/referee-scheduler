@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+
 /* 
 structure
 [
@@ -58,8 +59,7 @@ const useUserData = (userID) => {
       return new Date(gameA.game.date_time) - new Date(gameB.game.date_time)
     })
 
-    setUserAssignments(assignmentResponses.data);
-    
+    setUserAssignments(assignmentResponses.data);    
   };
 
   const sortAssignmentsByGameDate = (ascending = true) => {
@@ -86,19 +86,33 @@ const useUserData = (userID) => {
   const filterAssignments = (filterBy) => {
 
   }
+  const updateAssignments = () => {
+    axios.get(`/api/users/${userID}/assignments`, { withCredentials: false })
+      .then(response => setUserAssignments(response.data));
+  }
 
   const userAcceptAssignment = async (id, setAccept = null) => {
     try {
       const response = await axios.patch(`/api/assignments/${id}`, {accepted: setAccept});
-      console.log("response data:", response.data.assignment)
-      
+
+      const newUserAssignments = userAssignments.map(assignment => {
+        if(assignment.assignment.id === response.data.assignment.id){
+
+          return {...assignment, assignment: response.data.assignment};
+        }
+
+        return assignment;
+      });
+
+      setUserAssignments(newUserAssignments)
+
     } catch (error) {
       console.error(error);
       throw error;
     }
   }
 
-  return { getAssignmentsByUser, userAssignments, sortAssignmentsByGameDate, sortAssignmentsByStatus, userAcceptAssignment};
+  return { getAssignmentsByUser, userAssignments, sortAssignmentsByGameDate, sortAssignmentsByStatus, userAcceptAssignment };
 };
 
 export default useUserData;

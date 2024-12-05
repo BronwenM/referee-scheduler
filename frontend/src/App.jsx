@@ -46,6 +46,7 @@ function App() {
 
   return (
     <>
+      {showModal && <Modal />}
       {userLoggedIn() && (
         <Hero
           userFN={user.name ? user.name : "User"}
@@ -54,7 +55,6 @@ function App() {
       )}
       <NavBar />
       <main className="app__content">
-        {showModal && <Modal />}
         <Routes>
           <Route index element={<HomePage />} />
           <Route path="/login" element={<Login />} />
@@ -69,6 +69,7 @@ function App() {
           <Route element={<ProtectedRoute permittedRoles={["admin", "assigner"]} />} >
             <Route path="/reports" element={<ReportPage />} />
             <Route path="/games" element={<GamesView />} />
+            <Route path="/new-assignment" element={<AssignmentForm />}/>
           </Route>
 
           {/* Admins Only */}
@@ -78,7 +79,6 @@ function App() {
 
           {/* Assigners Only */}
           <Route element={<ProtectedRoute permittedRoles={["assigner"]} />} >
-            <Route path="/new-assignment" element={<AssignmentForm />}/>
           </Route>
 
           {/* Officials Only */}

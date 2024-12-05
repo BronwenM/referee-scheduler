@@ -1,15 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./assignmentListItem.scss";
 import { useModal } from "../../hooks/useModal";
 import useUtils from "../../hooks/useUtils";
 import useUserData from "../../hooks/useUserData";
 
 const AssignmentListItem = (props) => {
-  const { assigner, assignment, game, partners, pay } = props;
+  const { assigner, assignment, game, partners, pay, userAcceptAssignment } = props;
   const { toggleModal, loadModalData } = useModal();
   const { convertDateString, toTitleCase } = useUtils();
-  const {userAcceptAssignment} = useUserData(assignment.official_id);
   const parsedDate = convertDateString(game.date_time);
+
+  const gameDate = new Date(game.date_time);
+  const dateWithinADay = ((Date.now() - gameDate) / 36e5) <= 24;
 
   return (
     <div className={`assignment-preview accepted-${assignment.accepted}`}>
@@ -50,9 +52,9 @@ const AssignmentListItem = (props) => {
         </div>
       </div>
         <div className="assignment-preview__confirmation">
-          <button type='button' onClick={() => userAcceptAssignment(assignment.id, null)}>Mark Pending</button>
-          <button type='button' onClick={() => userAcceptAssignment(assignment.id, true)}>Accept Assignment</button>
-          <button type='button' onClick={() => userAcceptAssignment(assignment.id, false)}>Reject Assignment</button>
+          <button type='button' disabled={dateWithinADay} onClick={() => userAcceptAssignment(assignment.id, null)}><i class="fa-solid fa-question"></i></button>
+          <button type='button' disabled={dateWithinADay} onClick={() => userAcceptAssignment(assignment.id, true)}><i class="fa-solid fa-check"></i></button>
+          <button type='button' disabled={dateWithinADay} onClick={() => userAcceptAssignment(assignment.id, false)}><i class="fa-solid fa-xmark"></i></button>
         </div>
     </div>
   );

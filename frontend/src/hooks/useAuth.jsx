@@ -4,13 +4,14 @@ import Cookies from 'js-cookie';
 
 const AuthContext = createContext();
 
-const AuthProvider = ({children}) => {
+const AuthProvider = (props) => {
   const [user, setUser] = useState(() => {
     const storedUser = sessionStorage.getItem("user");
 
     //Load user from storage
     return storedUser ? JSON.parse(storedUser) : { role: '', permissions: [], name: '', username: '', email: '' };
   });
+  const {children} = props;
 
   const navigate = useNavigate();
 
