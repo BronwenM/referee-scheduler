@@ -10,7 +10,7 @@ const useUtils = () => {
     const date = new Date(dateString);
 
     const dateOptions = {
-      month: "long",
+      month: "short",
       day: "2-digit",
       year: "numeric"
     };

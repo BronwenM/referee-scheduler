@@ -15,7 +15,7 @@ export const links = [
     id: 3,
     linkName: "Calendar",
     linkTo: '/calendar',
-    visibleTo: ['admin', 'assigner', 'official']
+    visibleTo: ['official']
   },
   {
     id: 4,
@@ -40,5 +40,23 @@ export const links = [
     linkName: "View Reports",
     linkTo: '/reports',
     visibleTo: ['admin', 'assigner']
+  },
+  {
+    id: 8,
+    linkName: "Assignments",
+    linkTo: '/assignments',
+    visibleTo: ['official']
+  },
+  {
+    id: 9,
+    linkName: "Games",
+    linkTo: '/games',
+    visibleTo: ['assigner', 'admin']
+  },
+  {
+    id: 10,
+    linkName: "Create Account",
+    linkTo: '/new-account',
+    visibleTo: ['admin']
   },
 ]

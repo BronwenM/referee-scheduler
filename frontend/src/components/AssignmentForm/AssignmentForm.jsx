@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import useAssignmentData from '../../hooks/useAssignmentData';
 import Button from '../Button/Button';
+import useUtils from '../../hooks/useUtils';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AssignmentForm = () => {
   const { games, assignments, setAssignments, fetchAvailableOfficialsForGame, createAssignment, error } = useAssignmentData();
+  const {convertDateString} = useUtils();
   const [selectedOfficial, setSelectedOfficial] = useState('');
   const [selectedGame, setSelectedGame] = useState('');
   const [selectedPosition, setSelectedPosition] = useState('');
@@ -73,7 +77,8 @@ const AssignmentForm = () => {
 
   return (
     <div className="assignment-form">
-      <h1>Assignment Form</h1>
+      <ToastContainer />
+      <h1>Create A New Assignment</h1>
       {formError && <p>Error: {formError}</p>}
       {error && <p>Error: {error}</p>}
       <form onSubmit={handleAssign}>
@@ -88,7 +93,7 @@ const AssignmentForm = () => {
             <option value="">Select a game</option>
             {unassignedGames.map((game) => (
               <option key={`game-${game.id}`} value={game.id}>
-                {game.home_team} vs {game.away_team} - {game.date_time}
+                {game.home_team} vs {game.away_team} - {convertDateString(game.date_time).full}
               </option>
             ))}
           </select>
@@ -124,7 +129,7 @@ const AssignmentForm = () => {
             <option value="Fourth Official">Fourth Official</option>
           </select>
         </div>
-        <Button name="Assign" className="button--primary" handle={handleAssign} />
+        <Button name="Create Assignment" className="button--primary" handle={handleAssign} />
       </form>
     </div>
   );

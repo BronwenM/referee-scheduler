@@ -11,9 +11,12 @@
 
 html {
   box-sizing: border-box;
-  min-height: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
   overflow-y: scroll;
+}
+
+html * {
+  // border-radius: 0px !important;
 }
 
 *, *:before, *:after {
@@ -21,7 +24,7 @@ html {
 }
 
 body {
-  background-color: #28c3b4;
+  background-color: #FFF5ED;
   margin: 0;
   font-family: Inter, Hind;
 }

@@ -1,54 +1,14 @@
-import React, { useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import axios from "axios";
-/* 
-structure
-[
-  {
-    "assignment_details": {
-      "id",
-      "game_id",
-      "official_id",
-      "assigner_id",
-      "position",
-      "game_payment_id"
-    },
-    "partners": [
-      {
-        "id",
-        "name",
-        "email",
-        "phone",
-        "position"
-      }
-    ],
-    "game": {
-      "id",
-      "user_association_id",
-      "title",
-      "home_team",
-      "away_team",
-      "date_time",
-      "location",
-      "field",
-      "officials_assigned",
-      "status",
-      "game_type"
-    },
-    "pay_rate": {
-      "id",
-      "pay_rate"
-    },
-    "assigner": {
-      "id",
-      "name",
-      "email",
-      "phone"
-    }
-  }
-]
-*/
-const useUserData = (userID) => {
+import { useAuth } from "./useAuth";
+
+const UserDataContext = createContext();
+
+const UserDataProvider = (props) => {
+  const {children} = props;
   const [userAssignments, setUserAssignments] = useState([]);
+  const {user} = useAuth();
+  const userID = user.id;
 
   const getAssignmentsByUser = async () => {
     const userAssignments = await axios.get(`/api/users/${userID}/assignments`, { withCredentials: false });
@@ -56,10 +16,9 @@ const useUserData = (userID) => {
 
     assignmentResponses.data.sort((gameA, gameB) => {
       return new Date(gameA.game.date_time) - new Date(gameB.game.date_time)
-    })
+    }).reverse()
 
-    setUserAssignments(assignmentResponses.data);
-    
+    setUserAssignments(assignmentResponses.data);    
   };
 
   const sortAssignmentsByGameDate = (ascending = true) => {
@@ -86,19 +45,42 @@ const useUserData = (userID) => {
   const filterAssignments = (filterBy) => {
 
   }
+  const updateAssignments = () => {
+    axios.get(`/api/users/${userID}/assignments`, { withCredentials: false })
+      .then(response => setUserAssignments(response.data));
+  }
 
   const userAcceptAssignment = async (id, setAccept = null) => {
     try {
       const response = await axios.patch(`/api/assignments/${id}`, {accepted: setAccept});
-      console.log("response data:", response.data.assignment)
-      
+
+      const newUserAssignments = userAssignments.map(assignment => {
+        if(assignment.assignment.id === response.data.assignment.id){
+
+          return {...assignment, assignment: response.data.assignment};
+        }
+
+        return assignment;
+      });
+
+      setUserAssignments(newUserAssignments)
+
     } catch (error) {
       console.error(error);
       throw error;
     }
   }
 
-  return { getAssignmentsByUser, userAssignments, sortAssignmentsByGameDate, sortAssignmentsByStatus, userAcceptAssignment};
+  // return { getAssignmentsByUser, userAssignments, sortAssignmentsByGameDate, sortAssignmentsByStatus, userAcceptAssignment };
+  return (
+    <UserDataContext.Provider value={{ getAssignmentsByUser, userAssignments, sortAssignmentsByGameDate, sortAssignmentsByStatus, userAcceptAssignment }} >
+      {children}
+    </UserDataContext.Provider>
+  )
 };
 
-export default useUserData;
+const useUserData = () => {
+  return useContext(UserDataContext);
+}
+
+export {UserDataProvider, useUserData};

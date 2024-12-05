@@ -32,11 +32,9 @@ const Login = () => {
 
     try {
       const response = await axios.post('/api/sessions', { userIdentifier, password });
-      console.log('Login successful:', response.data);
-      toast.success('Login successful');
-      console.log(response.data);
+      // console.log('Login successful:', response.data);
       login(response.data);
-      navigate('/');
+      navigate('/dashboard');
     } catch (error) {
       console.error('Login failed:', error);
       setError('Invalid email/username or password');
@@ -51,12 +49,12 @@ const Login = () => {
   return (
     <section>
     <ToastContainer />
-    <h1>Login</h1>
+    <h1>Login to Your Account</h1>
     <form>
-      <label htmlFor="userIdentifier">Username or Email:</label>
+      <label htmlFor="userIdentifier">Username or Email</label>
         <input
           id="userIdentifier"
-          type="userIdentifier"
+          type="text"
           value={userIdentifier}
           onChange={(e) => setIdentifier(e.target.value)}
           autoComplete="off"
@@ -64,7 +62,7 @@ const Login = () => {
           autoFocus
         />
       <br />
-      <label htmlFor="password">Password:</label>
+      <label htmlFor="password">Password</label>
       <input
         id="password"
         type="password"

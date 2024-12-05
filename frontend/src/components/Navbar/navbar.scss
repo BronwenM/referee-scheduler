@@ -1,18 +1,126 @@
-.navbar {
-  background-color: cadetblue;
+nav {
+  z-index: 99;
   top: -1px;
   position: sticky;
+}
+
+.navbar {
+  background-color: #247BA0;
   position: -webkit-sticky;
   display: flex;
-  color: red;
+  color: white !important;
   align-items: center;
   padding: 8px 32px;
+  min-height: 70px;
 }
+
 .navbar-links {
   list-style: none;
   display: flex;
   margin-left: auto;
+  align-items: center;
+  width: 100%;
+  justify-content: space-evenly;
+
+  li {
+    margin: 0 15px;
+    
+      a {
+        text-decoration: none;
+        color:#fff;
+      }
+    }
 }
-.navbar-links li {
-  margin: 0 15px;
+
+.navbar-links__dropdown-open {
+  display: block;
+  visibility: collapse;
+
+  position: absolute;
+  background: aliceblue;
+  width: 100%;
+  margin: 0;
+  padding: 16px 32px;
+
+  transform: /* translateY(-100px)  */scaleY(0.1);
+  transform-origin: 0% 0%;
+  opacity: 0;
+
+  transition: all ease-in 0.5s;
+
+  li {
+    list-style: none;
+    margin-bottom: 8px;
+
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+.navbar__logout-btn {
+  color: #3d290b;
+  font-weight: 600;
+  width: max-content;
+  padding: 8px 16px;
+  background-color: #FFB640;
+}
+
+.navbar__dropdown-btn {
+  display: none;
+}
+
+.navbar__top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    text-decoration: none;
+    font-size: larger;
+    font-family: cursive;
+
+    img {
+      transition: all ease-in-out 0.5s;
+    }
+
+    img:hover {
+      transform: rotate(900deg);
+      transition: all ease-in-out 0.5s;
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .navbar__dropdown-btn {
+    display: block;
+    cursor: pointer;
+    padding: 16px 18px;
+    background: none;
+    font-size: 1.75rem;
+    margin: 0;
+    transition: all ease-out 0.5s;
+    color: #fff;
+  }
+
+  .navbar__dropdown-btn.dropdown-open {
+    transform: rotate(90deg);
+  }
+
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-links__dropdown-open.dropdown-open {
+    visibility: visible;
+    transform: /* translateY(0px) */ scaleY(1);
+    opacity: 1;
+    transition: all ease-in 0.5s;
+
+  }
 }

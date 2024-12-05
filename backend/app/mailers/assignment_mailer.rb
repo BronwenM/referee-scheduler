@@ -21,8 +21,8 @@ class AssignmentMailer < ApplicationMailer
         HTML
 
     message_params = {
-      from: 'saif4004@gmail.com',
-      to: 'nikfqtzm@grr.la', #Need to change it to a different email address
+      from: 'cybnoreply@gmail.com',
+      to: 'growteam2020@gmail.com', #Need to change it to a different email address
       subject: 'New Assignment',
       text: `Hello ${assignment.official.name}, You have been assigned to a new game: Game: ${assignment.game.home_team} vs ${assignment.game.away_team} Position: ${assignment.position} Date: ${assignment.game.date_time} Best regards, Your Team`,
       html: html_content

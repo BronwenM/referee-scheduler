@@ -1,0 +1,141 @@
+.game-preview {
+  width: 100%;
+  background-color: #fff;
+  box-shadow: rgb(0 0 0 / 25%) 2px 2px 4px 0px;
+
+  // border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  user-select: none;
+  margin-bottom: 16px;
+  text-align: left;
+  padding: 16px;
+  cursor: pointer;
+}
+
+.game-preview__no-officials-alert {
+  border: 3px #ffb640 solid;
+  background: #ffb64059;
+}
+
+.game-preview__alert-icon {
+  font-size: 2rem;
+  border: 5px solid #ffb640;
+  color: #ffb640;
+  border-radius: 50px;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-preview__datetime {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    gap: 8px;
+    align-items: center;
+    min-width: fit-content;
+    justify-content: flex-start;
+
+  .game-preview__date {
+    display: flex;
+    flex-direction: column;
+
+    :first-child {
+      font-size: small;
+    }
+    
+    :nth-child(2){
+      font-size: 2rem;
+    }
+
+    :last-child {
+      font-size: small;
+    }
+  }
+  
+  .game-preview__time{
+    width: fit-content;
+    font-size: 1.5rem;
+  }
+}
+
+.game-preview__datetime::after {
+  content: "";
+  height: 4rem;
+  width: 1.5px;
+  background-color: #00000028;
+  margin: 0 16px;
+}
+
+
+.game-preview__details-wrapper {
+  width: 100%;
+  flex-shrink: 10;
+
+  .game-preview__teams {
+    font-size: 0.75rem;
+    width: 100%;
+    margin-bottom: 6px;
+  }
+}
+
+.game-preview__details {
+  flex-grow: 0.5;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.9rem;
+
+  & > * {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.game-preview__confirmation{
+  margin-right: 24px;
+}
+
+@media screen and (max-width: 600px) {
+  .game-preview {
+    flex-direction: column;
+  }
+
+  .game-preview__details-wrapper > div {
+    text-align: left;
+  }
+
+  .game-preview__details {
+    gap: 8px;
+    justify-content: flex-start;
+  }
+
+  .game-preview__datetime::after {
+    display: none;
+  }
+
+  .game-preview__details-wrapper::before {
+    content: "";
+    height: 1.5px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.1568627451);
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .game-preview__datetime {
+    margin-bottom: 16px;
+  }
+
+  .game-preview__datetime .assignment-preview__time {
+    font-size: large;
+  }
+}

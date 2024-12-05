@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
+//TODO pull up the fetching of data in the backend. Fetching data here is only for admins so the front end can be more general
 const useAssignmentData = () => {
   const [games, setGames] = useState([]);
   const [officials, setOfficials] = useState([]);
@@ -35,15 +37,19 @@ const useAssignmentData = () => {
     try {
       // Fetch unavailabilities to filter out officials who are unavailable for the game
       const unavailabilitiesResponse = await axios.get('/api/unavailabilities', { withCredentials: true });
+      console.log("unavailabilitiesResponse", unavailabilitiesResponse)
 
       // Filter out officials who have all-day unavailabilities set to false
       const allDayUnavailabilities = unavailabilitiesResponse.data.filter(unavailability => !unavailability.all_day);
+      console.log('allDayUnavailabilities', allDayUnavailabilities)
 
       // Create a set of official IDs who have all-day unavailabilities set to false
       const unavailableOfficialIds = new Set(allDayUnavailabilities.map(unavailability => unavailability.official_id));
+      console.log('unavailableOfficialIds', unavailableOfficialIds)      
 
       // Filter out officials who are unavailable for the game
       const availableOfficials = officials.filter(official => !unavailableOfficialIds.has(official.id));
+      console.log('availableOfficials', availableOfficials)
 
       const assignedOfficialsForGame = assignments.filter(assignment => assignment.game_id === Number(gameId));
 
@@ -64,6 +70,7 @@ const useAssignmentData = () => {
       const response = await axios.post('/api/assignments', assignmentData, { withCredentials: true });
       // Update the assignments state with the new assignment
       setAssignments(prevAssignments => [...prevAssignments, response.data]);
+      toast.success("Assignment created and official has been notified!")
       return response.data;
     } catch (error) {
       console.error(error);

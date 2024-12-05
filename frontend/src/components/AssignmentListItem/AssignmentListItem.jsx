@@ -1,22 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./assignmentListItem.scss";
 import { useModal } from "../../hooks/useModal";
 import useUtils from "../../hooks/useUtils";
-import useUserData from "../../hooks/useUserData";
+import {useUserData} from "../../hooks/useUserData";
 
 const AssignmentListItem = (props) => {
   const { assigner, assignment, game, partners, pay } = props;
+  const {userAcceptAssignment} = useUserData();
   const { toggleModal, loadModalData } = useModal();
   const { convertDateString, toTitleCase } = useUtils();
-  const {userAcceptAssignment} = useUserData(assignment.official_id);
   const parsedDate = convertDateString(game.date_time);
+
+  const gameDate = new Date(game.date_time);
+  const dateWithinADay = ((Date.now() - gameDate) / 36e5) >= 24;
 
   return (
     <div className={`assignment-preview accepted-${assignment.accepted}`}>
       <div
         className="assignment-preview__content"
         onClick={() => {
-          loadModalData({ ...props });
+          loadModalData({ ...props }, 'assignment');
           toggleModal();
         }}
       >
@@ -24,20 +27,15 @@ const AssignmentListItem = (props) => {
           <div className="assignment-preview__date">
             <span>{parsedDate.month}</span>
             <span>{parsedDate.day}</span>
+            <span>{parsedDate.year}</span>
           </div>
           <span className="assignment-preview__time">@ {parsedDate.time}</span>
         </div>
-        <div>
-          <div style={{ fontSize: "0.75rem", width: "100%" }}>
-            {game.home_team} vs <br />
-            {game.away_team}
+        <div className="assignment-preview__details-wrapper">
+          <div className="assignment-preview__details-title">
+            {game.home_team} vs {game.away_team}
           </div>
           <div className="assignment-preview__details">
-            <div className="assignment-preview__level">
-              {/* <span>Game</span> */}
-              {/* <span>{toTitleCase(game.title)}</span> */}
-              {/* <span className="assignment-preview__teams">{game.home_team} vs <br/>{game.away_team}</span> */}
-            </div>
             <div className="assignment-preview__field">
               <span>Field</span>
               <span>{game.field}</span>
@@ -50,9 +48,9 @@ const AssignmentListItem = (props) => {
         </div>
       </div>
         <div className="assignment-preview__confirmation">
-          <button type='button' onClick={() => userAcceptAssignment(assignment.id, null)}>Mark Pending</button>
-          <button type='button' onClick={() => userAcceptAssignment(assignment.id, true)}>Accept Assignment</button>
-          <button type='button' onClick={() => userAcceptAssignment(assignment.id, false)}>Reject Assignment</button>
+          <button type='button' disabled={dateWithinADay} title={dateWithinADay ? 'You cannot change your availablity within 24 hours of a game or after a game has passed. Please contact an admin or assigner' : ''} onClick={() => userAcceptAssignment(assignment.id, null)}><i class="fa-solid fa-question"></i></button>
+          <button type='button' disabled={dateWithinADay} title={dateWithinADay ? 'You cannot change your availablity within 24 hours of a game. Please contact an admin or assigner' : ''} onClick={() => userAcceptAssignment(assignment.id, true)}><i class="fa-solid fa-check"></i></button>
+          <button type='button' disabled={dateWithinADay} title={dateWithinADay ? 'You cannot change your availablity within 24 hours of a game. Please contact an admin or assigner' : ''} onClick={() => userAcceptAssignment(assignment.id, false)}><i class="fa-solid fa-xmark"></i></button>
         </div>
     </div>
   );

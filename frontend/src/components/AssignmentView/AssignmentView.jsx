@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import useUserData from "../../hooks/useUserData";
+import { useUserData } from "../../hooks/useUserData";
 import Cookies from 'js-cookie';
 import AssignmentListItem from "../AssignmentListItem/AssignmentListItem";
 import './assignmentView.scss';
 import Button from '../Button/Button';
 
 const AssignmentView = () => {
-  const { getAssignmentsByUser, userAssignments, sortAssignmentsByGameDate, sortAssignmentsByStatus } = useUserData(Cookies.get('new_user_id')); //change to 10 to hardcode a view of assignments
+  const { getAssignmentsByUser, userAssignments, sortAssignmentsByGameDate, sortAssignmentsByStatus, userAcceptAssignment } = useUserData();
 
   useEffect(() => {
     getAssignmentsByUser();
@@ -24,7 +24,7 @@ const AssignmentView = () => {
       <div className="assignment-view__assignments">
         {userAssignments.length === 0 && <h2>No assignments here!</h2> }
         {userAssignments.map((game) => 
-            <AssignmentListItem key={game.assignment.id} assigner={game.assigner} assignment={game.assignment} game={game.game} partners={game.partners} pay={game.pay_rate} />
+            <AssignmentListItem key={game.assignment.id} assigner={game.assigner} assignment={game.assignment} game={game.game} partners={game.partners} pay={game.pay_rate} userAcceptAssignment={userAcceptAssignment}/>
           )}
       </div>
     </div>
