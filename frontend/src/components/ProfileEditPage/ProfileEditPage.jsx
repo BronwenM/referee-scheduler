@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import Button from '../Button/Button';
+import {useAuth} from '../../hooks/useAuth';
 
 const ProfileEditPage = () => {
+  const {user} = useAuth();
   const [userId, setUserId] = useState(null);
   const [message, setMessage] = useState('');
   const [userData, setUserData] = useState({
@@ -18,7 +20,7 @@ const ProfileEditPage = () => {
   
 
   useEffect(() => {
-    const userIdFromCookie = Cookies.get('new_user_id');
+    const userIdFromCookie = user.id;
     if (userIdFromCookie) {
       setUserId(userIdFromCookie);
       fetchUserData(userIdFromCookie);

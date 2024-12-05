@@ -13,7 +13,7 @@
   }
 }
 
-.games-view__filters{
+.games-view__filters {
   max-height: max-content;
   display: flex;
   flex-direction: column;
@@ -23,8 +23,8 @@
   grid-area: sidebar;
   // border-radius: 8px;
   color: #fff;
-  position: sticky;
-  top: 100px;
+  // position: sticky;
+  // top: 100px;
   min-width: 200px;
   max-width: fit-content;
 
@@ -51,6 +51,5 @@
     margin-left: 0;
     padding: 8px 4px;
     align-items: center;
-  }
-  
+  }  
 }

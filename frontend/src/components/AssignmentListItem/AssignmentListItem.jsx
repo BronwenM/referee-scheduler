@@ -12,7 +12,7 @@ const AssignmentListItem = (props) => {
   const parsedDate = convertDateString(game.date_time);
 
   const gameDate = new Date(game.date_time);
-  const dateWithinADay = ((Date.now() - gameDate) / 36e5) <= 24;
+  const dateWithinADay = ((Date.now() - gameDate) / 36e5) >= 24;
 
   return (
     <div className={`assignment-preview accepted-${assignment.accepted}`}>
@@ -48,9 +48,9 @@ const AssignmentListItem = (props) => {
         </div>
       </div>
         <div className="assignment-preview__confirmation">
-          <button type='button' disabled={dateWithinADay} onClick={() => userAcceptAssignment(assignment.id, null)}><i class="fa-solid fa-question"></i></button>
-          <button type='button' disabled={dateWithinADay} onClick={() => userAcceptAssignment(assignment.id, true)}><i class="fa-solid fa-check"></i></button>
-          <button type='button' disabled={dateWithinADay} onClick={() => userAcceptAssignment(assignment.id, false)}><i class="fa-solid fa-xmark"></i></button>
+          <button type='button' disabled={dateWithinADay} title={dateWithinADay ? 'You cannot change your availablity within 24 hours of a game or after a game has passed. Please contact an admin or assigner' : ''} onClick={() => userAcceptAssignment(assignment.id, null)}><i class="fa-solid fa-question"></i></button>
+          <button type='button' disabled={dateWithinADay} title={dateWithinADay ? 'You cannot change your availablity within 24 hours of a game. Please contact an admin or assigner' : ''} onClick={() => userAcceptAssignment(assignment.id, true)}><i class="fa-solid fa-check"></i></button>
+          <button type='button' disabled={dateWithinADay} title={dateWithinADay ? 'You cannot change your availablity within 24 hours of a game. Please contact an admin or assigner' : ''} onClick={() => userAcceptAssignment(assignment.id, false)}><i class="fa-solid fa-xmark"></i></button>
         </div>
     </div>
   );

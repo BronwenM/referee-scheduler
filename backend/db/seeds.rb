@@ -428,68 +428,69 @@ user9_sunday = Unavailability.create!(
   available_date: nil
 )
 
-user10_monday = Unavailability.create!(
-  official: user10,
-  week_day: 1,
-  all_day: true,
-  time_from: nil,
-  time_to: nil,
-  available_date: nil
-)
+#REMOVED ALL UNAVAILABLITIES FOR USER 10: ISABELLE FOR DEMO PURPOSES
+# user10_monday = Unavailability.create!(
+#   official: user10,
+#   week_day: 1,
+#   all_day: true,
+#   time_from: nil,
+#   time_to: nil,
+#   available_date: nil
+# )
 
-user10_tuesday = Unavailability.create!(
-  official: user10,
-  week_day: 2,
-  all_day: false,
-  time_from: '08:00:00',
-  time_to: '12:00:00',
-  available_date: nil
-)
+# user10_tuesday = Unavailability.create!(
+#   official: user10,
+#   week_day: 2,
+#   all_day: false,
+#   time_from: '08:00:00',
+#   time_to: '12:00:00',
+#   available_date: nil
+# )
 
-user10_wednesday = Unavailability.create!(
-  official: user10,
-  week_day: 3,
-  all_day: true,
-  time_from: nil,
-  time_to: nil,
-  available_date: nil
-)
+# user10_wednesday = Unavailability.create!(
+#   official: user10,
+#   week_day: 3,
+#   all_day: true,
+#   time_from: nil,
+#   time_to: nil,
+#   available_date: nil
+# )
 
-user10_thursday = Unavailability.create!(
-  official: user10,
-  week_day: 4,
-  all_day: false,
-  time_from: '14:00:00',
-  time_to: '22:00:00',
-  available_date: nil
-)
+# user10_thursday = Unavailability.create!(
+#   official: user10,
+#   week_day: 4,
+#   all_day: false,
+#   time_from: '14:00:00',
+#   time_to: '22:00:00',
+#   available_date: nil
+# )
 
-user10_friday = Unavailability.create!(
-  official: user10,
-  week_day: 5,
-  all_day: true,
-  time_from: nil,
-  time_to: nil,
-  available_date: nil
-)
+# user10_friday = Unavailability.create!(
+#   official: user10,
+#   week_day: 5,
+#   all_day: true,
+#   time_from: nil,
+#   time_to: nil,
+#   available_date: nil
+# )
 
-user10_saturday = Unavailability.create!(
-  official: user10,
-  week_day: 6,
-  all_day: false,
-  time_from: '10:00:00',
-  time_to: '18:00:00',
-  available_date: nil
-)
+# user10_saturday = Unavailability.create!(
+#   official: user10,
+#   week_day: 6,
+#   all_day: false,
+#   time_from: '10:00:00',
+#   time_to: '18:00:00',
+#   available_date: nil
+# )
 
-user10_sunday = Unavailability.create!(
-  official: user10,
-  week_day: 7,
-  all_day: true,
-  time_from: nil,
-  time_to: nil,
-  available_date: nil
-)
+# user10_sunday = Unavailability.create!(
+#   official: user10,
+#   week_day: 7,
+#   all_day: true,
+#   time_from: nil,
+#   time_to: nil,
+#   available_date: nil
+# )
 
 user11_monday = Unavailability.create!(
   official: user11,
@@ -1317,7 +1318,7 @@ game1 = Game.create!(
   title: 'Week 1',
   home_team: 'The Diamond Sluggers',
   away_team: 'The Batting Bandits',
-  date_time: rand(2.month).seconds.ago,
+  date_time: rand(2.months.seconds.ago..2.months.seconds.from_now),
   location: '4567 Birchwood Avenue',
   field: 'Main Field',
   officials_assigned: true,
@@ -1331,7 +1332,7 @@ game2 = Game.create!(
   title: 'Week 1',
   home_team: 'Base Hitters',
   away_team: 'Pitch Perfect',
-  date_time: rand(2.month).seconds.ago,
+  date_time: rand(2.months.seconds.ago..2.months.seconds.from_now),
   location: '8903 Birchwood Parkway',
   field: 'Thunderstrike Field',
   officials_assigned: true,
@@ -1345,7 +1346,7 @@ game3 = Game.create!(
   title: 'Week 1',
   home_team: 'The Swinging Squirrels',
   away_team: 'Fastballs & Fireballs',
-  date_time: rand(2.month).seconds.ago,
+  date_time: rand(2.months.seconds.ago..2.months.seconds.from_now),
   location: '5432 Maple Street',
   field: 'Victory Park',
   officials_assigned: true,
@@ -1359,7 +1360,7 @@ game4 = Game.create!(
   title: 'Week 1',
   home_team: 'The Diamond Dusters',
   away_team: 'Ballpark Bandits',
-  date_time: rand(2.month).seconds.ago,
+  date_time: rand(2.months.seconds.ago..2.months.seconds.from_now),
   location: '2114 Oak Ridge Ave',
   field: 'Sunset Diamond',
   officials_assigned: true,
@@ -1373,7 +1374,7 @@ game5 = Game.create!(
   title: 'Week 1',
   home_team: 'Grand Slam Gurus',
   away_team: 'The Dugout Divas',
-  date_time: rand(2.month).seconds.ago,
+  date_time: rand(2.months.seconds.ago..2.months.seconds.from_now),
   location: '3421 Pine Hill Road',
   field: 'Golden Glove Stadium',
   officials_assigned: true,
@@ -1387,7 +1388,7 @@ game6 = Game.create!(
   title: 'Week 1',
   home_team: 'Bunt Force Trauma',
   away_team: 'The Triple Threats',
-  date_time: rand(2.month).seconds.ago,
+  date_time: rand(2.months.seconds.ago..2.months.seconds.from_now),
   location: '4567 Birchwood Avenue',
   field: 'Main Field',
   officials_assigned: true,
@@ -1401,7 +1402,7 @@ game7 = Game.create!(
   title: 'Week 1',
   home_team: 'Hit and Run Heroes',
   away_team: 'The Stolen Bases',
-  date_time: rand(2.month).seconds.ago,
+  date_time: rand(2.months.seconds.ago..2.months.seconds.from_now),
   location: '8903 Birchwood Parkway',
   field: 'Thunderstrike Field',
   officials_assigned: true,
@@ -1415,7 +1416,7 @@ game8 = Game.create!(
   title: 'Week 1',
   home_team: 'Slide into Home',
   away_team: 'The Fast & The Furious',
-  date_time: rand(2.month).seconds.ago,
+  date_time: rand(2.months.seconds.ago..2.months.seconds.from_now),
   location: '5432 Maple Street',
   field: 'Victory Park',
   officials_assigned: true,
@@ -1429,7 +1430,7 @@ game9 = Game.create!(
   title: 'Week 1',
   home_team: 'Catch Me If You Can',
   away_team: 'The Batting Angels',
-  date_time: rand(2.month).seconds.ago,
+  date_time: rand(2.months.seconds.ago..2.months.seconds.from_now),
   location: '2114 Oak Ridge Ave',
   field: 'Sunset Diamond',
   officials_assigned: true,
@@ -1443,7 +1444,7 @@ game10 = Game.create!(
   title: 'Week 1',
   home_team: 'Home Run Hustlers',
   away_team: 'The Softball Sharks',
-  date_time: rand(2.month).seconds.ago,
+  date_time: rand(2.months.seconds.ago..2.months.seconds.from_now),
   location: '3421 Pine Hill Road',
   field: 'Golden Glove Stadium',
   officials_assigned: false,
@@ -1457,7 +1458,7 @@ game11 = Game.create!(
   title: 'Week 2',
   home_team: 'The Batting Bandits',
   away_team: 'Base Hitters',
-  date_time: rand(2.month).seconds.ago,
+  date_time: rand(2.months.seconds.ago..2.months.seconds.from_now),
   location: '1256 Maple Hollow Road',
   field: 'Diamond Breeze Field',
   officials_assigned: false,
@@ -1471,7 +1472,7 @@ game12 = Game.create!(
   title: 'Week 2',
   home_team: 'Pitch Perfect',
   away_team: 'The Diamond Sluggers',
-  date_time: rand(2.month).seconds.ago,
+  date_time: rand(2.months.seconds.ago..2.months.seconds.from_now),
   location: '89 Sunrise Trail',
   field: 'Cedar Valley Park',
   officials_assigned: false,
@@ -1485,7 +1486,7 @@ game13 = Game.create!(
   title: 'Week 2',
   home_team: 'Fastballs & Fireballs',
   away_team: 'The Diamond Dusters',
-  date_time: rand(2.month).seconds.ago,
+  date_time: rand(2.months.seconds.ago..2.months.seconds.from_now),
   location: '432 Willow Bend Avenue',
   field: 'Summit Ridge Ballpark',
   officials_assigned: false,
@@ -1499,7 +1500,7 @@ game14 = Game.create!(
   title: 'Week 2',
   home_team: 'Ballpark Bandits',
   away_team: 'The Swinging Squirrels',
-  date_time: rand(2.month).seconds.ago,
+  date_time: rand(2.months.seconds.ago..2.months.seconds.from_now),
   location: '17 Birchwood Terrace',
   field: 'Sandlot Oasis Stadium',
   officials_assigned: false,
@@ -1513,7 +1514,7 @@ game15 = Game.create!(
   title: 'Week 2',
   home_team: 'The Dugout Divas',
   away_team: 'Bunt Force Trauma',
-  date_time: rand(2.month).seconds.ago,
+  date_time: rand(2.months.seconds.ago..2.months.seconds.from_now),
   location: '6789 Riverstone Parkway',
   field: 'Harborline Sports Complex',
   officials_assigned: false,
@@ -1527,7 +1528,7 @@ game16 = Game.create!(
   title: 'Week 2',
   home_team: 'The Triple Threats',
   away_team: 'Grand Slam Gurus',
-  date_time: rand(2.month).seconds.ago,
+  date_time: rand(2.months.seconds.ago..2.months.seconds.from_now),
   location: '302 Evergreen Lane',
   field: 'Ironwood Glades Field',
   officials_assigned: false,
@@ -1541,7 +1542,7 @@ game17 = Game.create!(
   title: 'Week 2',
   home_team: 'The Stolen Bases',
   away_team: 'Slide into Home',
-  date_time: rand(2.month).seconds.ago,
+  date_time: rand(2.months.seconds.ago..2.months.seconds.from_now),
   location: '901 Sand Dune Boulevard',
   field: 'Golden Horizon Grounds',
   officials_assigned: false,
@@ -1555,7 +1556,7 @@ game18 = Game.create!(
   title: 'Week 2',
   home_team: 'The Fast & The Furious',
   away_team: 'Hit and Run Heroes',
-  date_time: rand(2.month).seconds.ago,
+  date_time: rand(2.months.seconds.ago..2.months.seconds.from_now),
   location: '55 Crimson Creek Drive',
   field: 'Starview Sports Dome',
   officials_assigned: false,
@@ -1569,7 +1570,7 @@ game19 = Game.create!(
   title: 'Week 2',
   home_team: 'The Batting Angels',
   away_team: 'Home Run Hustlers',
-  date_time: rand(2.month).seconds.ago,
+  date_time: rand(2.months.seconds.ago..2.months.seconds.from_now),
   location: '212 Quarry Ridge Lane',
   field: 'Bluffside Diamond',
   officials_assigned: false,
@@ -1583,7 +1584,7 @@ game20 = Game.create!(
   title: 'Week 2',
   home_team: 'The Softball Sharks',
   away_team: 'Catch Me If You Can',
-  date_time: rand(2.month).seconds.ago,
+  date_time: rand(2.months.seconds.ago..2.months.seconds.from_now),
   location: '784 Golden Acres Way',
   field: 'Echo Ridge Softball Complex',
   officials_assigned: false,
@@ -1597,7 +1598,7 @@ puts 'Games created'
 puts 'Creating Pay Rates'
 rate1 = GamePayment.create!(
   game_type: 'regular season',
-  pay_rate: 1
+  pay_rate: 35
 )
 puts 'Pay Rates created'
 
@@ -1766,7 +1767,7 @@ assignment18 = Assignment.create!(
   position: 'evaluator',
   game_payment: rate1,
   accepted: nil,
-  created_at: rand(3.months).seconds.ago
+  created_at: rand(rand(10.days).seconds.ago..Time.now)
 )
 
 assignment19 = Assignment.create!(

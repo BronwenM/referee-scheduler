@@ -10,9 +10,7 @@ const ProtectedRoute = (props) => {
     return children ? children : <Outlet />;
   }
   else {
-    console.log("Not permitted to view route")
-    console.log("Permitted Roles: ", permittedRoles)
-    console.log("User role: ", user.role);
+    console.log("User not permitted to view route")
     return <Navigate to="/" />
   }
 
